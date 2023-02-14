@@ -26,7 +26,7 @@ const Login = () => {
         <h1>
           <FaSignInAlt /> Login
         </h1>
-        <p>Please create an account</p>
+        <p>Please enter login info</p>
       </section>
       <section className="form">
         <form className="form-group" onSubmit={onSubmit}>
