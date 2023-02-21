@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSelector, useeDispatch, useDispatch } from "react-redux";
+import { useSelector, useDispatch} from "react-redux";
 import {createGoal} from "../goals/goalSlice";
 
 const GoalForm = () => {
