@@ -3,8 +3,6 @@ import { deleteGoal } from "../features/goals/goalSlice"
 
 const GoalItem = ({ goal }) => {
   const dispatch = useDispatch();
-  console.log(goal._id);
-  
 
   return (
     <div className="goal">
