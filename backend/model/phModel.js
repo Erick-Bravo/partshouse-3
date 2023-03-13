@@ -5,6 +5,7 @@ const PHSchema = mongoose.Schema(
     name: {
       type: String,
       required: [true, "Please add the name"],
+      unique: true
     },
     userId: {
         type: mongoose.Schema.Types.ObjectId,

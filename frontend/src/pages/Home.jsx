@@ -6,7 +6,7 @@ import Spinner from "../components/Spinner";
 import { getPH, reset } from "../features/partshouse/phSlice"
 import GoalItem from "../components/GoalItem";
 
-const Dashboard = () => {
+const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -34,8 +34,8 @@ const Dashboard = () => {
 
   return <div>
     <section className="heading">
-      <h1>Welcome {user && user.name}</h1>
-      <p>Goals Dashboard</p>
+      <h1>Welcome {user && user.email}</h1>
+      <p>Partshouse Home</p>
     </section>
       <GoalForm />
       <section className="content">
@@ -50,4 +50,4 @@ const Dashboard = () => {
   </div>;
 };
 
-export default Dashboard;
+export default Home;

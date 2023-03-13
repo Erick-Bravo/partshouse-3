@@ -3,28 +3,28 @@ import { useDispatch } from "react-redux";
 import { createPH } from "../features/partshouse/phSlice";
 
 const GoalForm = () => {
-  const [text, setText] = useState("");
+  const [name, setName] = useState("");
 
   const dispatch = useDispatch();
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(createPH({ text }));
-    setText("");
+    dispatch(createPH({ name }));
+    setName("");
   };
 
   return (
     <section className="form">
       <form onSubmit={onSubmit}>
         <div className="form-group">
-          <label htmlFor="text">Goal</label>
+          <label htmlFor="text">Partshouse</label>
           <input
             type="text"
-            name="text"
-            id="text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
+            name="name"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
         <div className="form-group">

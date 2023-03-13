@@ -37,7 +37,7 @@ const Navbar = () => {
               bg={primary}
               _hover={{ bg: primary2 }}
             >
-              <FaSignOutAlt /> Logout
+             Logout
             </Button>
           </li>
         ) : (
