@@ -41,6 +41,7 @@ const updatePH = asyncHandler(async (req, res) => {
   }
 
   //Where Does User come from in req? How does it get there? Check out Traversy Video
+  //remember req.user comes from the authentication middleware you created req.user = <code>
   if(!req.user) {
     res.status(401);
     throw new Error("User not found");

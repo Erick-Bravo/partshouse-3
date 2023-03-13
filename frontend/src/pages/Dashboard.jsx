@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import GoalForm from "../components/GoalForm";
 import Spinner from "../components/Spinner";
-import { getGoals, reset } from "../features/goals/goalSlice"
+import { getPH, reset } from "../features/partshouse/phSlice"
 import GoalItem from "../components/GoalItem";
 
 const Dashboard = () => {
@@ -11,7 +11,7 @@ const Dashboard = () => {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
-  const { goals, isLoading, isError, message } = useSelector((state) => state.goals);
+  const { ph, isLoading, isError, message } = useSelector((state) => state.partshouses);
 
   useEffect(() => {
     if(isError) {
@@ -20,9 +20,8 @@ const Dashboard = () => {
     if (!user) {
       navigate("/login");
     } else {
-      // dispatch(getGoals());
+      dispatch(getPH());
     };
-
 
     return () => {
       dispatch(reset());

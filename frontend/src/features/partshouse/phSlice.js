@@ -1,21 +1,32 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import goalService from "./goalService";
+import phService from "./phService";
 
-const initialState = {
-  goals: [],
-  isError: false,
-  isSuccess: false,
-  isLoading: false,
-  message: "",
-};
+// Get user partshouse
+export const getPH = createAsyncThunk(
+  "partshouse/getAll",
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await phService.getPH(token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
-// Create new goal
-export const createGoal = createAsyncThunk(
-  "goals/create",
+// Create new partshouse
+export const createPH = createAsyncThunk(
+  "partshouse/create",
   async (goalData, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await goalService.createGoal(goalData, token);
+      return await phService.createPH(goalData, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -29,12 +40,12 @@ export const createGoal = createAsyncThunk(
 );
 
 // Delete Goal
-export const deleteGoal = createAsyncThunk(
-  "goals/delete",
+export const deletePH = createAsyncThunk(
+  "partshouse/delete",
   async (id, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await goalService.deleteGoal(id, token);
+      return await phService.deletePH(id, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -47,26 +58,15 @@ export const deleteGoal = createAsyncThunk(
   }
 );
 
-// Get user goals
-export const getGoals = createAsyncThunk(
-  "goals/getAll",
-  async (_, thunkAPI) => {
-    try {
-      const token = thunkAPI.getState().auth.user.token;
-      return await goalService.getGoals(token);
-    } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
+const initialState = {
+  ph: [],
+  isError: false,
+  isSuccess: false,
+  isLoading: false,
+  message: "",
+};
 
-export const goalSlice = createSlice({
+export const phSlice = createSlice({
   name: "goal",
   initialState,
   reducers: {
@@ -74,43 +74,43 @@ export const goalSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(createGoal.pending, (state) => {
+      .addCase(createPH.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(createGoal.fulfilled, (state, action) => {
+      .addCase(createPH.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.goals.push(action.payload);
+        state.ph.push(action.payload);
       })
-      .addCase(createGoal.rejected, (state, action) => {
+      .addCase(createPH.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload; // Only when rejected??
       })
-      .addCase(getGoals.pending, (state) => {
+      .addCase(getPH.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getGoals.fulfilled, (state, action) => {
+      .addCase(getPH.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.goals = action.payload; // GET
+        state.ph = action.payload; // GET
       })
-      .addCase(getGoals.rejected, (state, action) => {
+      .addCase(getPH.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
       })
-      .addCase(deleteGoal.pending, (state) => {
+      .addCase(deletePH.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(deleteGoal.fulfilled, (state, action) => {
+      .addCase(deletePH.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.goals = state.goals.filter(
+        state.ph = state.ph.filter(
           (goal) => goal._id !== action.payload.id
         );
       })
-      .addCase(deleteGoal.rejected, (state, action) => {
+      .addCase(deletePH.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
@@ -118,5 +118,5 @@ export const goalSlice = createSlice({
   },
 });
 
-export const { reset } = goalSlice.actions;
-export default goalSlice.reducer;
+export const { reset } = phSlice.actions;
+export default phSlice.reducer;

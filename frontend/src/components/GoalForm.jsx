@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createGoal } from "../features/goals/goalSlice";
+import { createPH } from "../features/partshouse/phSlice";
 
 const GoalForm = () => {
   const [text, setText] = useState("");
@@ -10,7 +10,7 @@ const GoalForm = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(createGoal({ text }));
+    dispatch(createPH({ text }));
     setText("");
   };
 
