@@ -3,7 +3,7 @@ import { FaSignInAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify"; 
-import { reset } from "../features/auth/authSlice";
+import { login, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
 
 const Login = () => {
@@ -39,14 +39,16 @@ const Login = () => {
     }));
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-  };
-
   const userData = {
     email,
     password
   }
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch(login(userData))
+  };
+
 
   if (isLoading) {
     return <Spinner />;
