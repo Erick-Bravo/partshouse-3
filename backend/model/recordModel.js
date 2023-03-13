@@ -1,15 +1,15 @@
 const mongoose = require("mongoose");
 
-const PHSchema = mongoose.Schema(
+const recordSchema = mongoose.Schema(
   {
     name: {
       type: String,
       required: [true, "Please add the name"],
     },
-    userId: {
+    phId: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: "User"
+        ref: "Partshouse"
     },
   },
   {
@@ -18,4 +18,4 @@ const PHSchema = mongoose.Schema(
 );
 
 
-module.exports = mongoose.model("Partshouse", PHSchema);
+module.exports = mongoose.model("Record", recordSchema);

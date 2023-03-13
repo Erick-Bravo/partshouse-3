@@ -1,53 +1,51 @@
 const asyncHandler = require("express-async-handler");
 
-const PH = require("../model/phModel");
+const Record = require("../model/recordModel");
 
-//@desc     Get Partshouses
-//@route    Get /api/partshouse
+//@desc     Get Record
+//@route    Get /api/record
 //@access   Private
-const getPH = asyncHandler(async (req, res) => {
-  const ph = await PH.find({ user: req.user.id });
+const getRecord = asyncHandler(async (req, res) => {
+  const record = await Record.find({ phId: req.ph.id });
 
-  res.status(200).json(ph);
+  res.status(200).json(record);
 });
 
-//@desc     Create Partshouse
-//@route    POST /api/partshouse
+//@desc     Create Record
+//@route    POST /api/record
 //@access   Private
-const createPH = asyncHandler(async (req, res) => {
-  console.log(req.body)
+const createRecord = asyncHandler(async (req, res) => {
 
   if (!req.body.name) {
     res.status(400);
     throw new Error("Please add a name field");
   }
-  const ph = await PH.create({
+  const record = await Record.create({
     name: req.body.name,
-    userId: req.user.id
+    phId: req.ph.id
   });
 
-  res.status(200).json(ph);
+  res.status(200).json(record);
 });
 
-//@desc     Update Partshouse
-//@route    PUT /api/partshoue/:id
+//@desc     Update Record
+//@route    PUT /api/record/:id
 //@access   Private
-const updatePH = asyncHandler(async (req, res) => {
-  const ph = await PH.findById(req.params.id);
+const updateRecord = asyncHandler(async (req, res) => {
+  const record = await Record.findById(req.params.id);
 
-  if (!ph) {
+  if (!record) {
     res.status(400);
-    throw new Error("Partshouse not found");
+    throw new Error("Record not found");
   }
 
-  //Where Does User come from in req? How does it get there? Check out Traversy Video
   if(!req.user) {
     res.status(401);
     throw new Error("User not found");
   };
 
-    //Make sure the logged in user matches the partshouse user
-  if(ph.user.toString() !== req.user.id) {
+  //Make sure the logged in user matches the record user
+  if(record.user.toString() !== req.user.id) {
     res.status(401)
     throw new Error("User not authorized");
   }
@@ -84,8 +82,8 @@ const deletePH = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
-  getPH,
-  createPH,
-  updatePH,
-  deletePH,
+  getRecord,
+  createRecord,
+  updateRecord,
+  deleteRecord,
 };

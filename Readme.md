@@ -4,3 +4,12 @@ It is designed to keep track of valuable assets in your home and allows you to s
 
 ## Current Schema
 ![](./assets/PartsHouseSchema.png)
+
+## Connection Creation Steps
+Developer checklist to create a new table in the database
+1. Create basic Model
+1. Create basic Controller
+1. Create the Route
+1. Add the Route into server.js as a app.use
+1. Finish Model
+1. Finish Controller
