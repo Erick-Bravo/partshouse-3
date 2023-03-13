@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { FaUser } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { register, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
+import { Text } from "@chakra-ui/react";
+import { primary } from "../assetLibrary/colors";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -65,9 +67,9 @@ const Register = () => {
   return (
     <>
       <section className="heading">
-        <h1>
-          <FaUser /> Register
-        </h1>
+        <Text color={primary}>
+           Register
+        </Text>
         <p>Please create an account</p>
       </section>
       <section className="form">
@@ -122,8 +124,9 @@ const Register = () => {
             </button>
           </div>
         </form>
-
-        <p>Please create an account</p>
+        <Link to="/login">
+        <p>already have an account? login</p>
+        </Link>
       </section>
     </>
   );

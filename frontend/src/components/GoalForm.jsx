@@ -29,7 +29,7 @@ const GoalForm = () => {
         </div>
         <div className="form-group">
           <button className="btn btn-block" type="submit">
-            Add Goal
+            Add a Parthouse
           </button>
         </div>
       </form>
