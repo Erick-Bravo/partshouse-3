@@ -12,13 +12,15 @@ const App = () => {
   return (
     <ChakraProvider>
       <Router>
-        <Box w="100%" maxW="960px" m="0 auto" p="0 20px" textAlign="center">
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-          </Routes>
+        <Box h="100vh" bgGradient='linear(to-br, blue.200, blue.600)'>
+          <Box w="100%" maxW="960px" m="0 auto" p="0 20px" textAlign="center">
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </Routes>
+          </Box>
         </Box>
       </Router>
       <ToastContainer />
