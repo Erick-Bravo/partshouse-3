@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import { FaSignInAlt } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify"; 
 import { login, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
-import { primary } from "../assetLibrary/colors";
+import { primary, primary2 } from "../assetLibrary/colors";
 import { Text } from "@chakra-ui/react";
 
 const Login = () => {
@@ -96,7 +95,7 @@ const Login = () => {
           </div>
         </form>
         <Link to="/register">
-          <p>create an account</p>
+          <Text _hover={{ color: primary2 }}>create an account</Text>
         </Link>
       </section>
     </>

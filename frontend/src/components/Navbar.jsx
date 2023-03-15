@@ -45,14 +45,22 @@ const Navbar = ({ user }) => {
           <>
             <li>
               <Link to="/login">
-                <Text fontWeight="bold" color={primary}>
+                <Text
+                  fontWeight="bold"
+                  color={primary}
+                  _hover={{ color: primary2 }}
+                >
                   Login
                 </Text>
               </Link>
             </li>
             <li>
               <Link to="/register">
-                <Text fontWeight="bold" color={primary}>
+                <Text
+                  fontWeight="bold"
+                  color={primary}
+                  _hover={{ color: primary2 }}
+                >
                   Register
                 </Text>
               </Link>
