@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import GoalForm from "../components/GoalForm";
+import PartshouseForm from "../components/PartshouseForm";
 import Spinner from "../components/Spinner";
 import { getPH, reset } from "../features/partshouse/phSlice"
-import GoalItem from "../components/GoalItem";
+import PartshouseItem from "../components/PartshouseItem";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -37,15 +37,15 @@ const Home = () => {
       <h1>Welcome {user && user.email}</h1>
       <p>Partshouse Home</p>
     </section>
-      <GoalForm />
+      <PartshouseForm />
       <section className="content">
-        {/* {ph.length > 0 ? (
+        {ph.length > 0 ? (
           <div className="goals">
             {ph.map((ph) => (
-              <GoalItem key={goal._id} goal={goal} />
+              <PartshouseItem key={ph._id} ph={ph} />
             ))}
           </div>
-        ) : (<h3>You do not have any Partshouses yet</h3>)} */}
+        ) : (<h3>You do not have any Partshouses yet</h3>)}
       </section>
   </div>;
 };

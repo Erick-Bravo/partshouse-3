@@ -15,8 +15,6 @@ const getPH = asyncHandler(async (req, res) => {
 //@route    POST /api/partshouse
 //@access   Private
 const createPH = asyncHandler(async (req, res) => {
-  console.log(req.body)
-
   if (!req.body.name) {
     res.status(400);
     throw new Error("Please add a name field");
@@ -75,7 +73,7 @@ const deletePH = asyncHandler(async (req, res) => {
   };
 
     //Make sure the logged in user matches the goal user
-  if(ph.user.toString() !== req.user.id) {
+  if(ph.userId.toString() !== req.user.id) {
     res.status(401)
     throw new Error("User not authorized");
   }

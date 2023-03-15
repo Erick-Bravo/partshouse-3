@@ -3,50 +3,47 @@ const API_URL = "/api/partshouse/";
 
 //Get user Goals
 const getPH = async (token) => {
-    const config = {
-        headers: {
-            Authorization: `Bearer ${token}`
-        },
-    };
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
 
-    const response = await axios.get(API_URL, config)
+  const response = await axios.get(API_URL, config);
 
-    return response.data;
+  return response.data;
 };
 
 //Create New Goal
-const createPH = async (goalData, token) => {
-    const config = {
-        headers: {
-            Authorization: `Bearer ${token}`
-        },
-    };
+const createPH = async (phData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
 
-    const response = await axios.post(API_URL, goalData, config)
+  const response = await axios.post(API_URL, phData, config);
 
-    return response.data;
+  return response.data;
 };
-
 
 //Get user Goals
-const deletePH = async (goalId, token) => {
-    const config = {
-        headers: {
-            Authorization: `Bearer ${token}`
-        },
-    };
+const deletePH = async (phId, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
 
-    const response = await axios.delete(API_URL + goalId, config)
+  const response = await axios.delete(API_URL + phId, config);
 
-    return response.data;
+  return response.data;
 };
 
-
-
 const phService = {
-    getPH,
-    createPH,
-    deletePH
-}
+  getPH,
+  createPH,
+  deletePH,
+};
 
-export default phService
+export default phService;

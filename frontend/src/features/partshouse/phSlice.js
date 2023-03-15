@@ -53,6 +53,7 @@ export const deletePH = createAsyncThunk(
           error.response.data.message) ||
         error.message ||
         error.toString();
+        console.log(message)
       return thunkAPI.rejectWithValue(message);
     }
   }
@@ -67,7 +68,7 @@ const initialState = {
 };
 
 export const phSlice = createSlice({
-  name: "goal",
+  name: "partshouse",
   initialState,
   reducers: {
     reset: (state) => initialState,
@@ -107,7 +108,7 @@ export const phSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.ph = state.ph.filter(
-          (goal) => goal._id !== action.payload.id
+          (ph) => ph._id !== action.payload.id
         );
       })
       .addCase(deletePH.rejected, (state, action) => {

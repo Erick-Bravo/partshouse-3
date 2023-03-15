@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createPH } from "../features/partshouse/phSlice";
 
-const GoalForm = () => {
+const PartshouseForm = () => {
   const [name, setName] = useState("");
 
   const dispatch = useDispatch();
@@ -37,4 +37,4 @@ const GoalForm = () => {
   );
 };
 
-export default GoalForm;
+export default PartshouseForm;
