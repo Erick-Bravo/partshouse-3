@@ -8,15 +8,16 @@ import Register from "./pages/Register";
 import Navbar from "./components/Navbar";
 import { useSelector } from "react-redux";
 import { Box, ChakraProvider } from "@chakra-ui/react";
+import { blueWhale } from "./assetLibrary/colors";
 
 const App = () => {
   const { user } = useSelector((state) => state.auth);
   return (
     <ChakraProvider>
       <Router>
-        <Box h="100vh" bgGradient='linear(to-br, blue.200, blue.600)'>
-          <Box w="100%" maxW="960px" m="0 auto" p="0 20px" textAlign="center">
-            <Navbar user={user} />
+        <Box h="100vh" bg={blueWhale}>
+          <Box h="100%" w="100%" m="0 auto" p="0 20px" textAlign="center">
+            {/* <Navbar user={user} /> */}
             <Routes>
               <Route path="/" element={<Home user={user} />} />
               <Route path="/login" element={<Login />} />

@@ -125,7 +125,7 @@ const Register = () => {
           </div>
         </form>
         <Link to="/login">
-        <Text _hover={{ color: primary2 }}>already have an account? login</Text>
+         <Text _hover={{ color: primary2 }}>already have an account?</Text>
         </Link>
       </section>
     </>
