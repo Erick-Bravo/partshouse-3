@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { FaUser } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { register, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
-import { Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { primary, primary2 } from "../assetLibrary/colors";
+import Logo from "../components/SplashPage/Logo";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -34,7 +34,6 @@ const Register = () => {
     } else {
       dispatch(reset());
     }
-
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   const onChange = (e) => {
@@ -65,70 +64,77 @@ const Register = () => {
   }
 
   return (
-    <>
-      <section className="heading">
-        <Text color={primary}>
-           Register
-        </Text>
-        <Text fontSize="20px">Please create an account</Text>
-      </section>
-      <section className="form">
-        <form className="form-group" onSubmit={onSubmit}>
-          <div>
-            <input
-              type="text"
-              className="form-control"
-              id="name"
-              name="name"
-              value={name}
-              placeholder="Enter your name"
-              onChange={onChange}
-            />
-          </div>
-          <div>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              name="email"
-              value={email}
-              placeholder="Enter your email"
-              onChange={onChange}
-            />
-          </div>
-          <div>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              name="password"
-              value={password}
-              placeholder="Enter a password"
-              onChange={onChange}
-            />
-          </div>
-          <div>
-            <input
-              type="password"
-              className="form-control"
-              id="password2"
-              name="password2"
-              value={password2}
-              placeholder="Confirm password"
-              onChange={onChange}
-            />
-          </div>
-          <div className="form-group">
-            <button type="submit" className="btn btn-block">
-              Submit
-            </button>
-          </div>
-        </form>
-        <Link to="/login">
-         <Text _hover={{ color: primary2 }}>already have an account?</Text>
-        </Link>
-      </section>
-    </>
+    <Flex h="100%">
+      <Logo />
+      <Flex
+        flexDirection="column"
+        justifyContent="center"
+        h="100%"
+        pb="40px"
+        w={["100%", "50%"]}
+      >
+        <section className="heading">
+          <Text color={primary}>Register</Text>
+          <Text fontSize="20px">Please create an account</Text>
+        </section>
+        <section className="form">
+          <form className="form-group" onSubmit={onSubmit}>
+            <div>
+              <input
+                type="text"
+                className="form-control"
+                id="name"
+                name="name"
+                value={name}
+                placeholder="Enter your name"
+                onChange={onChange}
+              />
+            </div>
+            <div>
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                name="email"
+                value={email}
+                placeholder="Enter your email"
+                onChange={onChange}
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                name="password"
+                value={password}
+                placeholder="Enter a password"
+                onChange={onChange}
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                className="form-control"
+                id="password2"
+                name="password2"
+                value={password2}
+                placeholder="Confirm password"
+                onChange={onChange}
+              />
+            </div>
+            <div className="form-group">
+              <button type="submit" className="btn btn-block">
+                Submit
+              </button>
+            </div>
+          </form>
+          <Link to="/login">
+            <Text _hover={{ color: primary2 }}>already have an account?</Text>
+          </Link>
+        </section>
+      </Flex>
+    </Flex>
   );
 };
 
