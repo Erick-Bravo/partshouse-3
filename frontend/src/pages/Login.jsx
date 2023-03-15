@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { login, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
-import { primary, primary2 } from "../assetLibrary/colors";
+import { primary, primary2, toupOrange, whiteText } from "../assetLibrary/colors";
 import { Flex, Text } from "@chakra-ui/react";
 import Logo from "../components/SplashPage/Logo";
 
@@ -67,7 +67,7 @@ const Login = () => {
       >
         <section className="heading">
           <Text color={primary}>Login</Text>
-          <Text fontSize="20px">Please enter login info</Text>
+          <Text color={whiteText} fontSize="20px">Please enter login info</Text>
         </section>
         <section className="form">
           <form className="form-group" onSubmit={onSubmit}>
@@ -100,7 +100,7 @@ const Login = () => {
             </div>
           </form>
           <Link to="/register">
-            <Text _hover={{ color: primary2 }}>create an account</Text>
+            <Text color={toupOrange} _hover={{ color: primary2 }}>create an account</Text>
           </Link>
         </section>
       </Flex>

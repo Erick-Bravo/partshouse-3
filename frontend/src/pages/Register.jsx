@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { register, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
 import { Flex, Text } from "@chakra-ui/react";
-import { primary, primary2 } from "../assetLibrary/colors";
+import { primary, primary2, toupOrange, whiteText } from "../assetLibrary/colors";
 import Logo from "../components/SplashPage/Logo";
 
 const Register = () => {
@@ -75,7 +75,7 @@ const Register = () => {
       >
         <section className="heading">
           <Text color={primary}>Register</Text>
-          <Text fontSize="20px">Please create an account</Text>
+          <Text color={whiteText} fontSize="20px">Please create an account</Text>
         </section>
         <section className="form">
           <form className="form-group" onSubmit={onSubmit}>
@@ -130,7 +130,7 @@ const Register = () => {
             </div>
           </form>
           <Link to="/login">
-            <Text _hover={{ color: primary2 }}>already have an account?</Text>
+            <Text color={toupOrange} _hover={{ color: primary2 }}>already have an account?</Text>
           </Link>
         </section>
       </Flex>
