@@ -1,14 +1,12 @@
-import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 import { Box, Flex, Text, Button } from "@chakra-ui/react";
 import { primary, primary2 } from "../assetLibrary/colors";
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
 
   const onLogout = () => {
     dispatch(logout());
@@ -30,16 +28,19 @@ const Navbar = () => {
       </Box>
       <ul>
         {user ? (
-          <li>
-            <Button
-              onClick={onLogout}
-              color="white"
-              bg={primary}
-              _hover={{ bg: primary2 }}
-            >
-             Logout
-            </Button>
-          </li>
+          <>
+            <Text fontWeight="bold">{user.email}</Text>
+            <li>
+              <Button
+                onClick={onLogout}
+                color="white"
+                bg={primary}
+                _hover={{ bg: primary2 }}
+              >
+                Logout
+              </Button>
+            </li>
+          </>
         ) : (
           <>
             <li>

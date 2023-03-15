@@ -6,11 +6,10 @@ import Spinner from "../components/Spinner";
 import { getPH, reset } from "../features/partshouse/phSlice"
 import PartshouseItem from "../components/PartshouseItem";
 
-const Home = () => {
+const Home = ({user}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { user } = useSelector((state) => state.auth);
   const { ph, isLoading, isError, message } = useSelector((state) => state.partshouses);
 
   useEffect(() => {
@@ -34,7 +33,6 @@ const Home = () => {
 
   return <div>
     <section className="heading">
-      <h1>Welcome {user && user.email}</h1>
       <p>Partshouse Home</p>
     </section>
       <PartshouseForm />
