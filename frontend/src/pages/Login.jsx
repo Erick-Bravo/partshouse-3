@@ -5,7 +5,8 @@ import { toast } from "react-toastify";
 import { login, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
 import { primary, primary2 } from "../assetLibrary/colors";
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
+import Logo from "../components/SplashPage/Logo";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -56,9 +57,7 @@ const Login = () => {
 
   return (
     <Flex  h="100%">
-      <Flex pl="50px" w={["100%", "50%"]}>
-        <Image src="./PartshouseMain.svg"/>
-      </Flex>
+      <Logo />
       <Flex
         flexDirection="column"
         justifyContent="center"
