@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { toast } from "react-toastify"; 
+import { toast } from "react-toastify";
 import { login, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
 import { primary, primary2 } from "../assetLibrary/colors";
@@ -42,14 +42,13 @@ const Login = () => {
 
   const userData = {
     email,
-    password
-  }
+    password,
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(login(userData))
+    dispatch(login(userData));
   };
-
 
   if (isLoading) {
     return <Spinner />;
@@ -58,11 +57,8 @@ const Login = () => {
   return (
     <>
       <section className="heading">
-        <Text color={primary}>
-          Login
-        </Text>
-
-        <p>Please enter login info</p>
+        <Text color={primary}>Login</Text>
+        <Text fontSize="20px">Please enter login info</Text>
       </section>
       <section className="form">
         <form className="form-group" onSubmit={onSubmit}>
