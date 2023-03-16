@@ -115,7 +115,7 @@ const Register = () => {
                 id="password"
                 name="password"
                 value={password}
-                placeholder="Enter a password"
+                placeholder="Enter Nikki password"
                 onChange={onChange}
               />
             </div>
@@ -138,7 +138,7 @@ const Register = () => {
           </form>
           <Link to="/login">
             <Text color={toupOrange} _hover={{ color: primary2 }}>
-              already have an account?
+              Already have an account?
             </Text>
           </Link>
         </section>

@@ -108,7 +108,7 @@ const Login = () => {
           </form>
           <Link to="/register">
             <Text color={toupOrange} _hover={{ color: primary2 }}>
-              create an account
+              Create an account
             </Text>
           </Link>
         </section>
