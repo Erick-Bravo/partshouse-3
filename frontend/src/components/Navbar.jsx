@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 import { Box, Flex, Text, Button } from "@chakra-ui/react";
-import { primary, primary2 } from "../assetLibrary/colors";
+import { primary, primary2, blueWhaleLight } from "../assetLibrary/colors";
 
 const Navbar = ({ user }) => {
   const navigate = useNavigate();
@@ -19,8 +19,10 @@ const Navbar = ({ user }) => {
       justifyContent="space-between"
       alignItems="center"
       p="20px 20px"
-      borderBottom="1px solid black"
-      mb="60px"
+      boxShadow="0 8px 6px -6px black"
+      borderRadius="0 0 10px 10px"
+      mb="40px"
+      bg={blueWhaleLight}
       className="header" //hilarious that i'm leaving this. A file with emotion styling would fix this.
     >
       <Box fontWeight="bold" fontSize="30px" color={primary}>
@@ -29,7 +31,7 @@ const Navbar = ({ user }) => {
       <ul>
         {user ? (
           <>
-            <Text fontWeight="bold">{user.email}</Text>
+            <Text color="white" fontWeight="bold">{user.email}</Text>
             <li>
               <Button
                 onClick={onLogout}
