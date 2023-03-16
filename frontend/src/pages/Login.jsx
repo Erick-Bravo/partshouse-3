@@ -4,7 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { login, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
-import { primary, primary2, toupOrange, whiteText } from "../assetLibrary/colors";
+import {
+  primary,
+  primary2,
+  toupOrange,
+  whiteText,
+} from "../assetLibrary/colors";
 import { Flex, Text } from "@chakra-ui/react";
 import Logo from "../components/SplashPage/Logo";
 
@@ -56,18 +61,20 @@ const Login = () => {
   }
 
   return (
-    <Flex  h="100%">
+    <Flex h="100%" flexDirection={["column", "column", "column", "row"]}>
       <Logo />
       <Flex
         flexDirection="column"
         justifyContent="center"
         h="100%"
         pb="40px"
-        w={["100%", "50%"]}
+        w={["100%"]}
       >
         <section className="heading">
           <Text color={primary}>Login</Text>
-          <Text color={whiteText} fontSize="20px">Please enter login info</Text>
+          <Text color={whiteText} fontSize="20px">
+            Please enter login info
+          </Text>
         </section>
         <section className="form">
           <form className="form-group" onSubmit={onSubmit}>
@@ -100,7 +107,9 @@ const Login = () => {
             </div>
           </form>
           <Link to="/register">
-            <Text color={toupOrange} _hover={{ color: primary2 }}>create an account</Text>
+            <Text color={toupOrange} _hover={{ color: primary2 }}>
+              create an account
+            </Text>
           </Link>
         </section>
       </Flex>
