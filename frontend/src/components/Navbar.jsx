@@ -19,8 +19,7 @@ const Navbar = ({ user }) => {
       justifyContent="space-between"
       alignItems="center"
       p="20px 20px"
-      boxShadow="0 8px 6px -6px black"
-      borderRadius="0 0 10px 10px"
+      boxShadow="0 6px 6px -4px black"
       mb="40px"
       bg={blueWhaleLight}
       className="header" //hilarious that i'm leaving this. A file with emotion styling would fix this.

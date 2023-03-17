@@ -38,8 +38,8 @@ const Home = ({ user }) => {
 
   return (
     <>
+      <Box bg={whitePaper} borderRadius="10px" p={["0 0 30px"]} h="98%" w="100%" maxWidth={["1400px"]} >
       <Navbar user={user} />
-      <Box bg={whitePaper} borderRadius="10px" p={["30px 10px"]}>
         <section className="heading">
           <p>Partshouse Home</p>
         </section>

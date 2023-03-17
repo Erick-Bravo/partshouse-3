@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useSelector } from "react-redux";
-import { Box, ChakraProvider } from "@chakra-ui/react";
+import { Box, ChakraProvider, Flex } from "@chakra-ui/react";
 import { blueWhale } from "./assetLibrary/colors";
 
 const App = () => {
@@ -15,13 +15,20 @@ const App = () => {
     <ChakraProvider>
       <Router>
         <Box h="100vh" bg={blueWhale}>
-          <Box h="100%" w="100%" m="0 auto" p="0 20px" textAlign="center">
+          <Flex
+            justifyContent="center"
+            h="100%"
+            w="100%"
+            m="0 auto"
+            p="0 20px"
+            textAlign="center"
+          >
             <Routes>
               <Route path="/" element={<Home user={user} />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
             </Routes>
-          </Box>
+          </Flex>
         </Box>
       </Router>
       <ToastContainer />
