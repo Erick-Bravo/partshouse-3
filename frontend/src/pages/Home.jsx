@@ -6,8 +6,9 @@ import Spinner from "../components/Spinner";
 import { getPH, reset } from "../features/partshouse/phSlice";
 import Navbar from "../components/Navbar";
 import PartshouseItem from "../components/PartshouseItem";
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { whitePaper } from "../assetLibrary/colors";
+import SidebarWithHeader from "../components/NavInterface/ExampleNavInterface";
 
 const Home = ({ user }) => {
   const navigate = useNavigate();
@@ -38,24 +39,30 @@ const Home = ({ user }) => {
 
   return (
     <>
-      <Box bg={whitePaper} borderRadius="10px" p={["0 0 30px"]} h="98%" w="100%" maxWidth={["1400px"]} >
-      <Navbar user={user} />
-        <section className="heading">
-          <p>Partshouse Home</p>
-        </section>
-        <PartshouseForm />
-        <section className="content">
-          {ph.length > 0 ? (
-            <Box className="goals">
-              {ph.map((ph) => (
-                <PartshouseItem key={ph._id} ph={ph} />
-              ))}
-            </Box>
-          ) : (
-            <h3>You do not have any Partshouses yet</h3>
-          )}
-        </section>
-      </Box>
+      <SidebarWithHeader>
+        <Box
+          bg={whitePaper}
+          borderRadius="10px"
+          p={["0 0 30px"]}
+          h="98%"
+          w="100%"
+        >
+          {/* <Navbar user={user} /> */}
+          <Text></Text>
+          {/* <PartshouseForm /> */}
+          <section className="content">
+            {ph.length > 0 ? (
+              <Box className="goals">
+                {ph.map((ph) => (
+                  <PartshouseItem key={ph._id} ph={ph} />
+                ))}
+              </Box>
+            ) : (
+              <h3>You do not have any Partshouses yet</h3>
+            )}
+          </section>
+        </Box>
+      </SidebarWithHeader>
     </>
   );
 };

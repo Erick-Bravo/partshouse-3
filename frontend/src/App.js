@@ -20,7 +20,7 @@ const App = () => {
             h="100%"
             w="100%"
             m="0 auto"
-            p="0 20px"
+            p="0"
             textAlign="center"
           >
             <Routes>
