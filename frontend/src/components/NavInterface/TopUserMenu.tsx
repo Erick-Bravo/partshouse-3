@@ -15,8 +15,18 @@ import {
 } from "@chakra-ui/react";
 import { FiBell, FiChevronDown } from "react-icons/fi";
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout, reset } from "../../features/auth/authSlice";
 
 const TopUserMenu = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch<any>();
+  const onLogout = () => {
+    dispatch(logout());
+    dispatch(reset());
+    navigate("/");
+  };
   return (
     <HStack spacing={{ base: "0", md: "6" }}>
       <IconButton
@@ -62,7 +72,7 @@ const TopUserMenu = () => {
             <MenuItem>Profile</MenuItem>
             <MenuItem>Add User</MenuItem>
             <MenuDivider />
-            <MenuItem>Log out</MenuItem>
+            <MenuItem onClick={onLogout}>Log out</MenuItem>
           </MenuList>
         </Menu>
       </Flex>
