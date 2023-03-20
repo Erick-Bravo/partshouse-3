@@ -79,6 +79,8 @@ const TopUserMenu = () => {
             <MenuItem>Add User</MenuItem>
             <MenuItem onClick={goToEditPartshouse}>Edit Partshouses</MenuItem>
             <MenuDivider />
+            <MenuItem>Leave Feedback</MenuItem>
+            <MenuDivider />
             <MenuItem onClick={onLogout}>Log out</MenuItem>
           </MenuList>
         </Menu>

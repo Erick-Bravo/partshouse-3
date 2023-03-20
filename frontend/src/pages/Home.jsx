@@ -1,10 +1,8 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import PartshouseForm from "../components/PartshouseForm";
 import Spinner from "../components/Spinner";
 import { getPH, reset } from "../features/partshouse/phSlice";
-import PartshouseItem from "../components/PartshouseItem";
 import { Box, Text } from "@chakra-ui/react";
 import { whitePaper } from "../assetLibrary/colors";
 import NavInterface from "../components/NavInterface/NavInterface";

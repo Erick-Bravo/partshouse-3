@@ -2,12 +2,14 @@ import React from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import PartshouseForm from "../components/PartshouseForm";
 import Spinner from "../components/Spinner";
 import { getPH, reset } from "../features/partshouse/phSlice";
-import PartshouseItem from "../components/PartshouseItem";
 import { Box, Text, Flex, Button } from "@chakra-ui/react";
-import { buttonColor, whitePaper } from "../assetLibrary/colors";
+import {
+  blueWhaleLight,
+  buttonColor,
+  whitePaper,
+} from "../assetLibrary/colors";
 import NavInterface from "../components/NavInterface/NavInterface";
 import { deletePH } from "../features/partshouse/phSlice";
 
@@ -42,11 +44,19 @@ const EditPartshouses = () => {
 
   return (
     <NavInterface>
-      <Box bg={whitePaper} borderRadius="10px" p={["30px 30px"]} h="98%">
+      <Box bg={whitePaper} borderRadius="10px" p={["30px 30px"]} h="99%">
         <Text fontStyle="italic">
           Note: You will be unable to delete a Partshouse if it contain any
           Records
         </Text>
+        <Button
+          bg={blueWhaleLight}
+          color="white"
+          m={["30px 0"]}
+          _hover={{ color: "white" }}
+        >
+          Add a Partshouse
+        </Button>
         {ph.length > 0 ? (
           ph.map((p) => (
             <Flex flexDir="column" color="black" p={["30px 0"]}>
@@ -59,20 +69,20 @@ const EditPartshouses = () => {
 
               <Flex justifyContent="center">
                 <Button
+                  bg={whitePaper}
                   mr={["9"]}
                   _hover={{
-                    bg: buttonColor,
-                    color: "white",
+                    bg: "gray.200",
                     cursor: "pointer",
                   }}
                 >
                   Edit
                 </Button>
                 <Button
-                onClick={() => dispatch(deletePH(p._id))}
+                  bg={whitePaper}
+                  onClick={() => dispatch(deletePH(p._id))}
                   _hover={{
-                    bg: buttonColor,
-                    color: "white",
+                    bg: "gray.200",
                     cursor: "pointer",
                   }}
                 >
