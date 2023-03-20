@@ -9,6 +9,7 @@ import PartshouseItem from "../components/PartshouseItem";
 import { Box, Text, Flex, Button } from "@chakra-ui/react";
 import { buttonColor, whitePaper } from "../assetLibrary/colors";
 import NavInterface from "../components/NavInterface/NavInterface";
+import { deletePH } from "../features/partshouse/phSlice";
 
 const EditPartshouses = () => {
   const navigate = useNavigate();
@@ -43,13 +44,13 @@ const EditPartshouses = () => {
     <NavInterface>
       <Box bg={whitePaper} borderRadius="10px" p={["30px 30px"]} h="98%">
         <Text fontStyle="italic">
-          Note: You will be unable to delete a Partshouse if they contain any
+          Note: You will be unable to delete a Partshouse if it contain any
           Records
         </Text>
         {ph.length > 0 ? (
           ph.map((p) => (
-            <Flex flexDir="column" color="black" pt={["10"]}>
-              <Text fontWeight="bold" fontSize={["30px"]}>
+            <Flex flexDir="column" color="black" p={["30px 0"]}>
+              <Text fontWeight="bold" fontSize={["30px"]} pb={["3"]}>
                 {p.name}
               </Text>
               <Text pb={["5"]}>
@@ -68,6 +69,7 @@ const EditPartshouses = () => {
                   Edit
                 </Button>
                 <Button
+                onClick={() => dispatch(deletePH(p._id))}
                   _hover={{
                     bg: buttonColor,
                     color: "white",
