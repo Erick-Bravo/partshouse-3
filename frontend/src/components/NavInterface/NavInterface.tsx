@@ -60,7 +60,7 @@ const NavInterface = ({ children }: { children: ReactNode }) => {
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
+      <Box ml={{ base: 0, md: 60 }} p="4" h="92%">
         {children}
       </Box>
     </Box>

@@ -28,6 +28,11 @@ const TopUserMenu = () => {
     navigate("/");
   };
   const { user } = useSelector((state: any) => state.auth);
+
+  const goToEditPartshouse = () => {
+    navigate("/editpartshouses")
+  };
+
   return (
     <HStack spacing={{ base: "0", md: "6" }}>
       <IconButton
@@ -72,7 +77,7 @@ const TopUserMenu = () => {
           >
             <MenuItem>Profile</MenuItem>
             <MenuItem>Add User</MenuItem>
-            <MenuItem>Edit Partshouses</MenuItem>
+            <MenuItem onClick={goToEditPartshouse}>Edit Partshouses</MenuItem>
             <MenuDivider />
             <MenuItem onClick={onLogout}>Log out</MenuItem>
           </MenuList>
