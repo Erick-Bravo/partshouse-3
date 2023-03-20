@@ -4,15 +4,16 @@ import { useSelector, useDispatch } from "react-redux";
 import PartshouseForm from "../components/PartshouseForm";
 import Spinner from "../components/Spinner";
 import { getPH, reset } from "../features/partshouse/phSlice";
-import Navbar from "../components/Navbar";
 import PartshouseItem from "../components/PartshouseItem";
 import { Box, Text } from "@chakra-ui/react";
 import { whitePaper } from "../assetLibrary/colors";
-import SidebarWithHeader from "../components/NavInterface/ExampleNavInterface";
+import NavInterface from "../components/NavInterface/NavInterface";
 
-const Home = ({ user }) => {
+const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const { user } = useSelector((state) => state.auth);
 
   const { ph, isLoading, isError, message } = useSelector(
     (state) => state.partshouses
@@ -39,7 +40,7 @@ const Home = ({ user }) => {
 
   return (
     <>
-      <SidebarWithHeader>
+      <NavInterface>
         <Box
           bg={whitePaper}
           borderRadius="10px"
@@ -47,9 +48,6 @@ const Home = ({ user }) => {
           h="98%"
           w="100%"
         >
-          {/* <Navbar user={user} /> */}
-          <Text></Text>
-          {/* <PartshouseForm /> */}
           <section className="content">
             {ph.length > 0 ? (
               <Box className="goals">
@@ -62,7 +60,7 @@ const Home = ({ user }) => {
             )}
           </section>
         </Box>
-      </SidebarWithHeader>
+      </NavInterface>
     </>
   );
 };

@@ -16,7 +16,7 @@ import {
 import { FiBell, FiChevronDown } from "react-icons/fi";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout, reset } from "../../features/auth/authSlice";
 
 const TopUserMenu = () => {
@@ -27,6 +27,7 @@ const TopUserMenu = () => {
     dispatch(reset());
     navigate("/");
   };
+  const { user } = useSelector((state: any) => state.auth);
   return (
     <HStack spacing={{ base: "0", md: "6" }}>
       <IconButton
@@ -57,7 +58,7 @@ const TopUserMenu = () => {
                 ml="2"
               >
                 <Text fontSize="sm" color="white">
-                  Justina Clark
+                  {user.email}
                 </Text>
               </VStack>
               <Box display={{ base: "none", md: "flex" }} color="white">

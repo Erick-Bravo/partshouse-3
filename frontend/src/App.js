@@ -5,12 +5,10 @@ import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import { useSelector } from "react-redux";
 import { Box, ChakraProvider, Flex } from "@chakra-ui/react";
 import { blueWhale } from "./assetLibrary/colors";
 
 const App = () => {
-  const { user } = useSelector((state) => state.auth);
   return (
     <ChakraProvider>
       <Router>
@@ -24,7 +22,7 @@ const App = () => {
             textAlign="center"
           >
             <Routes>
-              <Route path="/" element={<Home user={user} />} />
+              <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
             </Routes>
