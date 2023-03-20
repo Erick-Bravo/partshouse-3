@@ -72,6 +72,7 @@ const TopUserMenu = () => {
           >
             <MenuItem>Profile</MenuItem>
             <MenuItem>Add User</MenuItem>
+            <MenuItem>Edit Partshouses</MenuItem>
             <MenuDivider />
             <MenuItem onClick={onLogout}>Log out</MenuItem>
           </MenuList>

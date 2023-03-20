@@ -14,14 +14,16 @@ import {
   BoxProps,
   FlexProps,
 } from "@chakra-ui/react";
-import {
-  FiHome,
-  FiMenu,
-} from "react-icons/fi";
+import { FiHome, FiMenu } from "react-icons/fi";
 import { IconType } from "react-icons";
 import * as React from "react";
-import { blueWhale, blueWhaleLight, toupOrange } from "../../assetLibrary/colors";
+import {
+  blueWhale,
+  blueWhaleLight,
+  toupOrange,
+} from "../../assetLibrary/colors";
 import TopUserMenu from "./TopUserMenu";
+import { useSelector } from "react-redux";
 
 interface LinkItemProps {
   name: string;
@@ -30,17 +32,11 @@ interface LinkItemProps {
 
 type ReactText = string | number;
 
-const LinkItems: Array<LinkItemProps> = [
-  { name: "Home", icon: FiHome },
-];
+const LinkItems: Array<LinkItemProps> = [{ name: "Home", icon: FiHome }];
 
-const NavInterface = ({
-  children,
-}: {
-  children: ReactNode;
-}) => {
+const NavInterface = ({ children }: { children: ReactNode }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  
+
   //CHILDREN
   /////////////////////////////////////////////////////////////////////////////////////////////////////
   return (
@@ -69,7 +65,7 @@ const NavInterface = ({
       </Box>
     </Box>
   );
-}
+};
 
 interface SidebarProps extends BoxProps {
   onClose: () => void;
@@ -78,6 +74,7 @@ interface SidebarProps extends BoxProps {
 //SIDEBAR
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+  const { ph } = useSelector((state: any) => state.partshouses)
   return (
     <Box
       transition="3s ease"
@@ -90,16 +87,28 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="3xl" fontFamily="monospace" fontWeight="bold" color={toupOrange}>
+        <Text
+          fontSize="3xl"
+          fontFamily="monospace"
+          fontWeight="bold"
+          color={toupOrange}
+        >
           Partshouse
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon} color={toupOrange} fontSize="2xl">
-          {link.name}
+      {ph.length > 0 ? ph.map((ph: any) => (
+        <NavItem
+          key={ph.name}
+          icon={ph.icon}
+          color={toupOrange}
+          fontSize="2xl"
+        >
+          {ph.name}
         </NavItem>
-      ))}
+      )) : (
+        <h3>You do not have any Partshouses yet</h3>
+      )}
     </Box>
   );
 };
@@ -182,6 +191,5 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
     </Flex>
   );
 };
-
 
 export default NavInterface;

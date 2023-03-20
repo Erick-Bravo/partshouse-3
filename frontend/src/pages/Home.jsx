@@ -49,15 +49,6 @@ const Home = () => {
           w="100%"
         >
           <section className="content">
-            {ph.length > 0 ? (
-              <Box className="goals">
-                {ph.map((ph) => (
-                  <PartshouseItem key={ph._id} ph={ph} />
-                ))}
-              </Box>
-            ) : (
-              <h3>You do not have any Partshouses yet</h3>
-            )}
           </section>
         </Box>
       </NavInterface>
