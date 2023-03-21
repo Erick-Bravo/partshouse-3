@@ -4,7 +4,6 @@ import {
   Box,
   CloseButton,
   Flex,
-  Icon,
   useColorModeValue,
   Link,
   Drawer,
@@ -13,7 +12,6 @@ import {
   useDisclosure,
   BoxProps,
   FlexProps,
-  Button,
 } from "@chakra-ui/react";
 import { FiHome, FiMenu } from "react-icons/fi";
 import { IconType } from "react-icons";
@@ -26,7 +24,7 @@ import {
 } from "../../assetLibrary/colors";
 import TopUserMenu from "./TopUserMenu";
 import { useSelector } from "react-redux";
-import DynamicModal from "../DynamicModal";
+
 
 interface LinkItemProps {
   name: string;
@@ -78,11 +76,6 @@ interface SidebarProps extends BoxProps {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   const { ph } = useSelector((state: any) => state.partshouses);
-  const {
-    isOpen: isOpenPhModal,
-    onOpen: onOpenPhModal,
-    onClose: onClosePhModal,
-  } = useDisclosure();
 
   return (
     <Box
@@ -120,20 +113,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       ) : (
         <h3>You do not have any Partshouses yet</h3>
       )}
-      <Button
-        mt={["5"]}
-        bg={blueWhale}
-        color={primary}
-        _hover={{ color: primary2 }}
-        onClick={onOpenPhModal}
-      >
-        Add a Partshouse
-      </Button>
-      <DynamicModal
-        isOpen={isOpenPhModal}
-        onOpen={onOpenPhModal}
-        onClose={onClosePhModal}
-      />
     </Box>
   );
 };

@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../components/Spinner";
 import { getPH, reset } from "../features/partshouse/phSlice";
-import { Box, Text, Flex, Button } from "@chakra-ui/react";
+import { Box, Text, Flex, Button, useDisclosure } from "@chakra-ui/react";
 import {
   blueWhaleLight,
-  buttonColor,
   whitePaper,
 } from "../assetLibrary/colors";
 import NavInterface from "../components/NavInterface/NavInterface";
 import { deletePH } from "../features/partshouse/phSlice";
+import DynamicModal from "../components/DynamicModal";
 
 const EditPartshouses = () => {
   const navigate = useNavigate();
@@ -22,6 +22,12 @@ const EditPartshouses = () => {
   const { ph, isLoading, isError, message } = useSelector(
     (state) => state.partshouses
   );
+
+  const {
+    isOpen: isOpenPhModal,
+    onOpen: onOpenPhModal,
+    onClose: onClosePhModal,
+  } = useDisclosure();
 
   useEffect(() => {
     if (isError) {
@@ -46,7 +52,7 @@ const EditPartshouses = () => {
     <NavInterface>
       <Box bg={whitePaper} borderRadius="10px" p={["30px 30px"]} h="99%">
         <Text fontStyle="italic">
-          Note: You will be unable to delete a Partshouse if it contain any
+          Note: You will be unable to delete a Partshouse if it contains any
           Records
         </Text>
         <Button
@@ -54,9 +60,15 @@ const EditPartshouses = () => {
           color="white"
           m={["30px 0"]}
           _hover={{ color: "white" }}
+          onClick={onOpenPhModal}
         >
           Add a Partshouse
         </Button>
+        <DynamicModal
+          isOpen={isOpenPhModal}
+          onOpen={onOpenPhModal}
+          onClose={onClosePhModal}
+        />
         {ph.length > 0 ? (
           ph.map((p) => (
             <Flex flexDir="column" color="black" p={["30px 0"]} key={p._id}>
