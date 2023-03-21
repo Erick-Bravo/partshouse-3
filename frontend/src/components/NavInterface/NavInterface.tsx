@@ -13,17 +13,20 @@ import {
   useDisclosure,
   BoxProps,
   FlexProps,
+  Button,
 } from "@chakra-ui/react";
 import { FiHome, FiMenu } from "react-icons/fi";
 import { IconType } from "react-icons";
 import * as React from "react";
 import {
   blueWhale,
-  blueWhaleLight,
+  primary,
   toupOrange,
+  primary2,
 } from "../../assetLibrary/colors";
 import TopUserMenu from "./TopUserMenu";
 import { useSelector } from "react-redux";
+import DynamicModal from "../DynamicModal";
 
 interface LinkItemProps {
   name: string;
@@ -74,7 +77,13 @@ interface SidebarProps extends BoxProps {
 //SIDEBAR
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
-  const { ph } = useSelector((state: any) => state.partshouses)
+  const { ph } = useSelector((state: any) => state.partshouses);
+  const {
+    isOpen: isOpenPhModal,
+    onOpen: onOpenPhModal,
+    onClose: onClosePhModal,
+  } = useDisclosure();
+
   return (
     <Box
       transition="3s ease"
@@ -97,18 +106,34 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      {ph.length > 0 ? ph.map((ph: any) => (
-        <NavItem
-          key={ph.name}
-          icon={ph.icon}
-          color={toupOrange}
-          fontSize="2xl"
-        >
-          {ph.name}
-        </NavItem>
-      )) : (
+      {ph.length > 0 ? (
+        ph.map((ph: any) => (
+          <NavItem
+            key={ph.name}
+            icon={ph.icon}
+            color={toupOrange}
+            fontSize="2xl"
+          >
+            {ph.name}
+          </NavItem>
+        ))
+      ) : (
         <h3>You do not have any Partshouses yet</h3>
       )}
+      <Button
+        mt={["5"]}
+        bg={blueWhale}
+        color={primary}
+        _hover={{ color: primary2 }}
+        onClick={onOpenPhModal}
+      >
+        Add a Partshouse
+      </Button>
+      <DynamicModal
+        isOpen={isOpenPhModal}
+        onOpen={onOpenPhModal}
+        onClose={onClosePhModal}
+      />
     </Box>
   );
 };
@@ -137,7 +162,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
         }}
         {...rest}
       >
-        {icon && (
+        {/* {icon && ( /////// We may want to use this if logos get integrated for a Partshouse
           <Icon
             mr="4"
             fontSize="16"
@@ -146,7 +171,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
             }}
             as={icon}
           />
-        )}
+        )} */}
         {children}
       </Flex>
     </Link>
