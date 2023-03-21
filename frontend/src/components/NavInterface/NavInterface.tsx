@@ -24,7 +24,7 @@ import {
 } from "../../assetLibrary/colors";
 import TopUserMenu from "./TopUserMenu";
 import { useSelector } from "react-redux";
-
+import { useNavigate } from "react-router-dom";
 
 interface LinkItemProps {
   name: string;
@@ -76,6 +76,11 @@ interface SidebarProps extends BoxProps {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   const { ph } = useSelector((state: any) => state.partshouses);
+  const navigate = useNavigate();
+
+  const goHome = () => {
+    navigate("/");
+  };
 
   return (
     <Box
@@ -94,6 +99,8 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
           fontFamily="monospace"
           fontWeight="bold"
           color={toupOrange}
+          onClick={goHome}
+          _hover={{cursor: "pointer"}}
         >
           Partshouse
         </Text>
