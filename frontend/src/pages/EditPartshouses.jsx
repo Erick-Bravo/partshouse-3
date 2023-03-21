@@ -59,7 +59,7 @@ const EditPartshouses = () => {
         </Button>
         {ph.length > 0 ? (
           ph.map((p) => (
-            <Flex flexDir="column" color="black" p={["30px 0"]}>
+            <Flex flexDir="column" color="black" p={["30px 0"]} key={p._id}>
               <Text fontWeight="bold" fontSize={["30px"]} pb={["3"]}>
                 {p.name}
               </Text>
