@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../components/Spinner";
 import { getPH, reset } from "../features/partshouse/phSlice";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import { whitePaper } from "../assetLibrary/colors";
 import NavInterface from "../components/NavInterface/NavInterface";
+import Logo from "../components/SplashPage/Logo";
+import AddPhButton from "../components/Buttons/AddPhButton";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -39,16 +41,34 @@ const Home = () => {
   return (
     <>
       <NavInterface>
-        <Box
+        <Flex
+          justifyContent="center"
+          alignItems="center"
           bg={whitePaper}
           borderRadius="10px"
           p={["0 0 30px"]}
           h="98%"
           w="100%"
         >
-          <section className="content">
-          </section>
-        </Box>
+          {ph.length > 0 ? (
+            <Box>Hello</Box>
+          ) : (
+            <>
+              <Box width={["600px"]}>
+                <Logo />
+                <AddPhButton />
+                <Text>
+                  Click the "Add a Partshouse" button to create your first
+                  Partshouse
+                </Text>
+                <Text>
+                  Once created, to add more or edit, go to "Edit Parthouse" in
+                  the top menu
+                </Text>
+              </Box>
+            </>
+          )}
+        </Flex>
       </NavInterface>
     </>
   );

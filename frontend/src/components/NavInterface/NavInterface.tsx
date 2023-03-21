@@ -100,26 +100,17 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
           fontWeight="bold"
           color={toupOrange}
           onClick={goHome}
-          _hover={{cursor: "pointer"}}
+          _hover={{ cursor: "pointer" }}
         >
           Partshouse
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      {ph.length > 0 ? (
-        ph.map((ph: any) => (
-          <NavItem
-            key={ph.name}
-            icon={ph.icon}
-            color={toupOrange}
-            fontSize="2xl"
-          >
-            {ph.name}
-          </NavItem>
-        ))
-      ) : (
-        <h3>You do not have any Partshouses yet</h3>
-      )}
+      {ph.map((ph: any) => (
+        <NavItem key={ph.name} icon={ph.icon} color={toupOrange} fontSize="2xl">
+          {ph.name}
+        </NavItem>
+      ))}
     </Box>
   );
 };
