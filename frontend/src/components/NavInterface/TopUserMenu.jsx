@@ -21,16 +21,16 @@ import { logout, reset } from "../../features/auth/authSlice";
 
 const TopUserMenu = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch<any>();
+  const dispatch = useDispatch();
   const onLogout = () => {
     dispatch(logout());
-    dispatch(reset());
     navigate("/");
+    dispatch(reset());
   };
-  const { user } = useSelector((state: any) => state.auth);
+  const { user } = useSelector((state) => state.auth);
 
   const goToEditPartshouse = () => {
-    navigate("/editpartshouses")
+    navigate("/editpartshouses");
   };
 
   return (
@@ -62,9 +62,11 @@ const TopUserMenu = () => {
                 spacing="1px"
                 ml="2"
               >
-                <Text fontSize="sm" color="white">
-                  {user.email}
-                </Text>
+                {user !== null && (
+                  <Text fontSize="sm" color="white">
+                    {user.email}
+                  </Text>
+                )}
               </VStack>
               <Box display={{ base: "none", md: "flex" }} color="white">
                 <FiChevronDown />
