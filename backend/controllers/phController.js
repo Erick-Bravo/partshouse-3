@@ -28,7 +28,7 @@ const createPH = asyncHandler(async (req, res) => {
 });
 
 //@desc     Update Partshouse
-//@route    PUT /api/partshoue/:id
+//@route    PUT /api/partshouse/:id
 //@access   Private
 const updatePH = asyncHandler(async (req, res) => {
   const ph = await PH.findById(req.params.id);
@@ -38,7 +38,6 @@ const updatePH = asyncHandler(async (req, res) => {
     throw new Error("Partshouse not found");
   }
 
-  //Where Does User come from in req? How does it get there? Check out Traversy Video
   //remember req.user comes from the authentication middleware you created req.user = <code>
   if(!req.user) {
     res.status(401);

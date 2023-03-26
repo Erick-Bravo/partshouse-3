@@ -78,7 +78,6 @@ const TopUserMenu = () => {
             borderColor={useColorModeValue("gray.200", "gray.700")}
           >
             <MenuItem>Profile</MenuItem>
-            <MenuItem>Add User</MenuItem>
             <MenuItem onClick={goToEditPartshouse}>Edit Partshouses</MenuItem>
             <MenuDivider />
             <MenuItem>Leave Feedback</MenuItem>

@@ -5,10 +5,10 @@ const Record = require("../model/recordModel");
 //@desc     Get Record
 //@route    Get /api/record
 //@access   Private
-const getRecord = asyncHandler(async (req, res) => {
-  const record = await Record.find({ phId: req.ph.id });
+const getRecords = asyncHandler(async (req, res) => {
+  const records = await Record.find({ phId: req.body.phId });
 
-  res.status(200).json(record);
+  res.status(200).json(records);
 });
 
 //@desc     Create Record
@@ -22,7 +22,7 @@ const createRecord = asyncHandler(async (req, res) => {
   }
   const record = await Record.create({
     name: req.body.name,
-    phId: req.ph.id
+    phId: req.body.phId
   });
 
   res.status(200).json(record);
@@ -45,25 +45,25 @@ const updateRecord = asyncHandler(async (req, res) => {
   };
 
   //Make sure the logged in user matches the record user
-  if(record.user.toString() !== req.user.id) {
-    res.status(401)
-    throw new Error("User not authorized");
-  }
+  // if(record.user.toString() !== req.user.id) {
+  //   res.status(401)
+  //   throw new Error("User not authorized");
+  // }
 
-  const updatedPH = await PH.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  const updatedRecord = await Record.findByIdAndUpdate(req.params.id, req.body, {new: true})
 
-  res.status(200).json(updatedPH);
+  res.status(200).json(updatedRecord);
 });
 
-//@desc     Delete Partshouse
-//@route    Delete /api/partshouse/:id
+//@desc     Delete Record
+//@route    Delete /api/record/:id
 //@access   Private
-const deletePH = asyncHandler(async (req, res) => {
-  const ph = await PH.findById(req.params.id);
+const deleteRecord = asyncHandler(async (req, res) => {
+  const record = await Record.findById(req.params.id);
 
-  if (!ph) {
+  if (!record) {
     res.status(400);
-    throw new Error("Partshouse not found");
+    throw new Error("Record not found");
   }
 
   if(!req.user) {
@@ -71,18 +71,18 @@ const deletePH = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   };
 
-    //Make sure the logged in user matches the goal user
-  if(ph.user.toString() !== req.user.id) {
-    res.status(401)
-    throw new Error("User not authorized");
-  }
+   //Make sure the logged in user matches the goal user
+  // if(record.user.toString() !== req.user.id) {
+  //   res.status(401)
+  //   throw new Error("User not authorized");
+  // }
 
-  await ph.remove()
-  res.status(200).json({message: `Partshouse deleted`, id: req.params.id});
+  await record.remove()
+  res.status(200).json({message: `Record deleted`, id: req.params.id});
 });
 
 module.exports = {
-  getRecord,
+  getRecords,
   createRecord,
   updateRecord,
   deleteRecord,
