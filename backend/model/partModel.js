@@ -1,14 +1,11 @@
 const mongoose = require("mongoose");
 
-const recordSchema = mongoose.Schema(
+const partSchema = mongoose.Schema(
   {
     name: {
       type: String,
       required: [true, "Please add the name"],
     },
-    // type: {
-    //   type: String,
-    // },
     // brand: {
     //   type: String,
     // },
@@ -18,10 +15,6 @@ const recordSchema = mongoose.Schema(
     // serial: {
     //   type: String,
     // },
-    // icon: {
-    //   type: String,
-    //   required: [true, "Please select an icon"],
-    // },
     // reBuyURL: {
     //   type: String,
     // },
@@ -29,16 +22,11 @@ const recordSchema = mongoose.Schema(
     //   type: String,
     //   required: [true, "Please add the name"],
     // },
-    phId: {
+    recordId: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: "Partshouse"
+        ref: "Record"
     },
-    userId: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: "User"
-    }
   },
   {
     timestamps: true,
@@ -46,4 +34,4 @@ const recordSchema = mongoose.Schema(
 );
 
 
-module.exports = mongoose.model("Record", recordSchema);
+module.exports = mongoose.model("Part", partSchema);

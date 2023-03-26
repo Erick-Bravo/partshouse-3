@@ -22,7 +22,8 @@ const createRecord = asyncHandler(async (req, res) => {
   }
   const record = await Record.create({
     name: req.body.name,
-    phId: req.body.phId
+    phId: req.body.phId,
+    userId: req.user.id
   });
 
   res.status(200).json(record);

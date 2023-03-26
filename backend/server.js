@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/api/partshouse", require("./routes/phRoutes"));
 app.use("/api/records", require("./routes/recordRoutes"));
+app.use("/api/parts", require("./routes/partRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 
 
