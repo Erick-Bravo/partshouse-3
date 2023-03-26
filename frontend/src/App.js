@@ -27,6 +27,7 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/editpartshouses" element={<EditPartshouses />} />
+              <Route path="/partshouse/:id" element={<></>} />
             </Routes>
           </Flex>
         </Box>

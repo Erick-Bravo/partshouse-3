@@ -51,7 +51,16 @@ const Home = () => {
           w="100%"
         >
           {ph.length > 0 ? (
-            <Box>Hello</Box>
+            <>
+              <Flex h="100%" flexDir="column">
+                <Text fontWeight="bold" fontSize="50px" pt="25px" h="100%">
+                  Dashboard
+                </Text>
+                <Text pt="25px" h="100%">
+                  This default home page should just display all records and parts. Create models and controllers before this step{" "}
+                </Text>
+              </Flex>
+            </>
           ) : (
             <>
               <Box width={["600px"]}>
