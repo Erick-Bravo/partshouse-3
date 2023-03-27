@@ -49,7 +49,7 @@ const Home = () => {
         >
           {ph.length > 0 && selected !== {} ? (
             <>
-              <Box h="100%">
+              <Box h="100%" w="100%">
                 <Text fontWeight="bold" fontSize="50px" pt="25px">
                   Dashboard
                 </Text>
