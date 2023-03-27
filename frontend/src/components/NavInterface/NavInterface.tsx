@@ -13,27 +13,15 @@ import {
   BoxProps,
   FlexProps,
 } from "@chakra-ui/react";
-import { FiHome, FiMenu } from "react-icons/fi";
+import { FiMenu } from "react-icons/fi";
 import { IconType } from "react-icons";
 import * as React from "react";
-import {
-  blueWhale,
-  primary,
-  toupOrange,
-  primary2,
-} from "../../assetLibrary/colors";
+import { blueWhale, toupOrange } from "../../assetLibrary/colors";
 import TopUserMenu from "./TopUserMenu";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-interface LinkItemProps {
-  name: string;
-  icon: IconType;
-}
-
 type ReactText = string | number;
-
-const LinkItems: Array<LinkItemProps> = [{ name: "Home", icon: FiHome }];
 
 const NavInterface = ({ children }: { children: ReactNode }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
