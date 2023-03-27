@@ -16,7 +16,7 @@ import {
 import { FiMenu } from "react-icons/fi";
 import { IconType } from "react-icons";
 import * as React from "react";
-import { blueWhale, toupOrange } from "../../assetLibrary/colors";
+import { blueWhale, toupOrange, whitePaper } from "../../assetLibrary/colors";
 import TopUserMenu from "./TopUserMenu";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -80,7 +80,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   return (
     <Box
       transition="3s ease"
-      bg={useColorModeValue(blueWhale, "gray.900")}
+      bg={useColorModeValue(blueWhale, whitePaper)}
       borderRight="1px"
       // borderRightColor={useColorModeValue("gray.200", "gray.700")}
       w={{ base: "full", md: 60 }}
@@ -166,7 +166,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       px={{ base: 4, md: 4 }}
       height="20"
       alignItems="center"
-      bg={useColorModeValue(blueWhale, "gray.900")}
+      bg={useColorModeValue(blueWhale, whitePaper)}
       justifyContent={{ base: "space-between", md: "flex-end" }}
       boxShadow="0 2px 8px -5px black"
       {...rest}

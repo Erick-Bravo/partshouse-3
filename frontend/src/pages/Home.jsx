@@ -4,10 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../components/Spinner";
 import { getPH, reset } from "../features/partshouse/phSlice";
 import { Box, Flex, Text } from "@chakra-ui/react";
-import { whitePaper } from "../assetLibrary/colors";
 import NavInterface from "../components/NavInterface/NavInterface";
 import Logo from "../components/SplashPage/Logo";
 import AddPhButton from "../components/Buttons/AddPhButton";
+import DashboardAccordion from "../components/DashboardAccordion";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -19,9 +19,7 @@ const Home = () => {
     (state) => state.partshouses
   );
 
-  const selected = useSelector((state) => state.selectedPH);
-
-  console.log(selected);
+  const { selected } = useSelector((state) => state.selectedPH);
 
   useEffect(() => {
     if (isError) {
@@ -48,22 +46,19 @@ const Home = () => {
         <Flex
           justifyContent="center"
           alignItems="center"
-          bg={whitePaper}
-          borderRadius="10px"
-          p={["0 0 30px"]}
-          h="98%"
-          w="100%"
         >
-          {ph.length > 0 ? (
+          {ph.length > 0 && selected !== {} ? (
             <>
-              <Flex h="100%" flexDir="column">
-                <Text fontWeight="bold" fontSize="50px" pt="25px" h="100%">
+              <Box h="100%">
+                <Text fontWeight="bold" fontSize="50px" pt="25px">
                   Dashboard
                 </Text>
                 <Text pt="25px" h="100%">
-                  This default home page should just display all records and parts. Create models and controllers before this step{" "}
+                  All Records
                 </Text>
-              </Flex>
+
+                <DashboardAccordion />
+              </Box>
             </>
           ) : (
             <>
