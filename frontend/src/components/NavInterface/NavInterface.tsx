@@ -18,8 +18,9 @@ import { IconType } from "react-icons";
 import * as React from "react";
 import { blueWhale, toupOrange } from "../../assetLibrary/colors";
 import TopUserMenu from "./TopUserMenu";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setSelectedPH } from "../../app/selectedPH";
 
 type ReactText = string | number;
 
@@ -64,11 +65,17 @@ interface SidebarProps extends BoxProps {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   const { ph } = useSelector((state: any) => state.partshouses);
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
   const goHome = () => {
     navigate("/");
   };
+
+  const handlePHClick = (ph: any) => {
+    dispatch(setSelectedPH(ph));
+  }
 
   return (
     <Box
@@ -95,7 +102,13 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {ph.map((ph: any) => (
-        <NavItem key={ph.name} icon={ph.icon} color={toupOrange} fontSize="2xl">
+        <NavItem
+          key={ph.name}
+          icon={ph.icon}
+          color={toupOrange}
+          fontSize="2xl"
+          onClick={() => handlePHClick(ph)}
+        >
           {ph.name}
         </NavItem>
       ))}

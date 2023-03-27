@@ -19,6 +19,10 @@ const Home = () => {
     (state) => state.partshouses
   );
 
+  const selected = useSelector((state) => state.selectedPH);
+
+  console.log(selected);
+
   useEffect(() => {
     if (isError) {
       console.log(message);
