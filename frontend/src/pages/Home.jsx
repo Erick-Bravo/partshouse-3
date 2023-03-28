@@ -43,11 +43,9 @@ const Home = () => {
   return (
     <>
       <NavInterface>
-        <Flex
-          justifyContent="center"
-          alignItems="center"
-        >
-          {ph.length > 0 && selected !== {} ? (
+        <Flex justifyContent="center" alignItems="center">
+          {/* Partshouses available, but none selected */}
+          {ph.length > 0 && Object.keys(selected).length === 0 && (
             <>
               <Box h="100%" w="100%">
                 <Text fontWeight="bold" fontSize="50px" pt="25px">
@@ -60,7 +58,9 @@ const Home = () => {
                 <DashboardAccordion />
               </Box>
             </>
-          ) : (
+          )}
+          {/* No Partshouses available */}
+          {ph.length === 0 && (
             <>
               <Box width={["600px"]}>
                 <Logo />
@@ -70,10 +70,16 @@ const Home = () => {
                   Partshouse
                 </Text>
                 <Text>
-                  Once created, to add more or edit, go to "Edit Parthouse" in
+                  Once created, to add more or edit, go to "Edit Parthouses" in
                   the top menu
                 </Text>
               </Box>
+            </>
+          )}
+          {/* Partshouse Selected */}
+          {selected.name && (
+            <>
+              <Text>{selected.name}</Text>
             </>
           )}
         </Flex>

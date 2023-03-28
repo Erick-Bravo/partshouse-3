@@ -7,7 +7,7 @@ import {
   Box,
   Flex,
 } from "@chakra-ui/react";
-import { whitePaper } from "../assetLibrary/colors";
+import { blueWhaleLight, whitePaper } from "../assetLibrary/colors";
 
 const DashboardAccordion = () => {
   const records = [
@@ -58,7 +58,7 @@ const DashboardAccordion = () => {
   return (
     <Accordion allowMultiple w="100%">
       <Flex flexDir="column" alignItems="center">
-        {records.map((record) => {
+        {records.length > 0 ? records.map((record) => {
           return (
             <AccordionItem w="100%" maxW="900px" mb="20px" borderRadius="15px">
               <h2>
@@ -68,6 +68,7 @@ const DashboardAccordion = () => {
                   h="60px"
                   bg={whitePaper}
                   borderRadius="15px"
+                  _hover={{bg: blueWhaleLight, color: "white"}}
                 >
                   <Box as="span" flex="1" textAlign="left">
                     {record.name}
@@ -87,7 +88,7 @@ const DashboardAccordion = () => {
               </AccordionPanel>
             </AccordionItem>
           );
-        })}
+        }): "No Records Found"}
       </Flex>
     </Accordion>
   );
