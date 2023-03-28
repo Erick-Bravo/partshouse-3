@@ -53,7 +53,7 @@ const Home = () => {
                 <Text fontWeight="bold" fontSize="50px" pt="25px">
                   Dashboard
                 </Text>
-                <Text pt="25px" h="100%">
+                <Text p="35px" h="100%">
                   All Records
                 </Text>
 
