@@ -6,7 +6,7 @@ const Part = require("../model/partModel");
 //@route    Get /api/part
 //@access   Private
 const getParts = asyncHandler(async (req, res) => {
-  const parts = await Part.find({ recordId: req.body.recordId });
+  const parts = await Part.find({ userId: req.user.id });
 
   res.status(200).json(parts);
 });

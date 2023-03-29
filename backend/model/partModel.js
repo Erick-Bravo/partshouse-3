@@ -27,6 +27,11 @@ const partSchema = mongoose.Schema(
         required: true,
         ref: "Record"
     },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "User"
+    }
   },
   {
     timestamps: true,

@@ -8,6 +8,9 @@ import NavInterface from "../components/NavInterface/NavInterface";
 import Logo from "../components/SplashPage/Logo";
 import AddPhButton from "../components/Buttons/AddPhButton";
 import DashboardAccordion from "../components/DashboardAccordion";
+import HeadlineOne from "../components/HeadlineOne";
+import { getRecords } from "../features/records/recordSlice";
+import { getParts } from "../features/parts/partSlice";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -18,8 +21,17 @@ const Home = () => {
   const { ph, isLoading, isError, message } = useSelector(
     (state) => state.partshouses
   );
+  const { records, isLoading: recordsLoading } = useSelector(
+    (state) => state.records
+  );
+  const { parts, isLoading: partsLoading } = useSelector(
+    (state) => state.parts
+  );
 
   const { selected } = useSelector((state) => state.selectedPH);
+
+  console.log(records)
+  console.log(parts)
 
   useEffect(() => {
     if (isError) {
@@ -29,6 +41,8 @@ const Home = () => {
       navigate("/login");
     } else {
       dispatch(getPH());
+      dispatch(getRecords())
+      dispatch(getParts())
     }
 
     return () => {
@@ -48,9 +62,7 @@ const Home = () => {
           {ph.length > 0 && Object.keys(selected).length === 0 && (
             <>
               <Box h="100%" w="100%">
-                <Text fontWeight="bold" fontSize="50px" pt="25px">
-                  Dashboard
-                </Text>
+                <HeadlineOne text="Dashboard" />
                 <Text p="35px" h="100%">
                   All Records
                 </Text>
@@ -79,7 +91,7 @@ const Home = () => {
           {/* Partshouse Selected */}
           {selected.name && (
             <>
-              <Text>{selected.name}</Text>
+              <HeadlineOne text={selected.name} />
             </>
           )}
         </Flex>

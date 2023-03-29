@@ -6,7 +6,7 @@ const Record = require("../model/recordModel");
 //@route    Get /api/record
 //@access   Private
 const getRecords = asyncHandler(async (req, res) => {
-  const records = await Record.find({ phId: req.body.phId });
+  const records = await Record.find({ userId: req.user.id });
 
   res.status(200).json(records);
 });

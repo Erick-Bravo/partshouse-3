@@ -6,7 +6,7 @@ const PH = require("../model/phModel");
 //@route    Get /api/partshouse
 //@access   Private
 const getPH = asyncHandler(async (req, res) => {
-  const ph = await PH.find({ userId: req.user.id });
+  const ph = await PH.find({ userId: req.user.id })
 
   res.status(200).json(ph);
 });
