@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "/api/records/";
+const API_URL = "/api/parts/";
 
 //Get user Parts
 const getParts = async (token) => {
