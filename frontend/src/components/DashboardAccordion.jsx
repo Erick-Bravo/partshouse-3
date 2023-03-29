@@ -9,68 +9,12 @@ import {
 } from "@chakra-ui/react";
 import { blueWhaleLight, whitePaper } from "../assetLibrary/colors";
 
-const DashboardAccordion = () => {
-  const records = [
-    {
-      _id: "fgjhfdfgn",
-      name: "Record 1",
-      parts: [
-        {
-          _id: ",jyhikrhdfdvbhfd",
-          name: "Part 1",
-        },
-        {
-          _id: "rhdfdvbhfd",
-          name: "Part 2",
-        },
-        {
-          _id: "ikrhdfdvbhfd",
-          name: "Part 3",
-        },
-      ],
-    },
-    {
-      _id: "fgjhfdf",
-      name: "Record 2",
-      parts: [
-        {
-          _id: "jjdhuhnkdffd",
-          name: "Part 1",
-        },
-        {
-          _id: "jjhnkdfnmhfd",
-          name: "Part 2",
-        },
-        {
-          _id: "jjdfd",
-          name: "Part 3",
-        },
-      ],
-    },
-    {
-      _id: "fgfdfgn",
-      name: "Record 3",
-      parts: [
-        {
-          _id: "jjdhuhnkdfnmhfd",
-          name: "Part 1",
-        },
-        {
-          _id: "jjdhuhnkdhfd",
-          name: "Part 2",
-        },
-        {
-          _id: "juhnkdfnmhfd",
-          name: "Part 3",
-        },
-      ],
-    },
-  ];
+const DashboardAccordion = ({records, parts}) => {
 
   return (
     <Accordion allowMultiple w="100%">
       <Flex flexDir="column" alignItems="center">
-        {records.length > 0 ? records.map((record) => {
+        {records ? records.map((record) => {
           return (
             <AccordionItem w="100%" maxW="900px" mb="20px" borderRadius="15px" key={record._id}>
               <h2>
@@ -94,8 +38,14 @@ const DashboardAccordion = () => {
                 borderRadius="15px"
                 mt="5px"
               >
-                {record.parts.map((part) => {
-                  return <h3 key={part._id}>{part.name}</h3>;
+                {parts.map((part) => {
+                  if (part.recordId === record._id) {
+                    return (
+                      <>
+                        {part.name}
+                      </>
+                    )
+                  }
                 })}
               </AccordionPanel>
             </AccordionItem>

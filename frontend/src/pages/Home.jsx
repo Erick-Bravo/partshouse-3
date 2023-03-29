@@ -24,8 +24,8 @@ const Home = () => {
   const { records, isLoading: recordsLoading } = useSelector(
     (state) => state.records
   );
-  const parts = useSelector(
-    (state) => state
+  const { parts } = useSelector(
+    (state) => state.parts
   );
 
   const { selected } = useSelector((state) => state.selectedPH);
@@ -67,7 +67,7 @@ const Home = () => {
                   All Records
                 </Text>
 
-                <DashboardAccordion />
+                <DashboardAccordion records={records} parts={parts} />
               </Box>
             </>
           )}
