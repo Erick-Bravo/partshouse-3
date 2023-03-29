@@ -20,7 +20,7 @@ import { blueWhale, toupOrange, whitePaper } from "../../assetLibrary/colors";
 import TopUserMenu from "./TopUserMenu";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setSelectedPH } from "../../app/selectedPH";
+import { resetSelectedPH, setSelectedPH } from "../../app/selectedPH";
 
 type ReactText = string | number;
 
@@ -71,6 +71,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 
   const goHome = () => {
     navigate("/");
+    dispatch(resetSelectedPH())
   };
 
   const handlePHClick = (ph: any) => {
