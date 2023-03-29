@@ -8,3 +8,30 @@ It is designed to keep track of valuable assets in your home and allows you to s
 ## Start
 To run backend and frontend concurrently:
 npm run dev
+
+
+## Checklist
+<pre>
+- [ ] Add Additional Advanced info for Records and Parts
+    - [ ] Add some data
+    - [ ] Add icons
+
+- [ ] Create Button to Add a Record
+    - [ ] Button Open Modal
+    - [ ] Can selected which partshouse it is assicated with.
+    - [ ] Location: Above Accordions
+
+- [ ] Style the Accordion Button
+    - [ ] icon, left of button
+    - [ ] data, inside AccordionItem when opened
+
+- [ ] Create a Parts Card component for each Part 
+    - [ ] Name, 
+    - [ ] Repurchase Button, or
+    - [ ] Add Repurchase Link (modal just to add link)
+
+- [ ] Create Record Page
+    - [ ] Add Part Cards
+    - [ ] Add Logs Section
+    - [ ] Create Button to Edit a Record
+</pre>
