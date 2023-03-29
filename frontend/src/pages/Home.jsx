@@ -24,14 +24,9 @@ const Home = () => {
   const { records, isLoading: recordsLoading } = useSelector(
     (state) => state.records
   );
-  const { parts } = useSelector(
-    (state) => state.parts
-  );
+  const { parts } = useSelector((state) => state.parts);
 
   const { selected } = useSelector((state) => state.selectedPH);
-
-  console.log(records)
-  console.log(parts)
 
   useEffect(() => {
     if (isError) {
@@ -41,8 +36,8 @@ const Home = () => {
       navigate("/login");
     } else {
       dispatch(getPH());
-      dispatch(getRecords())
-      dispatch(getParts())
+      dispatch(getRecords());
+      dispatch(getParts());
     }
 
     return () => {
@@ -90,9 +85,13 @@ const Home = () => {
           )}
           {/* Partshouse Selected */}
           {selected.name && (
-            <>
+            <Box h="100%" w="100%">
               <HeadlineOne text={selected.name} />
-            </>
+              <Text p="35px" h="100%">
+                {selected.name} Records
+              </Text>
+              <DashboardAccordion records={records} parts={parts} />
+            </Box>
           )}
         </Flex>
       </NavInterface>

@@ -6,6 +6,7 @@ import {
   AccordionIcon,
   Box,
   Flex,
+  Text,
 } from "@chakra-ui/react";
 import { blueWhaleLight, whitePaper } from "../assetLibrary/colors";
 
@@ -41,9 +42,9 @@ const DashboardAccordion = ({records, parts}) => {
                 {parts.map((part) => {
                   if (part.recordId === record._id) {
                     return (
-                      <>
+                      <Text key={part._id}>
                         {part.name}
-                      </>
+                      </Text>
                     )
                   }
                 })}
