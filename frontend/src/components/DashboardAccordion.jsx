@@ -11,16 +11,13 @@ import {
 import { blueWhaleLight, whitePaper } from "../assetLibrary/colors";
 
 const DashboardAccordion = ({ records, parts, selected }) => {
-  //Dashboard needs logic:
-  //  - If record.phId === selected: pass record into dashboard accordion
-  //  - if Object.keys(selected).length === 0: show dashboard already created
-
   return (
     <Accordion allowMultiple w="100%">
       <Flex flexDir="column" alignItems="center">
         {records
           ? records.map((record) => {
               {
+                // Filter per Partshouse Selected
                 if (record.phId === selected._id) {
                   return (
                     <AccordionSetup
@@ -32,6 +29,7 @@ const DashboardAccordion = ({ records, parts, selected }) => {
                 }
               }
               {
+                // Dashboard: All Records
                 if (Object.keys(selected).length === 0) {
                   return (
                     <AccordionSetup
