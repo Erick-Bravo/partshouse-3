@@ -62,7 +62,11 @@ const Home = () => {
                   All Records
                 </Text>
 
-                <DashboardAccordion records={records} parts={parts} />
+                <DashboardAccordion
+                  records={records}
+                  parts={parts}
+                  selected={{}}
+                />
               </Box>
             </>
           )}
@@ -90,7 +94,11 @@ const Home = () => {
               <Text p="35px" h="100%">
                 {selected.name} Records
               </Text>
-              <DashboardAccordion records={records} parts={parts} />
+              <DashboardAccordion
+                records={records}
+                parts={parts}
+                selected={selected}
+              />
             </Box>
           )}
         </Flex>
