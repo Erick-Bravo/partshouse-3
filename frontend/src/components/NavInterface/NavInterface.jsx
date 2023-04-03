@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+
 import {
   IconButton,
   Box,
@@ -10,11 +10,8 @@ import {
   DrawerContent,
   Text,
   useDisclosure,
-  BoxProps,
-  FlexProps,
 } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
-import { IconType } from "react-icons";
 import * as React from "react";
 import { blueWhale, toupOrange, whitePaper } from "../../assetLibrary/colors";
 import TopUserMenu from "./TopUserMenu";
@@ -22,9 +19,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { resetSelectedPH, setSelectedPH } from "../../app/selectedPH";
 
-type ReactText = string | number;
+// type ReactText = string | number;
 
-const NavInterface = ({ children }: { children: ReactNode }) => {
+const NavInterface = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   //CHILDREN
@@ -57,14 +54,14 @@ const NavInterface = ({ children }: { children: ReactNode }) => {
   );
 };
 
-interface SidebarProps extends BoxProps {
-  onClose: () => void;
-}
+// interface SidebarProps extends BoxProps {
+//   onClose: () => void;
+// }
 
 //SIDEBAR
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
-  const { ph } = useSelector((state: any) => state.partshouses);
+const SidebarContent = ({ onClose, ...rest }) => {
+  const { ph } = useSelector((state) => state.partshouses);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -74,7 +71,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
     dispatch(resetSelectedPH())
   };
 
-  const handlePHClick = (ph: any) => {
+  const handlePHClick = (ph) => {
     dispatch(setSelectedPH(ph));
   }
 
@@ -102,7 +99,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      {ph.map((ph: any) => (
+      {ph.map((ph) => (
         <NavItem
           key={ph.name}
           icon={ph.icon}
@@ -117,11 +114,11 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   );
 };
 
-interface NavItemProps extends FlexProps {
-  icon: IconType;
-  children: ReactText;
-}
-const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
+// interface NavItemProps extends FlexProps {
+//   icon: IconType;
+//   children: ReactText;
+// }
+const NavItem = ({ icon, children, ...rest }) => {
   return (
     <Link
       href="#"
@@ -141,26 +138,16 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
         }}
         {...rest}
       >
-        {/* {icon && ( /////// We may want to use this if logos get integrated for a Partshouse
-          <Icon
-            mr="4"
-            fontSize="16"
-            _groupHover={{
-              color: "white",
-            }}
-            as={icon}
-          />
-        )} */}
         {children}
       </Flex>
     </Link>
   );
 };
 
-interface MobileProps extends FlexProps {
-  onOpen: () => void;
-}
-const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+// interface MobileProps extends FlexProps {
+//   onOpen: () => void;
+// }
+const MobileNav = ({ onOpen, ...rest }) => {
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
