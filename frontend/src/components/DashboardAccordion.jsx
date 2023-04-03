@@ -11,6 +11,12 @@ import {
 import { blueWhaleLight, whitePaper } from "../assetLibrary/colors";
 import IconFormatter from "./IconFormatter";
 
+const iconData = {
+  w: "7%",
+  size: "8",
+  pt: "12.5px",
+};
+
 const DashboardAccordion = ({ records, parts, selected }) => {
   return (
     <Accordion allowMultiple w="100%">
@@ -21,8 +27,17 @@ const DashboardAccordion = ({ records, parts, selected }) => {
                 // Filter per Partshouse Selected
                 if (record.phId === selected._id) {
                   return (
-                    <Flex>
-                      <IconFormatter icon={record.icon} />
+                    <Flex flexDir="row" w="100%" justifyContent="center">
+                      <Flex
+                        w={iconData.w}
+                        justifyContent="center"
+                        pt={iconData.pt}
+                      >
+                        <IconFormatter
+                          icon={record.icon}
+                          size={iconData.size}
+                        />
+                      </Flex>
                       <AccordionSetup
                         record={record}
                         parts={parts}
@@ -37,8 +52,15 @@ const DashboardAccordion = ({ records, parts, selected }) => {
                 if (Object.keys(selected).length === 0) {
                   return (
                     <Flex flexDir="row" w="100%" justifyContent="center">
-                      <Flex w="10%" justifyContent="center" pt="12.5px">
-                        <IconFormatter icon={record.icon} size={"8"} />
+                      <Flex
+                        w={iconData.w}
+                        justifyContent="center"
+                        pt={iconData.pt}
+                      >
+                        <IconFormatter
+                          icon={record.icon}
+                          size={iconData.size}
+                        />
                       </Flex>
                       <AccordionSetup
                         record={record}

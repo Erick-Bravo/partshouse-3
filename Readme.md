@@ -12,18 +12,19 @@ npm run dev
 
 ## MVP Checklist
 <pre>
-- [ ] Add Additional Advanced info for Records and Parts
-    - [ ] Add some data
-    - [ ] Add icons
+- [ x ] Add Additional Advanced info for Records and Parts
+    - [ x ] Add advanced data in Model
+    - [ x ] Add some data
+    - [ x ] Add icons
 
 - [ ] Create Button to Add a Record
     - [ ] Button Open Modal
     - [ ] Can selected which partshouse it is assicated with.
     - [ ] Location: Above Accordions
 
-- [ ] Style the Accordion Button
-    - [ ] icon, left of button
-    - [ ] data, inside AccordionItem when opened
+- [ x ] Style the Accordion Button
+    - [ x ] icon, left of button
+    - [ x ] data, inside AccordionItem when opened
 
 - [ ] Create a Parts Card component for each Part 
     - [ ] Name, 

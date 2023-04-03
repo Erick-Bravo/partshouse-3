@@ -2,6 +2,7 @@ import React from "react";
 import { Icon } from "@chakra-ui/react";
 import { FaBrain, FaHome, FaFan, FaTools } from "react-icons/fa";
 import { RiComputerFill } from "react-icons/ri";
+import { MdMailOutline } from "react-icons/md";
 import { BsPrinterFill } from "react-icons/bs";
 import { GiBodyBalance, GiCircularSawblade } from "react-icons/gi";
 import { SiCoffeescript } from "react-icons/si";
@@ -32,6 +33,9 @@ const IconFormatter = ({ icon, size }) => {
 
     if (icon === "home") {
       logo = FaHome;
+    }
+    if (icon === "mail") {
+      logo = MdMailOutline;
     }
     if (icon === "printer") {
       logo = BsPrinterFill;
@@ -77,3 +81,9 @@ const IconFormatter = ({ icon, size }) => {
 };
 
 export default IconFormatter;
+
+/*
+
+Home:
+
+*/
