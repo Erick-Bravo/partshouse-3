@@ -1,4 +1,3 @@
-
 import {
   IconButton,
   Box,
@@ -27,7 +26,12 @@ const NavInterface = ({ children }) => {
   //CHILDREN
   /////////////////////////////////////////////////////////////////////////////////////////////////////
   return (
-    <Box h="100vh" bg={useColorModeValue("gray.300", "gray.900")} w="100%">
+    <Box
+      h="100vh"
+      bg={useColorModeValue("gray.300", "gray.900")}
+      w="100%"
+      position="fixed"
+    >
       <SidebarContent
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
@@ -47,7 +51,7 @@ const NavInterface = ({ children }) => {
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4" h="92%">
+      <Box ml={{ base: 0, md: 60 }} p="4" h="92%" overflow="auto">
         {children}
       </Box>
     </Box>
@@ -68,12 +72,12 @@ const SidebarContent = ({ onClose, ...rest }) => {
 
   const goHome = () => {
     navigate("/");
-    dispatch(resetSelectedPH())
+    dispatch(resetSelectedPH());
   };
 
   const handlePHClick = (ph) => {
     dispatch(setSelectedPH(ph));
-  }
+  };
 
   return (
     <Box
