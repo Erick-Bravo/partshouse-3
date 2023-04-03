@@ -1,6 +1,6 @@
 import { Button, useDisclosure } from "@chakra-ui/react";
 import React from "react";
-import DynamicModal from "../DynamicModal";
+import DynamicModal from "../Modals/DynamicModal";
 import { blueWhaleLight } from "../../assetLibrary/colors";
 
 const AddPhButton = () => {

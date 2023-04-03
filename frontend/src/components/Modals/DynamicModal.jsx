@@ -15,7 +15,7 @@ import {
   FormHelperText,
   Input,
 } from "@chakra-ui/react";
-import { createPH } from "../features/partshouse/phSlice";
+import { createPH } from "../../features/partshouse/phSlice";
 import { useDispatch } from "react-redux";
 
 // interface DynamicModalProps {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createPH } from "../features/partshouse/phSlice";
+import { createPH } from "../../features/partshouse/phSlice";
 
 const PartshouseForm = () => {
   const [name, setName] = useState("");

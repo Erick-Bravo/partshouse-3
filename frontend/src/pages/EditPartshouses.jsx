@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import Spinner from "../components/Spinner";
+import Spinner from "../components/Assets/Spinner";
 import { getPH, reset } from "../features/partshouse/phSlice";
 import { Box, Text, Flex, Button } from "@chakra-ui/react";
 import { whitePaper } from "../assetLibrary/colors";

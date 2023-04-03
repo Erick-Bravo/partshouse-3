@@ -8,8 +8,8 @@ import {
   Flex,
   Text,
 } from "@chakra-ui/react";
-import { blueWhaleLight, whitePaper } from "../assetLibrary/colors";
-import IconFormatter from "./IconFormatter";
+import { blueWhaleLight, whitePaper } from "../../assetLibrary/colors";
+import IconFormatter from "../Assets/IconFormatter";
 
 const iconData = {
   w: "7%",

@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { login, reset } from "../features/auth/authSlice";
-import Spinner from "../components/Spinner";
+import Spinner from "../components/Assets/Spinner";
 import {
   primary,
   primary2,

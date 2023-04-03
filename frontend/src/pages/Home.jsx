@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import Spinner from "../components/Spinner";
+import Spinner from "../components/Assets/Spinner";
 import { getPH, reset } from "../features/partshouse/phSlice";
 import { Box, Flex, Text } from "@chakra-ui/react";
 import NavInterface from "../components/NavInterface/NavInterface";
 import Logo from "../components/SplashPage/Logo";
 import AddPhButton from "../components/Buttons/AddPhButton";
-import DashboardAccordion from "../components/DashboardAccordion";
-import HeadlineOne from "../components/HeadlineOne";
+import DashboardAccordion from "../components/NavInterface/DashboardAccordion";
+import HeadlineOne from "../components/Assets/HeadlineOne";
 import { getRecords } from "../features/records/recordSlice";
 import { getParts } from "../features/parts/partSlice";
 
@@ -24,7 +24,7 @@ const Home = () => {
   const { records, isLoading: recordsLoading } = useSelector(
     (state) => state.records
   );
-  
+
   const { parts } = useSelector((state) => state.parts);
 
   const { selected } = useSelector((state) => state.selectedPH);
