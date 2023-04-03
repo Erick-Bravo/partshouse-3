@@ -22,6 +22,11 @@ const createPart = asyncHandler(async (req, res) => {
   }
   const part = await Part.create({
     name: req.body.name,
+    brand: req.body.brand,
+    model: req.body.model,
+    serial: req.body.serial,
+    reBuyURL: req.body.reBuyURL,
+    description: req.body.description,
     recordId: req.body.recordId,
     userId: req.user.id
   });
@@ -46,10 +51,10 @@ const updatePart = asyncHandler(async (req, res) => {
   };
 
   //Make sure the logged in user matches the record user
-  // if(part.user.toString() !== req.user.id) {
-  //   res.status(401)
-  //   throw new Error("User not authorized");
-  // }
+  if(part.userId.toString() !== req.user.id) {
+    res.status(401)
+    throw new Error("User not authorized");
+  }
 
   const updatedPart = await Part.findByIdAndUpdate(req.params.id, req.body, {new: true})
 
@@ -73,10 +78,10 @@ const deletePart = asyncHandler(async (req, res) => {
   };
 
   //Make sure the logged in user matches the goal user
-  // if(part.user.toString() !== req.user.id) {
-  //   res.status(401)
-  //   throw new Error("User not authorized");
-  // }
+  if(part.userId.toString() !== req.user.id) {
+    res.status(401)
+    throw new Error("User not authorized");
+  }
 
   await part.remove()
   res.status(200).json({message: `Part deleted`, id: req.params.id});

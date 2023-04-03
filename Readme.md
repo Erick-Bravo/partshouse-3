@@ -10,7 +10,7 @@ To run backend and frontend concurrently:
 npm run dev
 
 
-## Checklist
+## MVP Checklist
 <pre>
 - [ ] Add Additional Advanced info for Records and Parts
     - [ ] Add some data

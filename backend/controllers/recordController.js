@@ -22,6 +22,12 @@ const createRecord = asyncHandler(async (req, res) => {
   }
   const record = await Record.create({
     name: req.body.name,
+    type: req.body.type,
+    brand: req.body.brand,
+    model: req.body.model,
+    serial: req.body.serial,
+    icon: req.body.icon,
+    description: req.body.description,
     phId: req.body.phId,
     userId: req.user.id
   });
@@ -46,10 +52,10 @@ const updateRecord = asyncHandler(async (req, res) => {
   };
 
   //Make sure the logged in user matches the record user
-  // if(record.user.toString() !== req.user.id) {
-  //   res.status(401)
-  //   throw new Error("User not authorized");
-  // }
+  if(record.userId.toString() !== req.user.id) {
+    res.status(401)
+    throw new Error("User not authorized");
+  }
 
   const updatedRecord = await Record.findByIdAndUpdate(req.params.id, req.body, {new: true})
 
@@ -72,11 +78,10 @@ const deleteRecord = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   };
 
-   //Make sure the logged in user matches the goal user
-  // if(record.user.toString() !== req.user.id) {
-  //   res.status(401)
-  //   throw new Error("User not authorized");
-  // }
+  if(record.userId.toString() !== req.user.id) {
+    res.status(401)
+    throw new Error("User not authorized");
+  }
 
   await record.remove()
   res.status(200).json({message: `Record deleted`, id: req.params.id});
