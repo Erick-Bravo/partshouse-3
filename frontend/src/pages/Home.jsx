@@ -24,6 +24,7 @@ const Home = () => {
   const { records, isLoading: recordsLoading } = useSelector(
     (state) => state.records
   );
+  
   const { parts } = useSelector((state) => state.parts);
 
   const { selected } = useSelector((state) => state.selectedPH);

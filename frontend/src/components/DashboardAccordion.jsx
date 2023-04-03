@@ -9,6 +9,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { blueWhaleLight, whitePaper } from "../assetLibrary/colors";
+import IconFormatter from "./IconFormatter";
 
 const DashboardAccordion = ({ records, parts, selected }) => {
   return (
@@ -20,11 +21,14 @@ const DashboardAccordion = ({ records, parts, selected }) => {
                 // Filter per Partshouse Selected
                 if (record.phId === selected._id) {
                   return (
-                    <AccordionSetup
-                      record={record}
-                      parts={parts}
-                      key={record._id}
-                    />
+                    <Flex>
+                      <IconFormatter icon={record.icon} />
+                      <AccordionSetup
+                        record={record}
+                        parts={parts}
+                        key={record._id}
+                      />
+                    </Flex>
                   );
                 }
               }
@@ -32,11 +36,16 @@ const DashboardAccordion = ({ records, parts, selected }) => {
                 // Dashboard: All Records
                 if (Object.keys(selected).length === 0) {
                   return (
-                    <AccordionSetup
-                      record={record}
-                      parts={parts}
-                      key={record._id}
-                    />
+                    <Flex flexDir="row" w="100%" justifyContent="center">
+                      <Flex w="10%" justifyContent="center" pt="12.5px">
+                        <IconFormatter icon={record.icon} size={"8"} />
+                      </Flex>
+                      <AccordionSetup
+                        record={record}
+                        parts={parts}
+                        key={record._id}
+                      />
+                    </Flex>
                   );
                 }
               }
