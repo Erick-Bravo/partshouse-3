@@ -18,13 +18,7 @@ import {
 import { createPH } from "../../features/partshouse/phSlice";
 import { useDispatch } from "react-redux";
 
-// interface DynamicModalProps {
-//   isOpen: boolean;
-//   onOpen: () => void;
-//   onClose: () => void;
-// }
-
-const DynamicModal = ({ isOpen, onOpen, onClose }) => {
+const PartshouseModal = ({ isOpen, onOpen, onClose }) => {
   const [name, setName] = useState("");
 
   const dispatch = useDispatch();
@@ -74,4 +68,4 @@ const DynamicModal = ({ isOpen, onOpen, onClose }) => {
   );
 };
 
-export default DynamicModal;
+export default PartshouseModal;

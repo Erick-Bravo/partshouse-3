@@ -1,6 +1,6 @@
 import { Button, useDisclosure } from "@chakra-ui/react";
 import React from "react";
-import DynamicModal from "../Modals/DynamicModal";
+import PartshouseModal from "../Modals/PartshouseModal";
 import { blueWhaleLight } from "../../assetLibrary/colors";
 
 const AddPhButton = () => {
@@ -20,7 +20,7 @@ const AddPhButton = () => {
       >
         Add a Partshouse
       </Button>
-      <DynamicModal
+      <PartshouseModal
         isOpen={isOpenPhModal}
         onOpen={onOpenPhModal}
         onClose={onClosePhModal}
@@ -30,3 +30,7 @@ const AddPhButton = () => {
 };
 
 export default AddPhButton;
+
+const SwitchModalButton = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+};
