@@ -10,8 +10,10 @@ import {
   Stack,
   StackDivider,
   Button,
+  Link,
 } from "@chakra-ui/react";
 import { blueWhaleLight, toupOrange } from "../assetLibrary/colors";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 
 const PartCard = ({ part }) => {
   return (
@@ -29,13 +31,20 @@ const PartCard = ({ part }) => {
         <Stack divider={<StackDivider />} spacing="4">
           <Box>
             {part.reBuyURL ? (
-              <Button
-                bg={blueWhaleLight}
-                color="white"
-                _hover={{ color: "white" }}
+              <Link
+                href={part.reBuyURL}
+                isExternal
+                _hover={{ textDecorationLine: "none" }}
               >
-                Purchase
-              </Button>
+                <Button
+                  bg={blueWhaleLight}
+                  color="white"
+                  _hover={{ color: "white" }}
+                >
+                  Purchase
+                  <ExternalLinkIcon ml="4px" />
+                </Button>
+              </Link>
             ) : (
               <Flex justifyContent="right">
                 <Button

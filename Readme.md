@@ -10,7 +10,7 @@ To run backend and frontend concurrently:
 npm run dev
 
 
-## MVP Checklist
+## MVP Checklist (For Job Applications)
 <pre>
 - [ x ] Add Additional Advanced info for Records and Parts
     - [ x ] Add advanced data in Model
@@ -44,5 +44,12 @@ npm run dev
     - [ ] Part Cards
     - [ ] Logs Section
     - [ ] Create Button to Edit a Record
+
+</pre>
+
+## MVP Checklist (For Public Usage)
+<pre>
+- [ ] Add MORE Logos
+
 
 </pre>
