@@ -37,12 +37,7 @@ const DashboardAccordion = ({ records, parts, selected }) => {
                         w={iconData.w}
                         justifyContent="center"
                         pt={iconData.pt}
-                      >
-                        <IconFormatter
-                          icon={record.icon}
-                          size={iconData.size}
-                        />
-                      </Flex>
+                      ></Flex>
                       <AccordionSetup
                         record={record}
                         parts={parts}
@@ -56,17 +51,12 @@ const DashboardAccordion = ({ records, parts, selected }) => {
                 // Dashboard: All Records
                 if (Object.keys(selected).length === 0) {
                   return (
-                    <Flex flexDir="row" w="100%" justifyContent="center" key={record._id}>
-                      <Flex
-                        w={iconData.w}
-                        justifyContent="center"
-                        pt={iconData.pt}
-                      >
-                        <IconFormatter
-                          icon={record.icon}
-                          size={iconData.size}
-                        />
-                      </Flex>
+                    <Flex
+                      flexDir="row"
+                      w="100%"
+                      justifyContent="center"
+                      key={record._id}
+                    >
                       <AccordionSetup
                         record={record}
                         parts={parts}
@@ -89,7 +79,7 @@ const AccordionSetup = ({ record, parts }) => {
   return (
     <AccordionItem
       w="100%"
-      maxW="900px"
+      maxW="800px"
       mb="20px"
       borderRadius="15px"
       key={record._id}
@@ -103,9 +93,12 @@ const AccordionSetup = ({ record, parts }) => {
           borderRadius="15px"
           _hover={{ bg: blueWhaleLight, color: "white" }}
         >
-          <Box as="span" flex="1" textAlign="left">
+          <IconFormatter icon={record.icon} size={iconData.size} />
+
+          <Box as="span" flex="1" textAlign="left" pl="30px">
             {record.name}
           </Box>
+
           <AccordionIcon />
         </AccordionButton>
       </h2>
