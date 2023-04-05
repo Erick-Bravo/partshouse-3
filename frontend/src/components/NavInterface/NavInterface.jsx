@@ -58,10 +58,6 @@ const NavInterface = ({ children }) => {
   );
 };
 
-// interface SidebarProps extends BoxProps {
-//   onClose: () => void;
-// }
-
 //SIDEBAR
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 const SidebarContent = ({ onClose, ...rest }) => {
@@ -118,10 +114,6 @@ const SidebarContent = ({ onClose, ...rest }) => {
   );
 };
 
-// interface NavItemProps extends FlexProps {
-//   icon: IconType;
-//   children: ReactText;
-// }
 const NavItem = ({ icon, children, ...rest }) => {
   return (
     <Link
@@ -148,10 +140,15 @@ const NavItem = ({ icon, children, ...rest }) => {
   );
 };
 
-// interface MobileProps extends FlexProps {
-//   onOpen: () => void;
-// }
 const MobileNav = ({ onOpen, ...rest }) => {
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const goHome = () => {
+    navigate("/");
+    dispatch(resetSelectedPH());
+  };
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -177,6 +174,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
         fontFamily="monospace"
         fontWeight="bold"
         color={toupOrange}
+        onClick={goHome}
       >
         Partshouse
       </Text>

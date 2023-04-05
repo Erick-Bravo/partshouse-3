@@ -19,7 +19,7 @@ const iconData = {
 
 const DashboardAccordion = ({ records, parts, selected }) => {
   return (
-    <Accordion allowMultiple w="100%">
+    <Accordion allowMultiple w="100%" mb="100px">
       <Flex flexDir="column" alignItems="center">
         {records
           ? records.map((record) => {
