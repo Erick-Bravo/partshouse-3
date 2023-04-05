@@ -12,6 +12,7 @@ import {
 import { blueWhaleLight, whitePaper } from "../../assetLibrary/colors";
 import IconFormatter from "../Assets/IconFormatter";
 import ButtonNav from "../Assets/ButtonNav";
+import PartCard from "../PartCard";
 
 const iconData = {
   size: "8",
@@ -100,13 +101,15 @@ const AccordionSetup = ({ record, parts }) => {
       <AccordionPanel pb={4} bg={whitePaper} borderRadius="15px" mt="5px">
         <Flex justifyContent="flex-end">
           <Button mr="20px">Add Part</Button>
-          <ButtonNav route="/records/:<insertid>" text="More Info" />
+          <ButtonNav route="/records/:<insertid>" text="More Details" />
         </Flex>
-        {parts.map((part) => {
-          if (part.recordId === record._id) {
-            return <Text key={part._id}>{part.name}</Text>;
-          }
-        })}
+        <Flex justifyContent="center">
+          {parts.map((part) => {
+            if (part.recordId === record._id) {
+              return <PartCard part={part} key={part._id} />;
+            }
+          })}
+        </Flex>
       </AccordionPanel>
     </AccordionItem>
   );
