@@ -6,11 +6,12 @@ import { getPH, reset } from "../features/partshouse/phSlice";
 import { Box, Flex, Text } from "@chakra-ui/react";
 import NavInterface from "../components/NavInterface/NavInterface";
 import Logo from "../components/SplashPage/Logo";
-import AddPhButton from "../components/Buttons/AddPhButton";
+import ModalButton from "../components/Modals/ModalButton";
 import DashboardAccordion from "../components/NavInterface/DashboardAccordion";
 import HeadlineOne from "../components/Assets/HeadlineOne";
 import { getRecords } from "../features/records/recordSlice";
 import { getParts } from "../features/parts/partSlice";
+import { ModalType } from "../enums";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const Home = () => {
   const { ph, isLoading, isError, message } = useSelector(
     (state) => state.partshouses
   );
+
   const { records, isLoading: recordsLoading } = useSelector(
     (state) => state.records
   );
@@ -63,6 +65,8 @@ const Home = () => {
                   All Records
                 </Text>
 
+                <ModalButton type={ModalType.Record} text="Add a Record" />
+
                 <DashboardAccordion
                   records={records}
                   parts={parts}
@@ -76,7 +80,7 @@ const Home = () => {
             <>
               <Box width={["600px"]}>
                 <Logo />
-                <AddPhButton />
+                <ModalButton text="Add a Partshouse" type={ModalType.Partshouse} />
                 <Text>
                   Click the "Add a Partshouse" button to create your first
                   Partshouse
@@ -95,6 +99,7 @@ const Home = () => {
               <Text p="35px" h="100%">
                 {selected.name} Records
               </Text>
+              <ModalButton type={ModalType.Record} text="Add a Record" />
               <DashboardAccordion
                 records={records}
                 parts={parts}

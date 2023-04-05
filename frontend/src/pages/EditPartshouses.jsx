@@ -8,7 +8,8 @@ import { Box, Text, Flex, Button } from "@chakra-ui/react";
 import { whitePaper } from "../assetLibrary/colors";
 import NavInterface from "../components/NavInterface/NavInterface";
 import { deletePH } from "../features/partshouse/phSlice";
-import AddPhButton from "../components/Buttons/AddPhButton";
+import ModalButton from "../components/Modals/ModalButton";
+import { ModalType } from "../enums";
 
 const EditPartshouses = () => {
   const navigate = useNavigate();
@@ -47,7 +48,7 @@ const EditPartshouses = () => {
           Records
         </Text>
 
-        <AddPhButton />
+        <ModalButton type={ModalType.Partshouse} text="Add a Partshouse" />
 
         {ph.length > 0 ? (
           ph.map((p) => (

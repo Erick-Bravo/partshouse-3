@@ -27,7 +27,12 @@ const DashboardAccordion = ({ records, parts, selected }) => {
                 // Filter per Partshouse Selected
                 if (record.phId === selected._id) {
                   return (
-                    <Flex flexDir="row" w="100%" justifyContent="center">
+                    <Flex
+                      flexDir="row"
+                      w="100%"
+                      justifyContent="center"
+                      key={record._id}
+                    >
                       <Flex
                         w={iconData.w}
                         justifyContent="center"
@@ -51,7 +56,7 @@ const DashboardAccordion = ({ records, parts, selected }) => {
                 // Dashboard: All Records
                 if (Object.keys(selected).length === 0) {
                   return (
-                    <Flex flexDir="row" w="100%" justifyContent="center">
+                    <Flex flexDir="row" w="100%" justifyContent="center" key={record._id}>
                       <Flex
                         w={iconData.w}
                         justifyContent="center"
