@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import { Box, ChakraProvider, Flex } from "@chakra-ui/react";
 import { blueWhale } from "./assetLibrary/colors";
 import EditPartshouses from "./pages/EditPartshouses";
+import Record from "./pages/Record";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
               <Route path="/register" element={<Register />} />
               <Route path="/editpartshouses" element={<EditPartshouses />} />
               <Route path="/partshouse/:id" element={<></>} />
+              <Route path="/records/:id" element={<Record />} />
             </Routes>
           </Flex>
         </Box>

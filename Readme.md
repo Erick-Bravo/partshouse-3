@@ -30,10 +30,10 @@ npm run dev
     - [ x ] "More Info" Button, 
     - [ x ] "Add Part" Button, 
 
-- [ ] Style a Parts Card component for each Part 
-    - [ ] Name, 
-    - [ ] Repurchase Button, or
-    - [ ] Add Repurchase Link (modal just to add link)
+- [ x ] Style a Parts Card component for each Part 
+    - [ x ] Name, 
+    - [ x ] Repurchase Button, or
+    - [ x ] Add Repurchase Link (modal just to add link)
 
 - [  ] Create Modal to Add a Part
     - [  ] Button Open Modal
