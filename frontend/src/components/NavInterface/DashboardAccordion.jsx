@@ -7,9 +7,11 @@ import {
   Box,
   Flex,
   Text,
+  Button,
 } from "@chakra-ui/react";
 import { blueWhaleLight, whitePaper } from "../../assetLibrary/colors";
 import IconFormatter from "../Assets/IconFormatter";
+import ButtonNav from "../Assets/ButtonNav";
 
 const iconData = {
   size: "8",
@@ -96,6 +98,10 @@ const AccordionSetup = ({ record, parts }) => {
         </AccordionButton>
       </h2>
       <AccordionPanel pb={4} bg={whitePaper} borderRadius="15px" mt="5px">
+        <Flex justifyContent="flex-end">
+          <Button mr="20px">Add Part</Button>
+          <ButtonNav route="/records/:<insertid>" text="More Info" />
+        </Flex>
         {parts.map((part) => {
           if (part.recordId === record._id) {
             return <Text key={part._id}>{part.name}</Text>;

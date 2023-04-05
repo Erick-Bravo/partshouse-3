@@ -26,9 +26,9 @@ npm run dev
     - [ x ] icon, left of button
     - [ x ] data, inside AccordionItem when opened
 
-- [ ] Add Items to Dashboard Accordion
-    - [ ] "More Info" Button, 
-    - [ ] "Add Part" Button, 
+- [ x ] Add Items to Dashboard Accordion
+    - [ x ] "More Info" Button, 
+    - [ x ] "Add Part" Button, 
 
 - [ ] Style a Parts Card component for each Part 
     - [ ] Name, 
