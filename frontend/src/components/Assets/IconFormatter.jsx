@@ -31,53 +31,71 @@ Coffee v
 const IconFormatter = ({ icon, size }) => {
   let logo;
 
-    if (icon === "home") {
-      logo = FaHome;
-    }
-    if (icon === "mail") {
-      logo = MdMailOutline;
-    }
-    if (icon === "printer") {
-      logo = BsPrinterFill;
-    }
-    if (icon === "water") {
-      logo = IoWaterSharp;
-    }
-    if (icon === "brain") {
-      logo = FaBrain;
-    }
-    if (icon === "fan") {
-      logo = FaFan;
-    }
-    if (icon === "tool") {
-      logo = FaTools;
-    }
-    if (icon === "fitness") {
-      logo = GiBodyBalance;
-    }
-    if (icon === "coffee") {
-      logo = SiCoffeescript;
-    }
-    if (icon === "barbel") {
-      logo = IoBarbellSharp;
-    }
-    if (icon === "computer") {
-      logo = RiComputerFill;
-    }
-    if (icon === "saw") {
-      logo = GiCircularSawblade;
-    }
-    if (icon === "laptop") {
-      logo = GrPersonalComputer;
-    }
-    if (icon === "refrigerator") {
-      logo = CgSmartHomeRefrigerator;
-    }
-    if (icon === "washing machine") {
-      logo = CgSmartHomeWashMachine;
-    }
+  if (icon === "home") {
+    logo = FaHome;
+  }
+  if (icon === "mail") {
+    logo = MdMailOutline;
+  }
+  if (icon === "printer") {
+    logo = BsPrinterFill;
+  }
+  if (icon === "water") {
+    logo = IoWaterSharp;
+  }
+  if (icon === "brain") {
+    logo = FaBrain;
+  }
+  if (icon === "fan") {
+    logo = FaFan;
+  }
+  if (icon === "tool") {
+    logo = FaTools;
+  }
+  if (icon === "fitness") {
+    logo = GiBodyBalance;
+  }
+  if (icon === "coffee") {
+    logo = SiCoffeescript;
+  }
+  if (icon === "barbel") {
+    logo = IoBarbellSharp;
+  }
+  if (icon === "computer") {
+    logo = RiComputerFill;
+  }
+  if (icon === "saw") {
+    logo = GiCircularSawblade;
+  }
+  if (icon === "laptop") {
+    logo = GrPersonalComputer;
+  }
+  if (icon === "refrigerator") {
+    logo = CgSmartHomeRefrigerator;
+  }
+  if (icon === "washing machine") {
+    logo = CgSmartHomeWashMachine;
+  }
 
   return <Icon as={logo} boxSize={size} />;
 };
 
 export default IconFormatter;
+
+export const iconList = [
+  { name: "home", icon: <FaHome /> },
+  { name: "mail", icon: <MdMailOutline /> },
+  { name: "printer", icon: <BsPrinterFill /> },
+  { name: "water", icon: <IoWaterSharp /> },
+  { name: "coffee", icon: <SiCoffeescript /> },
+  { name: "brain", icon: <FaBrain /> },
+  { name: "fitness", icon: <GiBodyBalance /> },
+  { name: "barbel", icon: <IoBarbellSharp /> },
+  { name: "computer", icon: <RiComputerFill /> },
+  { name: "laptop", icon: <GrPersonalComputer /> },
+  { name: "tool", icon: <FaTools /> },
+  { name: "saw", icon: <GiCircularSawblade /> },
+  { name: "fan", icon: <FaFan /> },
+  { name: "refrigerator", icon: <CgSmartHomeRefrigerator /> },
+  { name: "washing machine", icon: <CgSmartHomeWashMachine /> },
+];
