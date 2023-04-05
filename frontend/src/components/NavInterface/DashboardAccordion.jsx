@@ -12,9 +12,7 @@ import { blueWhaleLight, whitePaper } from "../../assetLibrary/colors";
 import IconFormatter from "../Assets/IconFormatter";
 
 const iconData = {
-  w: "7%",
   size: "8",
-  pt: "12.5px",
 };
 
 const DashboardAccordion = ({ records, parts, selected }) => {
@@ -33,11 +31,6 @@ const DashboardAccordion = ({ records, parts, selected }) => {
                       justifyContent="center"
                       key={record._id}
                     >
-                      <Flex
-                        w={iconData.w}
-                        justifyContent="center"
-                        pt={iconData.pt}
-                      ></Flex>
                       <AccordionSetup
                         record={record}
                         parts={parts}

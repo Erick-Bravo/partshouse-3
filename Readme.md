@@ -17,22 +17,32 @@ npm run dev
     - [ x ] Add some data
     - [ x ] Add icons
 
-- [ ] Create Button to Add a Record
-    - [ ] Button Open Modal
-    - [ ] Can selected which partshouse it is assicated with.
-    - [ ] Location: Above Accordions
+- [ x ] Create Button to Add a Record
+    - [ x ] Button Open Modal
+    - [ x ] Can selected which partshouse it is assicated with.
+    - [ x ] Location: Above Accordions
 
 - [ x ] Style the Accordion Button
     - [ x ] icon, left of button
     - [ x ] data, inside AccordionItem when opened
 
-- [ ] Create a Parts Card component for each Part 
+- [ ] Add Items to Dashboard Accordion
+    - [ ] "More Info" Button, 
+    - [ ] "Add Part" Button, 
+
+- [ ] Style a Parts Card component for each Part 
     - [ ] Name, 
     - [ ] Repurchase Button, or
     - [ ] Add Repurchase Link (modal just to add link)
 
+- [  ] Create Modal to Add a Part
+    - [  ] Button Open Modal
+    - [  ] Can selected which partshouse it is assicated with.
+    - [  ] Location: Above Accordions
+
 - [ ] Create Record Page
-    - [ ] Add Part Cards
-    - [ ] Add Logs Section
+    - [ ] Part Cards
+    - [ ] Logs Section
     - [ ] Create Button to Edit a Record
+
 </pre>
