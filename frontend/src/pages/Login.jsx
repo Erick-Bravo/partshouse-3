@@ -11,7 +11,7 @@ import {
   whiteText,
 } from "../assetLibrary/colors";
 import { Flex, Text } from "@chakra-ui/react";
-import Logo from "../components/SplashPage/Logo";
+import Logo from "../components/Assets/Logo";
 
 const Login = () => {
   const [formData, setFormData] = useState({

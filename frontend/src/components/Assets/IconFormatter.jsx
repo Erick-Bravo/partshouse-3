@@ -81,9 +81,3 @@ const IconFormatter = ({ icon, size }) => {
 };
 
 export default IconFormatter;
-
-/*
-
-Home:
-
-*/

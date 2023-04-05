@@ -49,6 +49,8 @@ const RecordModal = ({ isOpen, onOpen, onClose }) => {
 
   const isError = name === "" || icon === "" || phId === "";
 
+  const mbField = "15px";
+
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -65,17 +67,20 @@ const RecordModal = ({ isOpen, onOpen, onClose }) => {
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Printer/Air Conditioner/Refrigerator..."
                 isRequired
+                mb={mbField}
               />
               <FormLabel>icon</FormLabel>
               <Input
                 type="text"
                 value={icon}
                 onChange={(e) => setIcon(e.target.value)}
+                mb={mbField}
               />
               <FormLabel>Partshouse Association</FormLabel>
               <Select
                 placeholder="Select Option"
                 onChange={(e) => setPhId(e.target.value)}
+                mb={mbField}
               >
                 {ph &&
                   ph.map((p) => (
@@ -110,6 +115,7 @@ const RecordModal = ({ isOpen, onOpen, onClose }) => {
                         value={brand}
                         onChange={(e) => setBrand(e.target.value)}
                         placeholder="Brand Name"
+                        mb={mbField}
                       />
                       <FormLabel>Model</FormLabel>
                       <Input
@@ -117,6 +123,7 @@ const RecordModal = ({ isOpen, onOpen, onClose }) => {
                         value={model}
                         onChange={(e) => setModel(e.target.value)}
                         placeholder="Model #"
+                        mb={mbField}
                       />
                       <FormLabel>Serial</FormLabel>
                       <Input
@@ -124,6 +131,7 @@ const RecordModal = ({ isOpen, onOpen, onClose }) => {
                         value={serial}
                         onChange={(e) => setSerial(e.target.value)}
                         placeholder="Serial #"
+                        mb={mbField}
                       />
                     </FormControl>
                   </AccordionPanel>

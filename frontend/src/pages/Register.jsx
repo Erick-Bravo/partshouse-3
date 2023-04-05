@@ -11,7 +11,7 @@ import {
   toupOrange,
   whiteText,
 } from "../assetLibrary/colors";
-import Logo from "../components/SplashPage/Logo";
+import Logo from "../components/Assets/Logo";
 
 const Register = () => {
   const [formData, setFormData] = useState({

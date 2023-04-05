@@ -5,7 +5,7 @@ import Spinner from "../components/Assets/Spinner";
 import { getPH, reset } from "../features/partshouse/phSlice";
 import { Box, Flex, Text } from "@chakra-ui/react";
 import NavInterface from "../components/NavInterface/NavInterface";
-import Logo from "../components/SplashPage/Logo";
+import Logo from "../components/Assets/Logo";
 import ModalButton from "../components/Modals/ModalButton";
 import DashboardAccordion from "../components/NavInterface/DashboardAccordion";
 import HeadlineOne from "../components/Assets/HeadlineOne";
@@ -80,7 +80,10 @@ const Home = () => {
             <>
               <Box width={["600px"]}>
                 <Logo />
-                <ModalButton text="Add a Partshouse" type={ModalType.Partshouse} />
+                <ModalButton
+                  text="Add a Partshouse"
+                  type={ModalType.Partshouse}
+                />
                 <Text>
                   Click the "Add a Partshouse" button to create your first
                   Partshouse
