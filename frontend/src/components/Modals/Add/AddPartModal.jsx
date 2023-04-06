@@ -27,7 +27,7 @@ import { createRecord } from "../../../features/records/recordSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { iconList } from "../../Assets/IconFormatter";
 
-const AddPartModal = ({recordId}) => {
+const AddPartModal = ({recordId, isOpen, onClose,}) => {
   const [name, setName] = useState("");
   const [brand, setBrand] = useState("");
   const [model, setModel] = useState("");

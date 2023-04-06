@@ -15,10 +15,10 @@ import {
   FormHelperText,
   Input,
 } from "@chakra-ui/react";
-import { createPH } from "../../features/partshouse/phSlice";
+import { createPH } from "../../../features/partshouse/phSlice";
 import { useDispatch } from "react-redux";
 
-const PartshouseModal = ({ isOpen, onOpen, onClose }) => {
+const AddPartshouseModal = ({ isOpen, onOpen, onClose }) => {
   const [name, setName] = useState("");
 
   const dispatch = useDispatch();
@@ -68,4 +68,4 @@ const PartshouseModal = ({ isOpen, onOpen, onClose }) => {
   );
 };
 
-export default PartshouseModal;
+export default AddPartshouseModal;

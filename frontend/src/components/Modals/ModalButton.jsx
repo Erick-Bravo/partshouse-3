@@ -1,9 +1,10 @@
 import { Button, useDisclosure } from "@chakra-ui/react";
 import React from "react";
-import PartshouseModal from "./PartshouseModal";
+import AddPartshouseModal from "./Add/AddPartshouseModal";
 import { blueWhaleLight } from "../../assetLibrary/colors";
-import RecordModal from "./AddRecord/RecordModal";
+import AddRecordModal from "./Add/AddRecordModal";
 import { ModalType } from "../../enums";
+import AddPartModal from "./Add/AddPartModal";
 
 const ModalButton = ({ type, text }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -35,10 +36,12 @@ const SwitchModal = ({ modal, isOpen, onOpen, onClose }) => {
   switch (modal) {
     case ModalType.ADD_Partshouse:
       return (
-        <PartshouseModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
+        <AddPartshouseModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
       );
-    case ModalType.Add_Record:
-      return <RecordModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} />;
+    case ModalType.ADD_Record:
+      return <AddRecordModal isOpen={isOpen} onClose={onClose} />;
+    case ModalType.ADD_Part:
+      return <AddPartModal isOpen={isOpen} onClose={onClose} />;
     default:
   }
 };

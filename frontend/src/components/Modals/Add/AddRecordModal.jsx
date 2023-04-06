@@ -26,7 +26,7 @@ import { createRecord } from "../../../features/records/recordSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { iconList } from "../../Assets/IconFormatter";
 
-const RecordModal = ({ isOpen, onOpen, onClose }) => {
+const AddRecordModal = ({ isOpen, onOpen, onClose }) => {
   const [name, setName] = useState("");
   const [brand, setBrand] = useState("");
   const [model, setModel] = useState("");
@@ -191,4 +191,4 @@ const RecordModal = ({ isOpen, onOpen, onClose }) => {
   );
 };
 
-export default RecordModal;
+export default AddRecordModal;
