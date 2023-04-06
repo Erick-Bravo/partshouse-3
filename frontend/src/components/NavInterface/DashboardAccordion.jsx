@@ -108,6 +108,7 @@ const AccordionSetup = ({ record, parts }) => {
           justifyContent="center"
           alignItems="center"
           flexDir={["column", "column", "column", "row"]}
+          flexWrap="wrap"
         >
           {parts.map((part) => {
             if (part.recordId === record._id) {

@@ -35,15 +35,20 @@ npm run dev
     - [ x ] Repurchase Button, or
     - [ x ] Add Repurchase Link (modal just to add link)
 
-- [  ] Create Modal to Add a Part
-    - [  ] Button Open Modal
-    - [  ] Can selected which partshouse it is assicated with.
-    - [  ] Location: Above Accordions
+- [ x ] Create Modal to Add a Part
+    - [ x ] Button Open Modal
+    - [ x ] Can selected which record it is assicated with.
+    - [ x ] Location: Above Accordions
 
 - [ ] Create Record Page
     - [ ] Part Cards
     - [ ] Logs Section
     - [ ] Create Button to Edit a Record
+
+- [ ] Delete Modals
+    - [ ] Parts
+    - [ ] Records
+    - [ ] Partshouses
 
 </pre>
 
