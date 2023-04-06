@@ -98,7 +98,7 @@ const AccordionSetup = ({ record, parts }) => {
       <AccordionPanel pb={4} bg={whitePaper} borderRadius="15px" mt="5px">
         <Flex justifyContent="flex-end">
           <Box mr="2%">
-            <ModalButton type={ModalType.ADD_Part} text="Add Part" />
+            <ModalButton type={ModalType.ADD_Part} text="Add Part" recordId={record._id} />
           </Box>
 
           <ButtonNav route="/records/:<insertid>" text="More Details" />

@@ -15,6 +15,9 @@ const partSchema = mongoose.Schema(
     serial: {
       type: String,
     },
+    price: {
+      type: Number,
+    },
     reBuyURL: {
       type: String,
     },

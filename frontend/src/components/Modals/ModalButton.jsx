@@ -6,7 +6,7 @@ import AddRecordModal from "./Add/AddRecordModal";
 import { ModalType } from "../../enums";
 import AddPartModal from "./Add/AddPartModal";
 
-const ModalButton = ({ type, text }) => {
+const ModalButton = ({ type, text, recordId }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -24,6 +24,7 @@ const ModalButton = ({ type, text }) => {
         onOpen={onOpen}
         onClose={onClose}
         type={type}
+        recordId={recordId}
       />
     </>
   );
@@ -31,7 +32,7 @@ const ModalButton = ({ type, text }) => {
 
 export default ModalButton;
 
-const SwitchModal = ({ type, isOpen, onOpen, onClose }) => {
+const SwitchModal = ({ type, isOpen, onOpen, onClose, recordId }) => {
   switch (type) {
     case ModalType.ADD_Partshouse:
       return (
@@ -40,7 +41,9 @@ const SwitchModal = ({ type, isOpen, onOpen, onClose }) => {
     case ModalType.ADD_Record:
       return <AddRecordModal isOpen={isOpen} onClose={onClose} />;
     case ModalType.ADD_Part:
-      return <AddPartModal isOpen={isOpen} onClose={onClose} />;
+      return (
+        <AddPartModal isOpen={isOpen} onClose={onClose} recordId={recordId} />
+      );
     default:
   }
 };

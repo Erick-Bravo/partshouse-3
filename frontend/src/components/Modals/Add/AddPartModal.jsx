@@ -19,16 +19,19 @@ import {
   FormErrorMessage,
   FormHelperText,
   Input,
+  Text,
 } from "@chakra-ui/react";
-import { createRecord } from "../../../features/records/recordSlice";
 import { useDispatch } from "react-redux";
+import { createPart } from "../../../features/parts/partSlice";
 
-const AddPartModal = ({recordId, isOpen, onClose,}) => {
+const AddPartModal = ({ recordId, isOpen, onClose }) => {
   const [name, setName] = useState("");
   const [brand, setBrand] = useState("");
   const [model, setModel] = useState("");
   const [serial, setSerial] = useState("");
   const [description, setDescription] = useState("");
+  const [price, setPrice] = useState(0);
+  const [reBuyURL, setReBuyURL] = useState("");
 
   const dispatch = useDispatch();
 
@@ -36,17 +39,28 @@ const AddPartModal = ({recordId, isOpen, onClose,}) => {
     e.preventDefault();
 
     dispatch(
-      createRecord({ name, brand, model, serial, description })
+      createPart({
+        name,
+        brand,
+        model,
+        serial,
+        description,
+        price,
+        reBuyURL,
+        recordId,
+      })
     );
     setName("");
     setBrand("");
     setModel("");
     setSerial("");
     setDescription("");
+    setPrice(0);
+    setReBuyURL("");
     onClose();
   };
 
-  const isError = name === ""  ;
+  const isError = name === "";
 
   const mbField = "15px";
   return (
@@ -55,6 +69,9 @@ const AddPartModal = ({recordId, isOpen, onClose,}) => {
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Create Part</ModalHeader>
+          <Text pl="30px" pb="40px">
+            *You can edit on the "More Details" page
+          </Text>
           <ModalCloseButton />
           <ModalBody>
             <FormControl isRequired>
@@ -63,11 +80,36 @@ const AddPartModal = ({recordId, isOpen, onClose,}) => {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Printer/Air Conditioner/Refrigerator..."
                 isRequired
                 mb={mbField}
               />
               <FormControl />
+              <FormControl>
+                <FormLabel>Description</FormLabel>
+                <Input
+                  type="text"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  placeholder="Description"
+                  mb={mbField}
+                />
+                <FormLabel>Price</FormLabel>
+                <Input
+                  type="number"
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                  placeholder="$"
+                  mb={mbField}
+                />
+                <FormLabel>Re-Purchase URL</FormLabel>
+                <Input
+                  type="text"
+                  value={reBuyURL}
+                  onChange={(e) => setReBuyURL(e.target.value)}
+                  placeholder="URL"
+                  mb={mbField}
+                />
+              </FormControl>
               <Accordion allowMultiple>
                 <AccordionItem>
                   <h2>
