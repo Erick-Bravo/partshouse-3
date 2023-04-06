@@ -12,7 +12,8 @@ import { blueWhaleLight, whitePaper } from "../../assetLibrary/colors";
 import IconFormatter from "../Assets/IconFormatter";
 import ButtonNav from "../Assets/ButtonNav";
 import PartCard from "../PartCard";
-
+import ModalButton from "../Modals/ModalButton";
+import { ModalType } from "../../enums";
 
 const DashboardAccordion = ({ records, parts, selected }) => {
   return (
@@ -96,9 +97,13 @@ const AccordionSetup = ({ record, parts }) => {
       </h2>
       <AccordionPanel pb={4} bg={whitePaper} borderRadius="15px" mt="5px">
         <Flex justifyContent="flex-end">
-          <Button mr="20px">Add Part</Button>
+          <Box mr="2%">
+            <ModalButton type={ModalType.ADD_Part} text="Add Part" />
+          </Box>
+
           <ButtonNav route="/records/:<insertid>" text="More Details" />
         </Flex>
+
         <Flex
           justifyContent="center"
           alignItems="center"

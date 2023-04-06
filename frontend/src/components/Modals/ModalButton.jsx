@@ -14,7 +14,6 @@ const ModalButton = ({ type, text }) => {
       <Button
         bg={blueWhaleLight}
         color="white"
-        m={["30px 0"]}
         _hover={{ color: "white" }}
         onClick={onOpen}
       >
@@ -24,7 +23,7 @@ const ModalButton = ({ type, text }) => {
         isOpen={isOpen}
         onOpen={onOpen}
         onClose={onClose}
-        modal={type}
+        type={type}
       />
     </>
   );
@@ -32,8 +31,8 @@ const ModalButton = ({ type, text }) => {
 
 export default ModalButton;
 
-const SwitchModal = ({ modal, isOpen, onOpen, onClose }) => {
-  switch (modal) {
+const SwitchModal = ({ type, isOpen, onOpen, onClose }) => {
+  switch (type) {
     case ModalType.ADD_Partshouse:
       return (
         <AddPartshouseModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} />

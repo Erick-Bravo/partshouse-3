@@ -19,22 +19,16 @@ import {
   FormErrorMessage,
   FormHelperText,
   Input,
-  Select,
-  Image,
-  IconButton,
 } from "@chakra-ui/react";
 import { createRecord } from "../../../features/records/recordSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { iconList } from "../../Assets/IconFormatter";
+import { useDispatch } from "react-redux";
 
 const AddPartModal = ({recordId, isOpen, onClose,}) => {
   const [name, setName] = useState("");
   const [brand, setBrand] = useState("");
   const [model, setModel] = useState("");
   const [serial, setSerial] = useState("");
-  const [icon, setIcon] = useState("");
   const [description, setDescription] = useState("");
-  const [phId, setPhId] = useState("");
 
   const dispatch = useDispatch();
 
@@ -42,21 +36,17 @@ const AddPartModal = ({recordId, isOpen, onClose,}) => {
     e.preventDefault();
 
     dispatch(
-      createRecord({ name, brand, model, serial, icon, description, phId })
+      createRecord({ name, brand, model, serial, description })
     );
     setName("");
     setBrand("");
     setModel("");
     setSerial("");
-    setIcon("");
     setDescription("");
-    setPhId("");
     onClose();
   };
 
-  const { ph } = useSelector((state) => state.partshouses);
-
-  const isError = name === "" || icon === "" || phId === "";
+  const isError = name === ""  ;
 
   const mbField = "15px";
   return (
@@ -64,7 +54,7 @@ const AddPartModal = ({recordId, isOpen, onClose,}) => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Create Record</ModalHeader>
+          <ModalHeader>Create Part</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <FormControl isRequired>
@@ -77,53 +67,6 @@ const AddPartModal = ({recordId, isOpen, onClose,}) => {
                 isRequired
                 mb={mbField}
               />
-              <FormLabel>Icon</FormLabel>
-              <Accordion allowMultiple mb={mbField}>
-                <AccordionItem>
-                  <h2>
-                    <AccordionButton>
-                      <Box
-                        as="span"
-                        flex="1"
-                        textAlign="left"
-                        fontSize="16px"
-                        fontWeight="bold"
-                        mt="15px"
-                      >
-                        Select Icon
-                      </Box>
-                      <AccordionIcon />
-                    </AccordionButton>
-                  </h2>
-                  <AccordionPanel pb={4}>
-                    {iconList.map((iconItem) => (
-                      <IconButton
-                        icon={iconItem.icon}
-                        key={iconItem.name}
-                        h="50px"
-                        w="50px"
-                        fontSize="25px"
-                        m="5px"
-                        colorScheme={icon === iconItem.name ? "blue" : "gray"}
-                        onClick={() => setIcon(iconItem.name)}
-                      />
-                    ))}
-                  </AccordionPanel>
-                </AccordionItem>
-              </Accordion>
-              <FormLabel>Partshouse Association</FormLabel>
-              <Select
-                placeholder="Select Partshouse"
-                onChange={(e) => setPhId(e.target.value)}
-                mb={mbField}
-              >
-                {ph &&
-                  ph.map((p) => (
-                    <option value={p._id} key={p._id}>
-                      {p.name}
-                    </option>
-                  ))}
-              </Select>
               <FormControl />
               <Accordion allowMultiple>
                 <AccordionItem>

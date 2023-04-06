@@ -64,8 +64,12 @@ const Home = () => {
                 <Text p="35px" h="100%">
                   All Records
                 </Text>
-
-                <ModalButton type={ModalType.ADD_Record} text="Add a Record" />
+                <Box m={["30px 0"]}>
+                  <ModalButton
+                    type={ModalType.ADD_Record}
+                    text="Add a Record"
+                  />
+                </Box>
 
                 <DashboardAccordion
                   records={records}
