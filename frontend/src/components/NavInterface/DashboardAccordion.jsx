@@ -6,7 +6,6 @@ import {
   AccordionIcon,
   Box,
   Flex,
-  Text,
   Button,
 } from "@chakra-ui/react";
 import { blueWhaleLight, whitePaper } from "../../assetLibrary/colors";
@@ -14,9 +13,6 @@ import IconFormatter from "../Assets/IconFormatter";
 import ButtonNav from "../Assets/ButtonNav";
 import PartCard from "../PartCard";
 
-const iconData = {
-  size: "8",
-};
 
 const DashboardAccordion = ({ records, parts, selected }) => {
   return (
@@ -89,7 +85,7 @@ const AccordionSetup = ({ record, parts }) => {
           borderRadius="15px"
           _hover={{ bg: blueWhaleLight, color: "white" }}
         >
-          <IconFormatter icon={record.icon} size={iconData.size} />
+          <IconFormatter icon={record.icon} size="8" />
 
           <Box as="span" flex="1" textAlign="left" pl="30px">
             {record.name}

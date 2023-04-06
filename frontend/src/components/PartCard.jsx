@@ -1,14 +1,11 @@
 import {
   Box,
   Flex,
-  Text,
   Card,
   CardHeader,
   CardBody,
-  CardFooter,
   Heading,
   Stack,
-  StackDivider,
   Button,
   Link,
 } from "@chakra-ui/react";
@@ -28,7 +25,8 @@ const PartCard = ({ part }) => {
             price: ${part.price}
           </Heading>
         </Box>
-        <Stack divider={<StackDivider />} spacing="4">
+
+        <Stack spacing="4">
           <Box>
             {part.reBuyURL ? (
               <Link
