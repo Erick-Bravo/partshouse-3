@@ -20,7 +20,6 @@ import {
   FormHelperText,
   Input,
   Select,
-  Image,
   IconButton,
 } from "@chakra-ui/react";
 import { createRecord } from "../../../features/records/recordSlice";

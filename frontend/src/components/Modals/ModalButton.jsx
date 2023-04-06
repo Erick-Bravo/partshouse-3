@@ -33,11 +33,11 @@ export default ModalButton;
 
 const SwitchModal = ({ modal, isOpen, onOpen, onClose }) => {
   switch (modal) {
-    case ModalType.Partshouse:
+    case ModalType.ADD_Partshouse:
       return (
         <PartshouseModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
       );
-    case ModalType.Record:
+    case ModalType.Add_Record:
       return <RecordModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} />;
     default:
   }

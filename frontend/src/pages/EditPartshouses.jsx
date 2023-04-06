@@ -48,7 +48,7 @@ const EditPartshouses = () => {
           Records
         </Text>
 
-        <ModalButton type={ModalType.Partshouse} text="Add a Partshouse" />
+        <ModalButton type={ModalType.ADD_Partshouse} text="Add a Partshouse" />
 
         {ph.length > 0 ? (
           ph.map((p) => (

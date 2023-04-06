@@ -65,7 +65,7 @@ const Home = () => {
                   All Records
                 </Text>
 
-                <ModalButton type={ModalType.Record} text="Add a Record" />
+                <ModalButton type={ModalType.ADD_Record} text="Add a Record" />
 
                 <DashboardAccordion
                   records={records}
@@ -82,7 +82,7 @@ const Home = () => {
                 <Logo />
                 <ModalButton
                   text="Add a Partshouse"
-                  type={ModalType.Partshouse}
+                  type={ModalType.ADD_Partshouse}
                 />
                 <Text>
                   Click the "Add a Partshouse" button to create your first
@@ -102,7 +102,7 @@ const Home = () => {
               <Text p="35px" h="100%">
                 {selected.name} Records
               </Text>
-              <ModalButton type={ModalType.Record} text="Add a Record" />
+              <ModalButton type={ModalType.ADD_Record} text="Add a Record" />
               <DashboardAccordion
                 records={records}
                 parts={parts}
