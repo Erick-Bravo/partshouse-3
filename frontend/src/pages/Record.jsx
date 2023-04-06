@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../components/Assets/Spinner";
 import { getPH, reset } from "../features/partshouse/phSlice";
@@ -27,6 +27,7 @@ const Record = () => {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
+  const { id } = useParams();
 
   useEffect(() => {
     // if (isError) {       - For error when record is not found

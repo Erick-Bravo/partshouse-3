@@ -101,7 +101,7 @@ const AccordionSetup = ({ record, parts }) => {
             <ModalButton type={ModalType.ADD_Part} text="Add Part" recordId={record._id} />
           </Box>
 
-          <ButtonNav route="/records/:<insertid>" text="More Details" />
+          <ButtonNav route={`/records/${record._id}`} text="More Details" />
         </Flex>
 
         <Flex
