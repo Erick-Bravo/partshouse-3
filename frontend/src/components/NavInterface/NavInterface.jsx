@@ -73,6 +73,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
 
   const handlePHClick = (ph) => {
     dispatch(setSelectedPH(ph));
+    onClose();
   };
 
   return (

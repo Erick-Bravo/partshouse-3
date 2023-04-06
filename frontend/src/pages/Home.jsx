@@ -18,15 +18,11 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
-
+  
   const { ph, isLoading, isError, message } = useSelector(
     (state) => state.partshouses
   );
-
-  const { records, isLoading: recordsLoading } = useSelector(
-    (state) => state.records
-  );
-
+  const { records } = useSelector((state) => state.records);
   const { parts } = useSelector((state) => state.parts);
 
   const { selected } = useSelector((state) => state.selectedPH);
@@ -84,10 +80,12 @@ const Home = () => {
             <>
               <Box width={["600px"]}>
                 <Logo />
-                <ModalButton
-                  text="Add a Partshouse"
-                  type={ModalType.ADD_Partshouse}
-                />
+                <Box m={["30px 0"]}>
+                  <ModalButton
+                    text="Add a Partshouse"
+                    type={ModalType.ADD_Partshouse}
+                  />
+                </Box>
                 <Text>
                   Click the "Add a Partshouse" button to create your first
                   Partshouse
@@ -106,7 +104,9 @@ const Home = () => {
               <Text p="35px" h="100%">
                 {selected.name} Records
               </Text>
-              <ModalButton type={ModalType.ADD_Record} text="Add a Record" />
+              <Box m={["30px 0"]}>
+                <ModalButton type={ModalType.ADD_Record} text="Add a Record" />
+              </Box>
               <DashboardAccordion
                 records={records}
                 parts={parts}
