@@ -40,7 +40,7 @@ npm run dev
     - [ x ] Can selected which record it is assicated with.
     - [ x ] Location: Above Accordions
 
-- [ ] Create Record Page
+- [  ] Create Record Page
     - [ ] Part Cards
     - [ ] Logs Section
     - [ ] Create Button to Edit a Record
@@ -55,6 +55,7 @@ npm run dev
 ## MVP Checklist (For Public Usage)
 <pre>
 - [ ] Add MORE Logos
+- [ ] Figure out the ph state on the Record Page
 
 
 </pre>
