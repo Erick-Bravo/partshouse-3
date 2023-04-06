@@ -103,7 +103,11 @@ const AccordionSetup = ({ record, parts }) => {
           <Button mr="20px">Add Part</Button>
           <ButtonNav route="/records/:<insertid>" text="More Details" />
         </Flex>
-        <Flex justifyContent="center">
+        <Flex
+          justifyContent="center"
+          alignItems="center"
+          flexDir={["column", "column", "column", "row"]}
+        >
           {parts.map((part) => {
             if (part.recordId === record._id) {
               return <PartCard part={part} key={part._id} />;
