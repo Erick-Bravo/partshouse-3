@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../components/Assets/Spinner";
-import { getPH, reset } from "../features/partshouse/phSlice";
 import {
   Box,
   Flex,
@@ -10,8 +9,7 @@ import {
   IconButton,
   useColorModeValue,
   useDisclosure,
-} from "@chakra-ui/react";
-import NavInterface from "../components/NavInterface/NavInterface";
+} from "@chakra-ui/react"; 
 import Logo from "../components/Assets/Logo";
 import ModalButton from "../components/Modals/ModalButton";
 import HeadlineOne from "../components/Assets/HeadlineOne";
@@ -36,7 +34,7 @@ const Record = () => {
     if (!user) {
       navigate("/login");
     } else {
-      getPH();
+      
     }
 
     return () => {};
@@ -46,7 +44,7 @@ const Record = () => {
     navigate("/");
   };
 
-  // if (isLoading) {
+  // if (isLoading) {      - For record is when loading
   //   return <Spinner />;
   // }
 
