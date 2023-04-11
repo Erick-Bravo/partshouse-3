@@ -10,7 +10,7 @@ import {
   toupOrange,
   whiteText,
 } from "../assetLibrary/colors";
-import { Flex, Text } from "@chakra-ui/react";
+import { Button, Flex, Text, Box, Divider } from "@chakra-ui/react";
 import Logo from "../components/Assets/Logo";
 
 const Login = () => {
@@ -54,6 +54,15 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(login(userData));
+  };
+
+  const handleDemo = () => {
+    dispatch(
+      login({
+        email: "test1@gmail.com",
+        password: "password12",
+      })
+    );
   };
 
   if (isLoading) {
@@ -107,10 +116,19 @@ const Login = () => {
             </div>
           </form>
           <Link to="/register">
-            <Text color={toupOrange} _hover={{ color: primary2 }}>
+            <Text color={toupOrange} _hover={{ color: primary2 }} mb="25px">
               Create an account
             </Text>
           </Link>
+          <Divider />
+          <Box mt="25px">
+            <Text color={whiteText} fontSize="16px">
+              Recruiters, click "demo"
+            </Text>
+            <Button onClick={handleDemo} w="150px" mt="10px">
+              Demo
+            </Button>
+          </Box>
         </section>
       </Flex>
     </Flex>
