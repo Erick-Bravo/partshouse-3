@@ -126,12 +126,12 @@ export const recordSlice = createSlice({
       .addCase(getRecordPage.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.records = action.payload; // GET
+        state.records = [action.payload]; // GET
       })
       .addCase(getRecordPage.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.message = action.payload;
+        state.message = [action.payload];
       })
       .addCase(deleteRecord.pending, (state) => {
         state.isLoading = true;

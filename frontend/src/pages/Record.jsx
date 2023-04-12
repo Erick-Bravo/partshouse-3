@@ -9,6 +9,7 @@ import {
   IconButton,
   useColorModeValue,
   useDisclosure,
+  Button,
 } from "@chakra-ui/react";
 import Logo from "../components/Assets/Logo";
 import ModalButton from "../components/Modals/ModalButton";
@@ -16,8 +17,13 @@ import HeadlineOne from "../components/Assets/HeadlineOne";
 import { ModalType } from "../enums";
 import { FiMenu } from "react-icons/fi";
 import TopUserMenu from "../components/NavInterface/TopUserMenu";
-import { bgGrey, blueWhale, toupOrange, whitePaper } from "../assetLibrary/colors";
-import { getRecordPage } from "../features/records/recordSlice";
+import {
+  bgGrey,
+  blueWhale,
+  toupOrange,
+  whitePaper,
+} from "../assetLibrary/colors";
+import { getRecordPage, reset } from "../features/records/recordSlice";
 
 const Record = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -44,6 +50,7 @@ const Record = () => {
   }, [user, navigate, dispatch]);
 
   const goHome = () => {
+    reset();
     navigate("/");
   };
 
@@ -73,16 +80,25 @@ const Record = () => {
           Partshouse
         </Text>
 
-        {/* TOP USER MENU */}
         <TopUserMenu />
       </Flex>
-      <MoreDetails />
+      <MoreDetails
+        record={records.record}
+        parts={records.parts}
+        goHome={goHome}
+      />
     </Flex>
   );
 };
 
 export default Record;
 
-const MoreDetails = ({ record }) => {
-  return <Box h="100%" w="100%" bg={bgGrey}></Box>;
+const MoreDetails = ({ record, parts, goHome }) => {
+  return (
+    <Flex h="100%" w="100%" bg={bgGrey} p={["25px", "35px"]}>
+      <Button w="120px" onClick={goHome}>
+        Back
+      </Button>
+    </Flex>
+  );
 };
