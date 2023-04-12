@@ -20,11 +20,13 @@ import TopUserMenu from "../components/NavInterface/TopUserMenu";
 import {
   bgGrey,
   blueWhale,
+  blueWhaleLight,
   toupOrange,
   whitePaper,
 } from "../assetLibrary/colors";
 import { getRecordPage, reset } from "../features/records/recordSlice";
 import ButtonNav from "../components/Assets/ButtonNav";
+import IconFormatter from "../components/Assets/IconFormatter";
 
 const Record = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -83,7 +85,10 @@ const Record = () => {
 
         <TopUserMenu />
       </Flex>
-      <MoreDetails record={records[0].record} parts={records[0].parts} />
+
+      {records.length > 0 && (
+        <MoreDetails record={records[0].record} parts={records[0].parts} />
+      )}
     </Flex>
   );
 };
@@ -92,14 +97,71 @@ export default Record;
 
 const MoreDetails = ({ record, parts }) => {
   return (
-    <Flex h="100%" w="100%" bg={bgGrey} p={["25px", "35px"]} flexDir="column">
-      <Flex>
-        <ButtonNav text="Back" route="/" />
-      </Flex>
+    <Flex
+      h="100%"
+      w="100%"
+      bg={bgGrey}
+      p={["25px", "35px"]}
+      flexDir="column"
+      alignItems="center"
+    >
+      {record && (
+        <>
+          <Flex w="100%">
+            <ButtonNav text="Back" route="/" />
+          </Flex>
 
-      <Box border="1px solid black" borderRadius="15px" p={["15px"]}>
-        <Headline text={record.name} type={HeadlineType.Two} />
-      </Box>
+          <Flex
+            borderRadius="15px"
+            p={["25px"]}
+            mt="35px"
+            maxW="800px"
+            minH="400px"
+            w="100%"
+            bg={whitePaper}
+            flexDir="column"
+          >
+            <Box>
+              <IconFormatter icon={record.icon} size="10" />
+              <Headline text={record.name} type={HeadlineType.Two} />
+            </Box>
+
+            <Text fontWeight="bold">Brand: {record.brand}</Text>
+            <Text>Model: {record.model}</Text>
+            <Text>Serial: {record.serial}</Text>
+
+            <Flex justifyContent="center" alignItems="center" h="100%">
+              <Text>Logs go here</Text>
+            </Flex>
+
+            <Flex justifyContent="space-around">
+              <Button bg={blueWhaleLight} color="white">
+                Edit Record
+              </Button>
+              <Button bg="red.300">Delete Record</Button>
+            </Flex>
+          </Flex>
+        </>
+      )}
+
+      {parts &&
+        parts.map((part) => (
+          <Flex
+            borderRadius="15px"
+            p={["15px"]}
+            mt="35px"
+            maxW="800px"
+            minH="150px"
+            w="100%"
+            bg={whitePaper}
+            flexDir="column"
+            key={part._id}
+          >
+            <Flex>
+              <Headline type={HeadlineType.Three} text={part.name} />
+            </Flex>
+          </Flex>
+        ))}
     </Flex>
   );
 };
