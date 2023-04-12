@@ -65,30 +65,21 @@ const Record = () => {
     <Flex flexDir="column" w="100%">
       <Flex
         px={{ base: 4, md: 4 }}
-        height="20"
         w="100%"
         alignItems="center"
         bg={blueWhale}
         justifyContent={{ base: "space-between", md: "flex-end" }}
         boxShadow="0 2px 8px -5px black"
       >
-        <Text
-          display={{ base: "flex", md: "none" }}
-          fontSize="2xl"
-          fontFamily="monospace"
-          fontWeight="bold"
-          color={toupOrange}
-          onClick={goHome}
-        >
-          Partshouse
-        </Text>
-
         <TopUserMenu />
       </Flex>
 
-      {records.length > 0 && (
-        <MoreDetails record={records[0].record} parts={records[0].parts} />
-      )}
+      <Box bg={bgGrey} overflow="auto">
+        {records.length > 0 && (
+          <MoreDetails record={records[0].record} parts={records[0].parts} />
+        )}
+        <Box height="250px"></Box>
+      </Box>
     </Flex>
   );
 };
@@ -97,14 +88,7 @@ export default Record;
 
 const MoreDetails = ({ record, parts }) => {
   return (
-    <Flex
-      h="100%"
-      w="100%"
-      bg={bgGrey}
-      p={["25px", "35px"]}
-      flexDir="column"
-      alignItems="center"
-    >
+    <Flex p={["25px", "35px"]} flexDir="column" alignItems="center" h="100%">
       {record && (
         <>
           <Flex w="100%">
@@ -148,7 +132,7 @@ const MoreDetails = ({ record, parts }) => {
         parts.map((part) => (
           <Flex
             borderRadius="15px"
-            p={["15px"]}
+            p={["25px"]}
             mt="35px"
             maxW="800px"
             minH="150px"
