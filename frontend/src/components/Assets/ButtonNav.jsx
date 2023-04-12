@@ -15,7 +15,7 @@ const ButtonNav = ({ route, text }) => {
       color="white"
       _hover={{ color: "white", bg: blueWhaleLight_Hover }}
       onClick={onSubmit}
-      minW="100px"
+      w="140px"
     >
       {text}
     </Button>

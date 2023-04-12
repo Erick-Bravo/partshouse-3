@@ -10,3 +10,9 @@ export const ModalType = {
     EDIT_Record: 'edit-record',
     EDIT_Part: 'edit-part',
 };
+
+export const HeadlineType = {
+    One: "one",
+    Two: "two",
+    Three: "three",
+};

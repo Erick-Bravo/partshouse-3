@@ -13,8 +13,8 @@ import {
 } from "@chakra-ui/react";
 import Logo from "../components/Assets/Logo";
 import ModalButton from "../components/Modals/ModalButton";
-import HeadlineOne from "../components/Assets/HeadlineOne";
-import { ModalType } from "../enums";
+import Headline from "../components/Assets/Headline";
+import { HeadlineType, ModalType } from "../enums";
 import { FiMenu } from "react-icons/fi";
 import TopUserMenu from "../components/NavInterface/TopUserMenu";
 import {
@@ -83,7 +83,7 @@ const Record = () => {
 
         <TopUserMenu />
       </Flex>
-      <MoreDetails record={records.record} parts={records.parts} />
+      <MoreDetails record={records[0].record} parts={records[0].parts} />
     </Flex>
   );
 };
@@ -92,8 +92,14 @@ export default Record;
 
 const MoreDetails = ({ record, parts }) => {
   return (
-    <Flex h="100%" w="100%" bg={bgGrey} p={["25px", "35px"]}>
-      <ButtonNav text="Back" route="/" />
+    <Flex h="100%" w="100%" bg={bgGrey} p={["25px", "35px"]} flexDir="column">
+      <Flex>
+        <ButtonNav text="Back" route="/" />
+      </Flex>
+
+      <Box border="1px solid black" borderRadius="15px" p={["15px"]}>
+        <Headline text={record.name} type={HeadlineType.Two} />
+      </Box>
     </Flex>
   );
 };

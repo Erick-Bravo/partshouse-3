@@ -8,17 +8,17 @@ import NavInterface from "../components/NavInterface/NavInterface";
 import Logo from "../components/Assets/Logo";
 import ModalButton from "../components/Modals/ModalButton";
 import DashboardAccordion from "../components/NavInterface/DashboardAccordion";
-import HeadlineOne from "../components/Assets/HeadlineOne";
+import Headline from "../components/Assets/Headline";
 import { getRecords } from "../features/records/recordSlice";
 import { getParts } from "../features/parts/partSlice";
-import { ModalType } from "../enums";
+import { HeadlineType, ModalType } from "../enums";
 
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
-  
+
   const { ph, isLoading, isError, message } = useSelector(
     (state) => state.partshouses
   );
@@ -56,7 +56,7 @@ const Home = () => {
           {ph.length > 0 && Object.keys(selected).length === 0 && (
             <>
               <Box h="100%" w="100%">
-                <HeadlineOne text="Dashboard" />
+                <Headline text="Dashboard" type={HeadlineType.One} />
                 <Text p="35px" h="100%">
                   All Records
                 </Text>
@@ -100,7 +100,7 @@ const Home = () => {
           {/* Partshouse Selected */}
           {selected.name && (
             <Box h="100%" w="100%">
-              <HeadlineOne text={selected.name} />
+              <Headline text={selected.name} type={HeadlineType.One} />
               <Text p="35px" h="100%">
                 {selected.name} Records
               </Text>
