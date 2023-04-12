@@ -1,13 +1,32 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import recordService from "./recordService";
 
-// Get user record
+// Get user records
 export const getRecords = createAsyncThunk(
   "record/getAll",
   async (_, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
       return await recordService.getRecords(token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Get user records
+export const getRecordPage = createAsyncThunk(
+  "recordPage/get",
+  async (id, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await recordService.getRecordPage(id, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -97,6 +116,19 @@ export const recordSlice = createSlice({
         state.records = action.payload; // GET
       })
       .addCase(getRecords.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getRecordPage.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getRecordPage.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.records = action.payload; // GET
+      })
+      .addCase(getRecordPage.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

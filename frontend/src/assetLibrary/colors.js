@@ -9,3 +9,4 @@ export const whitePaper = "#f7f9fa";
 export const primary = toupOrange;
 export const primary2 = "blue.500";
 export const buttonColor = toupOrange;
+export const bgGrey = "gray.300";

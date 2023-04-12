@@ -9,36 +9,35 @@ import {
   IconButton,
   useColorModeValue,
   useDisclosure,
-} from "@chakra-ui/react"; 
+} from "@chakra-ui/react";
 import Logo from "../components/Assets/Logo";
 import ModalButton from "../components/Modals/ModalButton";
 import HeadlineOne from "../components/Assets/HeadlineOne";
 import { ModalType } from "../enums";
 import { FiMenu } from "react-icons/fi";
 import TopUserMenu from "../components/NavInterface/TopUserMenu";
-import { blueWhale, toupOrange, whitePaper } from "../assetLibrary/colors";
+import { bgGrey, blueWhale, toupOrange, whitePaper } from "../assetLibrary/colors";
+import { getRecordPage } from "../features/records/recordSlice";
 
 const Record = () => {
-
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
-  // const { records, isLoading, isError, message } = useSelector(
-  //   (state) => state.records
-  // );
+  const { records, isLoading, isError, message } = useSelector(
+    (state) => state.records
+  );
   const { id } = useParams();
-  
 
   useEffect(() => {
-    // if (isError) {       - For error when record is not found
-    //   console.log(message);
-    // }
+    if (isError) {
+      console.log(message);
+    }
     if (!user) {
       navigate("/login");
     } else {
-     
+      dispatch(getRecordPage(id));
     }
 
     return () => {};
@@ -48,9 +47,9 @@ const Record = () => {
     navigate("/");
   };
 
-  // if (isLoading) { 
-  //   return <Spinner />;
-  // }
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <Flex flexDir="column" w="100%">
@@ -63,7 +62,6 @@ const Record = () => {
         justifyContent={{ base: "space-between", md: "flex-end" }}
         boxShadow="0 2px 8px -5px black"
       >
-
         <Text
           display={{ base: "flex", md: "none" }}
           fontSize="2xl"
@@ -78,16 +76,13 @@ const Record = () => {
         {/* TOP USER MENU */}
         <TopUserMenu />
       </Flex>
-      <MoreDetails /> 
+      <MoreDetails />
     </Flex>
   );
 };
 
 export default Record;
 
-
 const MoreDetails = ({ record }) => {
-  return (
-    <Box h="100%" w="100%" bg={whitePaper}></Box>
-  )
-}
+  return <Box h="100%" w="100%" bg={bgGrey}></Box>;
+};

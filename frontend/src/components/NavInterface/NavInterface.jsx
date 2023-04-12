@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
 import * as React from "react";
-import { blueWhale, toupOrange, whitePaper } from "../../assetLibrary/colors";
+import { bgGrey, blueWhale, toupOrange, whitePaper } from "../../assetLibrary/colors";
 import TopUserMenu from "./TopUserMenu";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -28,7 +28,7 @@ const NavInterface = ({ children }) => {
   return (
     <Box
       h="100vh"
-      bg={useColorModeValue("gray.300", "gray.900")}
+      bg={useColorModeValue(bgGrey, "gray.900")}
       w="100%"
       position="fixed"
     >
