@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../components/Assets/Spinner";
@@ -25,7 +25,11 @@ const Record = () => {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
+  // const { records, isLoading, isError, message } = useSelector(
+  //   (state) => state.records
+  // );
   const { id } = useParams();
+  
 
   useEffect(() => {
     // if (isError) {       - For error when record is not found
@@ -34,7 +38,7 @@ const Record = () => {
     if (!user) {
       navigate("/login");
     } else {
-      
+     
     }
 
     return () => {};
@@ -44,7 +48,7 @@ const Record = () => {
     navigate("/");
   };
 
-  // if (isLoading) {      - For record is when loading
+  // if (isLoading) { 
   //   return <Spinner />;
   // }
 
@@ -55,7 +59,7 @@ const Record = () => {
         height="20"
         w="100%"
         alignItems="center"
-        bg={useColorModeValue(blueWhale, whitePaper)}
+        bg={blueWhale}
         justifyContent={{ base: "space-between", md: "flex-end" }}
         boxShadow="0 2px 8px -5px black"
       >
