@@ -81,7 +81,7 @@ const Record = () => {
           <MoreDetails record={records[0].record} parts={records[0].parts} />
         )}
         {/* Do not delete */}
-        <Box height="350px"></Box>
+        <Box h="350px"></Box>
       </Box>
     </Flex>
   );
@@ -95,7 +95,7 @@ const MoreDetails = ({ record, parts }) => {
       p={["25px", "35px"]}
       flexDir="column"
       alignItems="center"
-      h="100%"
+      h="120%"
       mb="150px" //{/* Do not delete */}
     >
       {record && (
@@ -128,10 +128,12 @@ const MoreDetails = ({ record, parts }) => {
             </Flex>
 
             <Flex justifyContent="space-around">
-              <Button bg={blueWhaleLight} color="white">
+              <Button bg={blueWhaleLight} color="white" size={["sm", "md"]}>
                 Edit Record
               </Button>
-              <Button bg="red.300">Delete Record</Button>
+              <Button bg="red.300" size={["sm", "md"]}>
+                Delete Record
+              </Button>
             </Flex>
           </Flex>
         </>
@@ -143,26 +145,41 @@ const MoreDetails = ({ record, parts }) => {
             borderRadius="15px"
             p={["25px"]}
             mt="35px"
-            maxW="800px"
+            maxW="600px"
             w="100%"
             bg={whitePaper}
             flexDir="column"
             key={part._id}
           >
-            <Flex pb="15px" justifyContent="space-between">
-              <Headline type={HeadlineType.Three} text={part.name} />
+            <Flex
+              pb="15px"
+              justifyContent={["center", "space-between"]}
+              flexDir={["column", "row"]}
+            >
+              <Box mb={["20px", "0"]}>
+                <Headline type={HeadlineType.Three} text={part.name} />
+              </Box>
               <Box>
-                <Button bg={blueWhaleLight} color="white" mr="10px">
+                <Button size="sm" bg={blueWhaleLight} color="white" mr="10px">
                   Edit
                 </Button>
-                <Button bg={deleteButton}>Delete</Button>
+                <Button size="sm" bg={deleteButton}>
+                  Delete
+                </Button>
               </Box>
             </Flex>
-            <Text ml="10px" fontWeight="bold">
+
+            <Text ml="10px" fontWeight="bold" fontSize="20px">
               Brand: {part.brand}
             </Text>
-            <Text>Description: {part.description}</Text>
-            <Text mb="20px">Price: ${part.price}</Text>
+
+            <Text mb="20px" fontSize="20px">
+              Price: ${part.price}
+            </Text>
+            {part.description && (
+              <Text mb="20px">Description: {part.description}</Text>
+            )}
+
             <ReBuyLogic part={part} />
           </Flex>
         ))}
