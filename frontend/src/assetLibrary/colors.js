@@ -11,3 +11,4 @@ export const primary = toupOrange;
 export const primary2 = "blue.500";
 export const buttonColor = toupOrange;
 export const bgGrey = "gray.300";
+export const deleteButton = "red.300";

@@ -21,12 +21,14 @@ import {
   bgGrey,
   blueWhale,
   blueWhaleLight,
+  deleteButton,
   toupOrange,
   whitePaper,
 } from "../assetLibrary/colors";
 import { getRecordPage, reset } from "../features/records/recordSlice";
 import ButtonNav from "../components/Assets/ButtonNav";
 import IconFormatter from "../components/Assets/IconFormatter";
+import ReBuyLogic from "../components/Buttons/ReBuyLogic";
 
 const Record = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -78,7 +80,8 @@ const Record = () => {
         {records.length > 0 && (
           <MoreDetails record={records[0].record} parts={records[0].parts} />
         )}
-        <Box height="250px"></Box>
+        {/* Do not delete */}
+        <Box height="350px"></Box>
       </Box>
     </Flex>
   );
@@ -88,7 +91,13 @@ export default Record;
 
 const MoreDetails = ({ record, parts }) => {
   return (
-    <Flex p={["25px", "35px"]} flexDir="column" alignItems="center" h="100%">
+    <Flex
+      p={["25px", "35px"]}
+      flexDir="column"
+      alignItems="center"
+      h="100%"
+      mb="150px" //{/* Do not delete */}
+    >
       {record && (
         <>
           <Flex w="100%">
@@ -135,15 +144,26 @@ const MoreDetails = ({ record, parts }) => {
             p={["25px"]}
             mt="35px"
             maxW="800px"
-            minH="150px"
             w="100%"
             bg={whitePaper}
             flexDir="column"
             key={part._id}
           >
-            <Flex>
+            <Flex pb="15px" justifyContent="space-between">
               <Headline type={HeadlineType.Three} text={part.name} />
+              <Box>
+                <Button bg={blueWhaleLight} color="white" mr="10px">
+                  Edit
+                </Button>
+                <Button bg={deleteButton}>Delete</Button>
+              </Box>
             </Flex>
+            <Text ml="10px" fontWeight="bold">
+              Brand: {part.brand}
+            </Text>
+            <Text>Description: {part.description}</Text>
+            <Text mb="20px">Price: ${part.price}</Text>
+            <ReBuyLogic part={part} />
           </Flex>
         ))}
     </Flex>
