@@ -24,6 +24,7 @@ import {
   whitePaper,
 } from "../assetLibrary/colors";
 import { getRecordPage, reset } from "../features/records/recordSlice";
+import ButtonNav from "../components/Assets/ButtonNav";
 
 const Record = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -82,23 +83,17 @@ const Record = () => {
 
         <TopUserMenu />
       </Flex>
-      <MoreDetails
-        record={records.record}
-        parts={records.parts}
-        goHome={goHome}
-      />
+      <MoreDetails record={records.record} parts={records.parts} />
     </Flex>
   );
 };
 
 export default Record;
 
-const MoreDetails = ({ record, parts, goHome }) => {
+const MoreDetails = ({ record, parts }) => {
   return (
     <Flex h="100%" w="100%" bg={bgGrey} p={["25px", "35px"]}>
-      <Button w="120px" onClick={goHome}>
-        Back
-      </Button>
+      <ButtonNav text="Back" route="/" />
     </Flex>
   );
 };
