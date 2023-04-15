@@ -131,7 +131,7 @@ const MoreDetails = ({ record, parts }) => {
               <Button bg={blueWhaleLight} color="white" size={["sm", "md"]}>
                 Edit Record
               </Button>
-              <Button bg="red.300" size={["sm", "md"]}>
+              <Button bg="red.300" size={["sm", "md"]} color="white">
                 Delete Record
               </Button>
             </Flex>
@@ -141,47 +141,56 @@ const MoreDetails = ({ record, parts }) => {
 
       {parts &&
         parts.map((part) => (
-          <Flex
-            borderRadius="15px"
-            p={["25px"]}
-            mt="35px"
-            maxW="600px"
-            w="100%"
-            bg={whitePaper}
-            flexDir="column"
-            key={part._id}
-          >
+          <>
             <Flex
-              pb="15px"
-              justifyContent={["center", "space-between"]}
-              flexDir={["column", "row"]}
+              borderRadius="15px"
+              p={["25px"]}
+              mt="35px"
+              maxW="600px"
+              w="100%"
+              bg={whitePaper}
+              flexDir="column"
+              key={part._id}
             >
-              <Box mb={["20px", "0"]}>
-                <Headline type={HeadlineType.Three} text={part.name} />
-              </Box>
-              <Box>
-                <Button size="sm" bg={blueWhaleLight} color="white" mr="10px">
-                  Edit
-                </Button>
-                <Button size="sm" bg={deleteButton}>
-                  Delete
-                </Button>
-              </Box>
+              <Flex
+                pb="15px"
+                justifyContent={["center", "space-between"]}
+                flexDir={["column", "row"]}
+              >
+                <Box mb={["20px", "0"]}>
+                  <Headline type={HeadlineType.Three} text={part.name} />
+                </Box>
+                <Box></Box>
+              </Flex>
+
+              <Text mb="20px" fontSize="20px">
+                Price: ${part.price}
+              </Text>
+              {part.brand && (
+                <Text ml="10px" fontWeight="bold" fontSize="16px">
+                  Brand: {part.brand}
+                </Text>
+              )}
+              {part.description && (
+                <Text mb="20px">Description: {part.description}</Text>
+              )}
+
+              <ReBuyLogic part={part} />
             </Flex>
-
-            <Text ml="10px" fontWeight="bold" fontSize="20px">
-              Brand: {part.brand}
-            </Text>
-
-            <Text mb="20px" fontSize="20px">
-              Price: ${part.price}
-            </Text>
-            {part.description && (
-              <Text mb="20px">Description: {part.description}</Text>
-            )}
-
-            <ReBuyLogic part={part} />
-          </Flex>
+            <Flex
+              justifyContent={["center", "flex-end"]}
+              maxW="600px"
+              w="100%"
+              m="10px"
+            >
+              <Button bg={blueWhaleLight} color="white" size="sm" mr="5px">
+                Edit Record
+              </Button>
+              <Button bg="red.300" size="sm" color="white">
+                Delete Record
+              </Button>
+            </Flex>
+          </>
         ))}
     </Flex>
   );
