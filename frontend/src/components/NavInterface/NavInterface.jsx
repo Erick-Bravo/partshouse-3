@@ -12,7 +12,12 @@ import {
 } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
 import * as React from "react";
-import { bgGrey, blueWhale, toupOrange, whitePaper } from "../../assetLibrary/colors";
+import {
+  bgGrey,
+  blueWhale,
+  toupOrange,
+  whitePaper,
+} from "../../assetLibrary/colors";
 import TopUserMenu from "./TopUserMenu";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -100,10 +105,12 @@ const SidebarContent = ({ onClose, ...rest }) => {
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
+      <NavItem color={toupOrange} fontSize="2xl" onClick={() => goHome()}>
+        Dashboard
+      </NavItem>
       {ph.map((ph) => (
         <NavItem
           key={ph.name}
-          icon={ph.icon}
           color={toupOrange}
           fontSize="2xl"
           onClick={() => handlePHClick(ph)}
