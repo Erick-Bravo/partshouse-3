@@ -20,6 +20,25 @@ export const getParts = createAsyncThunk(
   }
 );
 
+// Get user part
+export const getRecordParts = createAsyncThunk(
+  "recordPart/get",
+  async (recordId, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await partService.getRecordParts(recordId, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Create new part
 export const createPart = createAsyncThunk(
   "part/create",
@@ -97,6 +116,19 @@ export const partSlice = createSlice({
         state.parts = action.payload; // GET
       })
       .addCase(getParts.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getRecordParts.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getRecordParts.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.parts = action.payload; // GET
+      })
+      .addCase(getRecordParts.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

@@ -11,6 +11,15 @@ const getParts = asyncHandler(async (req, res) => {
   res.status(200).json(parts);
 });
 
+//@desc     Get Part
+//@route    Get /api/part
+//@access   Private
+const getRecordParts = asyncHandler(async (req, res) => {
+  const parts = await Part.find({ recordId: req.params.id }); 
+
+  res.status(200).json(parts);
+});
+
 //@desc     Create Record
 //@route    POST /api/record
 //@access   Private
@@ -93,4 +102,5 @@ module.exports = {
   createPart,
   updatePart,
   deletePart,
+  getRecordParts
 };

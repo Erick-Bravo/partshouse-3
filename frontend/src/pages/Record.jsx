@@ -29,6 +29,7 @@ import { getRecordPage, reset } from "../features/records/recordSlice";
 import ButtonNav from "../components/Assets/ButtonNav";
 import IconFormatter from "../components/Assets/IconFormatter";
 import ReBuyLogic from "../components/Buttons/ReBuyLogic";
+import { getRecordParts } from "../features/parts/partSlice";
 
 const Record = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -49,6 +50,7 @@ const Record = () => {
       navigate("/login");
     } else {
       dispatch(getRecordPage(id));
+      dispatch(getRecordParts(id));
     }
 
     return () => {};
