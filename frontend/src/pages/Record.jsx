@@ -134,26 +134,35 @@ const MoreDetails = ({ record, parts }) => {
             </Flex>
           </Flex>
 
-          <ModalButton
-            type={ModalType.ADD_Part}
-            text="Add Part"
-            recordId={record._id}
-          />
+          <Box m={["45px"]}>
+            <ModalButton
+              type={ModalType.ADD_Part}
+              text="Add Part"
+              recordId={record._id}
+            />
+          </Box>
         </>
       )}
 
       {parts &&
         parts.map((part) => (
-          <Box
+          <Flex
             key={part._id}
-            borderRadius="15px"
-            p={["25px"]}
-            mt="35px"
-            maxW="600px"
             w="100%"
-            bg={whitePaper}
+            maxW="500px"
+            justifyContent="center"
+            alignItems="center"
+            flexDir="column"
           >
-            <Flex flexDir="column">
+            <Flex
+              flexDir="column"
+              alignItems="center"
+              borderRadius="15px"
+              p={["25px"]}
+              maxW="500px"
+              w="100%"
+              bg={whitePaper}
+            >
               <Flex
                 pb="15px"
                 justifyContent={["center", "space-between"]}
@@ -195,7 +204,7 @@ const MoreDetails = ({ record, parts }) => {
                 size="sm"
               />
             </Flex>
-          </Box>
+          </Flex>
         ))}
     </Flex>
   );
