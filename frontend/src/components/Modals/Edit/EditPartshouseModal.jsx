@@ -15,22 +15,27 @@ import {
   FormHelperText,
   Input,
 } from "@chakra-ui/react";
-import { createPH } from "../../../features/partshouse/phSlice";
+import { updatePH } from "../../../features/partshouse/phSlice";
 import { useDispatch } from "react-redux";
 
-const EditPartshouseModal = ({ph, isOpen, onClose }) => {
+const EditPartshouseModal = ({ ph, isOpen, onClose }) => {
   const [name, setName] = useState("");
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-   setName(ph.name);
-  }, [])
+    setName(ph.name);
+  }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(createPH({ name }));
+    const phData = {
+      id: ph._id,
+      name,
+    };
+
+    dispatch(updatePH(phData));
     setName("");
     onClose();
   };

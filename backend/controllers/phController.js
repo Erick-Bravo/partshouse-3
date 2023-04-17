@@ -45,7 +45,7 @@ const updatePH = asyncHandler(async (req, res) => {
   };
 
     //Make sure the logged in user matches the partshouse user
-  if(ph.user.toString() !== req.user.id) {
+  if(ph.userId.toString() !== req.user.id) {
     res.status(401)
     throw new Error("User not authorized");
   }

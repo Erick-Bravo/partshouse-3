@@ -27,6 +27,19 @@ const createPH = async (phData, token) => {
   return response.data;
 };
 
+//Update Partshouse
+const updatePH = async (phData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.put(API_URL + phData.id, phData, config);
+
+  return response.data;
+};
+
 //Get user Goals
 const deletePH = async (phId, token) => {
   const config = {
@@ -44,6 +57,7 @@ const phService = {
   getPH,
   createPH,
   deletePH,
+  updatePH,
 };
 
 export default phService;
