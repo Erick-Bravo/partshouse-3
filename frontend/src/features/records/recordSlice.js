@@ -21,12 +21,12 @@ export const getRecords = createAsyncThunk(
 );
 
 // Get user records
-export const getRecordPage = createAsyncThunk(
-  "recordPage/get",
+export const getRecord = createAsyncThunk(
+  "record/getOne",
   async (id, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await recordService.getRecordPage(id, token);
+      return await recordService.getRecord(id, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -41,11 +41,11 @@ export const getRecordPage = createAsyncThunk(
 
 // Get user records
 export const deleteRecordPagePart = createAsyncThunk(
-  "recordPage/get",
+  "recordPage/delete",
   async (id, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await recordService.getRecordPage(id, token);
+      return await recordService.getRecord(id, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -139,15 +139,15 @@ export const recordSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
-      .addCase(getRecordPage.pending, (state) => {
+      .addCase(getRecord.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getRecordPage.fulfilled, (state, action) => {
+      .addCase(getRecord.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.records = [action.payload]; // GET
       })
-      .addCase(getRecordPage.rejected, (state, action) => {
+      .addCase(getRecord.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = [action.payload];

@@ -140,7 +140,7 @@ export const partSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.parts = state.parts.filter(
-          (part) => part._id !== action.payload.id
+          (part) => part._id !== action.payload.id,
         );
       })
       .addCase(deletePart.rejected, (state, action) => {

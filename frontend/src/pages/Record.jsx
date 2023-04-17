@@ -25,7 +25,7 @@ import {
   toupOrange,
   whitePaper,
 } from "../assetLibrary/colors";
-import { getRecordPage, reset } from "../features/records/recordSlice";
+import { getRecord, reset } from "../features/records/recordSlice";
 import ButtonNav from "../components/Assets/ButtonNav";
 import IconFormatter from "../components/Assets/IconFormatter";
 import ReBuyLogic from "../components/Buttons/ReBuyLogic";
@@ -33,14 +33,16 @@ import { getRecordParts } from "../features/parts/partSlice";
 
 const Record = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const { id } = useParams();
   const { user } = useSelector((state) => state.auth);
   const { records, isLoading, isError, message } = useSelector(
     (state) => state.records
   );
-  const { id } = useParams();
+  const { parts } = useSelector((state) => state.parts);
 
   useEffect(() => {
     if (isError) {
@@ -49,17 +51,12 @@ const Record = () => {
     if (!user) {
       navigate("/login");
     } else {
-      dispatch(getRecordPage(id));
+      dispatch(getRecord(id));
       dispatch(getRecordParts(id));
     }
 
     return () => {};
   }, [user, navigate, dispatch]);
-
-  const goHome = () => {
-    reset();
-    navigate("/");
-  };
 
   if (isLoading) {
     return <Spinner />;
@@ -79,9 +76,7 @@ const Record = () => {
       </Flex>
 
       <Box bg={bgGrey} overflow="auto">
-        {records.length > 0 && (
-          <MoreDetails record={records[0].record} parts={records[0].parts} />
-        )}
+        {records && <MoreDetails record={records[0]} parts={parts} />}
         {/* Do not delete */}
         <Box h="350px"></Box>
       </Box>
@@ -149,17 +144,16 @@ const MoreDetails = ({ record, parts }) => {
 
       {parts &&
         parts.map((part) => (
-          <>
-            <Flex
-              borderRadius="15px"
-              p={["25px"]}
-              mt="35px"
-              maxW="600px"
-              w="100%"
-              bg={whitePaper}
-              flexDir="column"
-              key={part._id}
-            >
+          <Box
+            key={part._id}
+            borderRadius="15px"
+            p={["25px"]}
+            mt="35px"
+            maxW="600px"
+            w="100%"
+            bg={whitePaper}
+          >
+            <Flex flexDir="column">
               <Flex
                 pb="15px"
                 justifyContent={["center", "space-between"]}
@@ -201,7 +195,7 @@ const MoreDetails = ({ record, parts }) => {
                 size="sm"
               />
             </Flex>
-          </>
+          </Box>
         ))}
     </Flex>
   );

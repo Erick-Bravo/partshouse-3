@@ -15,7 +15,7 @@ const getRecords = async (token) => {
 };
 
 //Get user Record Page Info
-const getRecordPage = async (recordId, token) => {
+const getRecord = async (recordId, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -57,7 +57,7 @@ const recordService = {
   getRecords,
   createRecord,
   deleteRecord,
-  getRecordPage,
+  getRecord,
 };
 
 export default recordService;

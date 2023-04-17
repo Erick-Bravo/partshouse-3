@@ -12,6 +12,31 @@ const getRecords = asyncHandler(async (req, res) => {
   res.status(200).json(records);
 });
 
+//@desc     Get Record Page
+//@route    Get /api/record/:id
+//@access   Private
+const getRecord = asyncHandler(async (req, res) => {
+  const record = await Record.findById(req.params.id);
+
+  if (!record) {
+    res.status(400);
+    throw new Error("Record not found");
+  }
+
+  if(!req.user) {
+    res.status(401);
+    throw new Error("User not found");
+  };
+
+  //Make sure the logged in user matches the record user
+  if(record.userId.toString() !== req.user.id) {
+    res.status(401)
+    throw new Error("User not authorized");
+  }
+
+  res.status(200).json(record);
+});
+
 //@desc     Create Record
 //@route    POST /api/record
 //@access   Private
@@ -63,34 +88,7 @@ const updateRecord = asyncHandler(async (req, res) => {
   res.status(200).json(updatedRecord);
 });
 
-//@desc     Get Record Page
-//@route    Get /api/record/:id
-//@access   Private
-const getRecordPage = asyncHandler(async (req, res) => {
-  const record = await Record.findById(req.params.id);
-  const parts = await Part.find({ recordId: req.params.id });
 
-  if (!record) {
-    res.status(400);
-    throw new Error("Record not found");
-  }
-
-  if(!req.user) {
-    res.status(401);
-    throw new Error("User not found");
-  };
-
-  //Make sure the logged in user matches the record user
-  if(record.userId.toString() !== req.user.id) {
-    res.status(401)
-    throw new Error("User not authorized");
-  }
-
-  const getRecord = await Record.findById(req.params.id)
-  const getParts = await Part.find({ recordId: req.params.id })
-
-  res.status(200).json({record: getRecord, parts: getParts});
-});
 
 //@desc     Delete Record
 //@route    Delete /api/record/:id
@@ -122,5 +120,5 @@ module.exports = {
   createRecord,
   updateRecord,
   deleteRecord,
-  getRecordPage
+  getRecord
 };

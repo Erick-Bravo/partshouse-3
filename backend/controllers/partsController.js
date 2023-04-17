@@ -94,7 +94,7 @@ const deletePart = asyncHandler(async (req, res) => {
   }
 
   await part.remove()
-  res.status(200).json({message: `Part deleted`, id: req.body.id});
+  res.status(200).json({message: `Part deleted`, id: req.params.id});
 });
 
 module.exports = {
