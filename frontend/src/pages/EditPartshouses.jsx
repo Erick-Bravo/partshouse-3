@@ -10,6 +10,7 @@ import NavInterface from "../components/NavInterface/NavInterface";
 import { deletePH } from "../features/partshouse/phSlice";
 import ModalButton from "../components/Modals/ModalButton";
 import { ModalType } from "../enums";
+import { getRecords } from "../features/records/recordSlice";
 
 const EditPartshouses = () => {
   const navigate = useNavigate();
@@ -21,6 +22,8 @@ const EditPartshouses = () => {
     (state) => state.partshouses
   );
 
+  const { records } = useSelector((state) => state.records);
+
   useEffect(() => {
     if (isError) {
       console.log(message);
@@ -29,6 +32,7 @@ const EditPartshouses = () => {
       navigate("/login");
     } else {
       dispatch(getPH());
+      dispatch(getRecords())
     }
 
     return () => {
@@ -38,6 +42,17 @@ const EditPartshouses = () => {
 
   if (isLoading) {
     return <Spinner />;
+  }
+
+  const countRecords = (phId) => {
+    let count = 0;
+    const message = "none";
+    records.forEach((record) => {
+      if (record.phId === phId) {
+        count++;
+      }
+    });
+    return count === 0 ? message : count;
   }
 
   return (
@@ -78,7 +93,7 @@ const EditPartshouses = () => {
                   {p.name}
                 </Text>
                 <Text pb={["5"]}>
-                  Records: {p.length ? p.length : "No Records"}
+                  Records: {countRecords(p._id)}
                 </Text>
                 <Flex justifyContent="center" alignItems="center">
                   <Button
@@ -98,6 +113,7 @@ const EditPartshouses = () => {
                       bg: "gray.200",
                       cursor: "pointer",
                     }}
+                    isDisabled={countRecords(p._id) !== "none"}
                   >
                     Delete
                   </Button>
