@@ -6,8 +6,9 @@ import AddRecordModal from "./Add/AddRecordModal";
 import { ModalType } from "../../enums";
 import AddPartModal from "./Add/AddPartModal";
 import DeletePartModal from "./Delete/DeletePartModal";
+import EditPartshouseModal from "./Edit/EditPartshouseModal";
 
-const ModalButton = ({ type, text, recordId, partId, size }) => {
+const ModalButton = ({ type, text, recordId, partId, size, ph }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -28,6 +29,7 @@ const ModalButton = ({ type, text, recordId, partId, size }) => {
         type={type}
         recordId={recordId}
         partId={partId}
+        ph={ph}
       />
     </>
   );
@@ -35,7 +37,7 @@ const ModalButton = ({ type, text, recordId, partId, size }) => {
 
 export default ModalButton;
 
-const SwitchModal = ({ type, isOpen, onOpen, onClose, recordId, partId }) => {
+const SwitchModal = ({ type, isOpen, onOpen, onClose, recordId, partId, ph }) => {
   switch (type) {
     case ModalType.ADD_Partshouse:
       return (
@@ -52,6 +54,10 @@ const SwitchModal = ({ type, isOpen, onOpen, onClose, recordId, partId }) => {
       // Needs partId for deletion
       return (
         <DeletePartModal isOpen={isOpen} onClose={onClose} partId={partId} />
+      );
+    case ModalType.EDIT_Partshouse:
+      return (
+        <EditPartshouseModal isOpen={isOpen} onClose={onClose} ph={ph} />
       );
     default:
   }

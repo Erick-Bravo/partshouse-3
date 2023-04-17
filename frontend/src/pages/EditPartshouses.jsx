@@ -32,7 +32,7 @@ const EditPartshouses = () => {
       navigate("/login");
     } else {
       dispatch(getPH());
-      dispatch(getRecords())
+      dispatch(getRecords());
     }
 
     return () => {
@@ -53,7 +53,7 @@ const EditPartshouses = () => {
       }
     });
     return count === 0 ? message : count;
-  }
+  };
 
   return (
     <NavInterface>
@@ -75,7 +75,7 @@ const EditPartshouses = () => {
           >
             {ph.map((p) => (
               <Flex
-              flexDir="column"
+                flexDir="column"
                 key={p._id}
                 bg={whitePaper}
                 m="20px"
@@ -92,20 +92,16 @@ const EditPartshouses = () => {
                 >
                   {p.name}
                 </Text>
-                <Text pb={["5"]}>
-                  Records: {countRecords(p._id)}
-                </Text>
+                <Text pb={["5"]}>Records: {countRecords(p._id)}</Text>
                 <Flex justifyContent="center" alignItems="center">
-                  <Button
-                    bg={whitePaper}
-                    mr={["9"]}
-                    _hover={{
-                      bg: "gray.200",
-                      cursor: "pointer",
-                    }}
-                  >
-                    Edit
-                  </Button>
+                  <Box mr="20px">
+                    <ModalButton
+                      type={ModalType.EDIT_Partshouse}
+                      text="Edit"
+                      ph={p}
+                      size="sm"
+                    />
+                  </Box>
                   <Button
                     bg={whitePaper}
                     onClick={() => dispatch(deletePH(p._id))}

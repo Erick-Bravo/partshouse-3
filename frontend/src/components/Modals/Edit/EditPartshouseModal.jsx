@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Modal,
@@ -18,10 +18,14 @@ import {
 import { createPH } from "../../../features/partshouse/phSlice";
 import { useDispatch } from "react-redux";
 
-const AddPartshouseModal = ({ isOpen, onClose }) => {
+const EditPartshouseModal = ({ph, isOpen, onClose }) => {
   const [name, setName] = useState("");
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+   setName(ph.name);
+  }, [])
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -38,7 +42,7 @@ const AddPartshouseModal = ({ isOpen, onClose }) => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Create Partshouse</ModalHeader>
+          <ModalHeader>Edit Partshouse</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <FormControl isRequired>
@@ -59,7 +63,7 @@ const AddPartshouseModal = ({ isOpen, onClose }) => {
               mr={3}
               onClick={onSubmit}
             >
-              Create
+              Update
             </Button>
           </ModalFooter>
         </ModalContent>
@@ -68,4 +72,4 @@ const AddPartshouseModal = ({ isOpen, onClose }) => {
   );
 };
 
-export default AddPartshouseModal;
+export default EditPartshouseModal;
