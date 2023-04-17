@@ -137,7 +137,11 @@ const MoreDetails = ({ record, parts }) => {
             </Flex>
           </Flex>
 
-          <ModalButton type={ModalType.ADD_Part} text="Add Part" recordId={record._id} />
+          <ModalButton
+            type={ModalType.ADD_Part}
+            text="Add Part"
+            recordId={record._id}
+          />
         </>
       )}
 
@@ -186,9 +190,14 @@ const MoreDetails = ({ record, parts }) => {
               m="10px"
             >
               <Button bg={blueWhaleLight} color="white" size="sm" mr="5px">
-                Edit Record
+                Edit Part
               </Button>
-              <ModalButton text="Delete" type={ModalType.DELETE_Part} partId={part._id} />
+              <ModalButton
+                text="Delete"
+                type={ModalType.DELETE_Part}
+                partId={part._id}
+                size="sm"
+              />
             </Flex>
           </>
         ))}

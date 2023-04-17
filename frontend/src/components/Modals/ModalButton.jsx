@@ -7,7 +7,7 @@ import { ModalType } from "../../enums";
 import AddPartModal from "./Add/AddPartModal";
 import DeletePartModal from "./Delete/DeletePartModal";
 
-const ModalButton = ({ type, text, recordId, partId }) => {
+const ModalButton = ({ type, text, recordId, partId, size }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -17,6 +17,7 @@ const ModalButton = ({ type, text, recordId, partId }) => {
         color="white"
         _hover={{ color: "white" }}
         onClick={onOpen}
+        size={size ? size : "md"}
       >
         {text}
       </Button>

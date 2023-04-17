@@ -39,6 +39,25 @@ export const getRecordPage = createAsyncThunk(
   }
 );
 
+// Get user records
+export const deleteRecordPagePart = createAsyncThunk(
+  "recordPage/get",
+  async (id, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await recordService.getRecordPage(id, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Create new record
 export const createRecord = createAsyncThunk(
   "record/create",
