@@ -26,7 +26,7 @@ import {
   whitePaper,
 } from "../assetLibrary/colors";
 import { getRecord, reset } from "../features/records/recordSlice";
-import ButtonNav from "../components/Assets/ButtonNav";
+import ButtonNav from "../components/Buttons/ButtonNav";
 import IconFormatter from "../components/Assets/IconFormatter";
 import ReBuyLogic from "../components/Buttons/ReBuyLogic";
 import { getRecordParts } from "../features/parts/partSlice";
@@ -97,8 +97,11 @@ const MoreDetails = ({ record, parts }) => {
     >
       {record && (
         <>
-          <Flex w="100%">
-            <ButtonNav text="Back" route="/" />
+          <Flex w="100%" justifyContent="space-between">
+            <ButtonNav text="Back" route="/" size={["sm", "md"]} />
+            <Button bg="red.300" size={["sm", "md"]} color="white">
+              Delete Record
+            </Button>
           </Flex>
 
           <Flex
@@ -124,14 +127,11 @@ const MoreDetails = ({ record, parts }) => {
               <Text>Logs go here</Text>
             </Flex>
 
-            <Flex justifyContent="space-around">
+            <Box>
               <Button bg={blueWhaleLight} color="white" size={["sm", "md"]}>
                 Edit Record
               </Button>
-              <Button bg="red.300" size={["sm", "md"]} color="white">
-                Delete Record
-              </Button>
-            </Flex>
+            </Box>
           </Flex>
 
           <Box m={["45px"]}>

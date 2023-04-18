@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { blueWhaleLight, whitePaper } from "../../assetLibrary/colors";
 import IconFormatter from "../Assets/IconFormatter";
-import ButtonNav from "../Assets/ButtonNav";
+import ButtonNav from "../Buttons/ButtonNav";
 import PartCard from "../PartCard";
 import ModalButton from "../Modals/ModalButton";
 import { ModalType } from "../../enums";
@@ -98,7 +98,11 @@ const AccordionSetup = ({ record, parts }) => {
       <AccordionPanel pb={4} bg={whitePaper} borderRadius="15px" mt="5px">
         <Flex justifyContent="flex-end">
           <Box mr="2%">
-            <ModalButton type={ModalType.ADD_Part} text="Add Part" recordId={record._id} />
+            <ModalButton
+              type={ModalType.ADD_Part}
+              text="Add Part"
+              recordId={record._id}
+            />
           </Box>
 
           <ButtonNav route={`/records/${record._id}`} text="More Details" />
