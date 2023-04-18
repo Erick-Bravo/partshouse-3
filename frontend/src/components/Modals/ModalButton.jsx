@@ -7,14 +7,15 @@ import { ModalType } from "../../enums";
 import AddPartModal from "./Add/AddPartModal";
 import DeletePartModal from "./Delete/DeletePartModal";
 import EditPartshouseModal from "./Edit/EditPartshouseModal";
+import DeleteRecordModal from "./Delete/DeleteRecordModal";
 
-const ModalButton = ({ type, text, recordId, partId, size, ph }) => {
+const ModalButton = ({ type, text, recordId, partId, size, ph, bg }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
       <Button
-        bg={blueWhaleLight}
+        bg={bg ? bg : blueWhaleLight}
         color="white"
         _hover={{ color: "white" }}
         onClick={onOpen}
@@ -37,7 +38,15 @@ const ModalButton = ({ type, text, recordId, partId, size, ph }) => {
 
 export default ModalButton;
 
-const SwitchModal = ({ type, isOpen, onOpen, onClose, recordId, partId, ph }) => {
+const SwitchModal = ({
+  type,
+  isOpen,
+  onOpen,
+  onClose,
+  recordId,
+  partId,
+  ph,
+}) => {
   switch (type) {
     case ModalType.ADD_Partshouse:
       return (
@@ -50,15 +59,21 @@ const SwitchModal = ({ type, isOpen, onOpen, onClose, recordId, partId, ph }) =>
         // Needs recordId for association
         <AddPartModal isOpen={isOpen} onClose={onClose} recordId={recordId} />
       );
+    case ModalType.DELETE_Record:
+      return (
+        <DeleteRecordModal
+          isOpen={isOpen}
+          onClose={onClose}
+          recordId={recordId}
+        />
+      );
     case ModalType.DELETE_Part:
       // Needs partId for deletion
       return (
         <DeletePartModal isOpen={isOpen} onClose={onClose} partId={partId} />
       );
     case ModalType.EDIT_Partshouse:
-      return (
-        <EditPartshouseModal isOpen={isOpen} onClose={onClose} ph={ph} />
-      );
+      return <EditPartshouseModal isOpen={isOpen} onClose={onClose} ph={ph} />;
     default:
   }
 };

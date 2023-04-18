@@ -99,9 +99,7 @@ const MoreDetails = ({ record, parts }) => {
         <>
           <Flex w="100%" justifyContent="space-between">
             <ButtonNav text="Back" route="/" size={["sm", "md"]} />
-            <Button bg="red.300" size={["sm", "md"]} color="white">
-              Delete Record
-            </Button>
+            <ModalButton bg={deleteButton} text="Delete Record" type={ModalType.DELETE_Record} />
           </Flex>
 
           <Flex
