@@ -111,7 +111,14 @@ const deleteRecord = asyncHandler(async (req, res) => {
     throw new Error("User not authorized");
   }
 
+  const parts = await Part.find({recordId: req.params.id})
+
+  parts.forEach(async (part) => {
+    await part.remove()
+  })
+
   await record.remove()
+
   res.status(200).json({message: `Record deleted`, id: req.params.id});
 });
 

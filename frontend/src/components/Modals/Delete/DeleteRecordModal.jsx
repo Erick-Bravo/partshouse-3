@@ -17,18 +17,20 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-// import { deleteRecord } from "../../../features/records/partSlice";
-import Headline from "../../Assets/Headline";
-import { HeadlineType } from "../../../enums";
+import { useNavigate, useParams } from "react-router-dom";
+import { deleteRecord } from "../../../features/records/recordSlice";
 
 const DeleteRecordModal = ({ recordId, isOpen, onClose }) => {
   const [deleteConfirm, setDeleteConfirm] = useState("");
+  const { id } = useParams();
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onSubmit = (e) => {
     e.preventDefault();
-
-    // dispatch(deleteRecord(recordId));
+    dispatch(deleteRecord(id));
+    navigate("/");
     onClose();
   };
 
@@ -40,10 +42,10 @@ const DeleteRecordModal = ({ recordId, isOpen, onClose }) => {
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Record Delete</ModalHeader>
-        <ModalHeader>Deleting this record will also delete ALL associated parts</ModalHeader>
-        <Text p="30px">
-          *To delete record with all associated parts, type "delete" in the box below.
-        </Text>
+        <ModalHeader>
+          Warning: Deleting this record will also delete ALL associated parts
+        </ModalHeader>
+        <Text p="30px">*To delete record, type "delete" in the box below.</Text>
         <ModalCloseButton />
         <ModalBody>
           <FormControl isRequired>
