@@ -9,6 +9,7 @@ import DeletePartModal from "./Delete/DeletePartModal";
 import EditPartshouseModal from "./Edit/EditPartshouseModal";
 import DeleteRecordModal from "./Delete/DeleteRecordModal";
 import EditRecordModal from "./Edit/EditRecordModal";
+import EditPartModal from "./Edit/EditPartModal";
 
 const ModalButton = ({
   type,
@@ -85,6 +86,8 @@ const SwitchModal = ({
       return <EditPartshouseModal isOpen={isOpen} onClose={onClose} ph={ph} />;
     case ModalType.EDIT_Record:
       return <EditRecordModal isOpen={isOpen} onClose={onClose} />;
+    case ModalType.EDIT_Part:
+      return <EditPartModal isOpen={isOpen} onClose={onClose} partId={partId} />;
     default:
   }
 };

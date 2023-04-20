@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-  Box,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -9,11 +8,6 @@ import {
   ModalBody,
   ModalCloseButton,
   Button,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
   FormControl,
   FormLabel,
   FormErrorMessage,
@@ -27,8 +21,6 @@ import { createPart } from "../../../features/parts/partSlice";
 const AddPartModal = ({ recordId, isOpen, onClose }) => {
   const [name, setName] = useState("");
   const [brand, setBrand] = useState("");
-  const [model, setModel] = useState("");
-  const [serial, setSerial] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
   const [reBuyURL, setReBuyURL] = useState("");
@@ -42,8 +34,6 @@ const AddPartModal = ({ recordId, isOpen, onClose }) => {
       createPart({
         name,
         brand,
-        model,
-        serial,
         description,
         price,
         reBuyURL,
@@ -52,8 +42,6 @@ const AddPartModal = ({ recordId, isOpen, onClose }) => {
     );
     setName("");
     setBrand("");
-    setModel("");
-    setSerial("");
     setDescription("");
     setPrice(0);
     setReBuyURL("");
@@ -85,12 +73,12 @@ const AddPartModal = ({ recordId, isOpen, onClose }) => {
               />
               <FormControl />
               <FormControl>
-                <FormLabel>Description</FormLabel>
+                <FormLabel>Brand</FormLabel>
                 <Input
                   type="text"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  placeholder="Description"
+                  value={brand}
+                  onChange={(e) => setBrand(e.target.value)}
+                  placeholder="Brand Name"
                   mb={mbField}
                 />
                 <FormLabel>Price</FormLabel>
@@ -109,54 +97,15 @@ const AddPartModal = ({ recordId, isOpen, onClose }) => {
                   placeholder="URL"
                   mb={mbField}
                 />
+                <FormLabel>Description</FormLabel>
+                <Input
+                  type="text"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  placeholder="Description"
+                  mb={mbField}
+                />
               </FormControl>
-              <Accordion allowMultiple>
-                <AccordionItem>
-                  <h2>
-                    <AccordionButton>
-                      <Box
-                        as="span"
-                        flex="1"
-                        textAlign="left"
-                        fontSize="14px"
-                        fontWeight="bold"
-                        mt="15px"
-                      >
-                        Advanced
-                      </Box>
-                      <AccordionIcon />
-                    </AccordionButton>
-                  </h2>
-                  <AccordionPanel pb={4}>
-                    <FormControl>
-                      <FormLabel>Brand</FormLabel>
-                      <Input
-                        type="text"
-                        value={brand}
-                        onChange={(e) => setBrand(e.target.value)}
-                        placeholder="Brand Name"
-                        mb={mbField}
-                      />
-                      <FormLabel>Model</FormLabel>
-                      <Input
-                        type="Model"
-                        value={model}
-                        onChange={(e) => setModel(e.target.value)}
-                        placeholder="Model #"
-                        mb={mbField}
-                      />
-                      <FormLabel>Serial</FormLabel>
-                      <Input
-                        type="text"
-                        value={serial}
-                        onChange={(e) => setSerial(e.target.value)}
-                        placeholder="Serial #"
-                        mb={mbField}
-                      />
-                    </FormControl>
-                  </AccordionPanel>
-                </AccordionItem>
-              </Accordion>
             </FormControl>
           </ModalBody>
 

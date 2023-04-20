@@ -9,12 +9,6 @@ const partSchema = mongoose.Schema(
     brand: {
       type: String,
     },
-    model: {
-      type: String,
-    },
-    serial: {
-      type: String,
-    },
     price: {
       type: Number,
     },

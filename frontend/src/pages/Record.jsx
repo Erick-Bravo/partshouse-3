@@ -2,13 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../components/Assets/Spinner";
-import {
-  Box,
-  Flex,
-  Text,
-  useDisclosure,
-  Button,
-} from "@chakra-ui/react";
+import { Box, Flex, Text, useDisclosure, Button } from "@chakra-ui/react";
 import ModalButton from "../components/Modals/ModalButton";
 import Headline from "../components/Assets/Headline";
 import { HeadlineType, ModalType } from "../enums";
@@ -27,7 +21,6 @@ import ReBuyLogic from "../components/Buttons/ReBuyLogic";
 import { getRecordParts } from "../features/parts/partSlice";
 
 const Record = () => {
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -196,9 +189,14 @@ const MoreDetails = ({ record, parts }) => {
               w="100%"
               m="10px"
             >
-              <Button bg={blueWhaleLight} color="white" size="sm" mr="5px">
-                Edit Part
-              </Button>
+              <Box mr="5px">
+                <ModalButton
+                  text="Edit Part"
+                  type={ModalType.EDIT_Part}
+                  size="sm"
+                  partId={part._id}
+                />
+              </Box>
               <ModalButton
                 text="Delete"
                 type={ModalType.DELETE_Part}
