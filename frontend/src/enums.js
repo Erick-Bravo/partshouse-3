@@ -3,7 +3,6 @@ export const ModalType = {
     ADD_Record: 'add-record',
     ADD_Part: 'add-part',
     ADD_BuyURL: 'add-buyurl',
-    DELETE_Partshouse: 'delete-partshouse',
     DELETE_Record: 'delete-record',
     DELETE_Part: 'delete-part',
     EDIT_Partshouse: 'edit-partshouse',

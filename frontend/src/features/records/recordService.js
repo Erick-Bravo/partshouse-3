@@ -27,6 +27,19 @@ const getRecord = async (recordId, token) => {
   return response.data;
 };
 
+//Update user Record Page Info
+const updateRecord = async (recordData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.get(API_URL + recordData._id, config);
+
+  return response.data;
+};
+
 //Create New Record
 const createRecord = async (recordData, token) => {
   const config = {
@@ -58,6 +71,7 @@ const recordService = {
   createRecord,
   deleteRecord,
   getRecord,
+  updateRecord,
 };
 
 export default recordService;

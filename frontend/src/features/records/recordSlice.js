@@ -40,6 +40,25 @@ export const getRecord = createAsyncThunk(
 );
 
 // Get user records
+export const updateRecord = createAsyncThunk(
+  "record/update",
+  async (recordData, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await recordService.updateRecord(recordData, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Get user records
 export const deleteRecordPagePart = createAsyncThunk(
   "recordPage/delete",
   async (id, thunkAPI) => {
@@ -148,6 +167,19 @@ export const recordSlice = createSlice({
         state.records = [action.payload]; // GET
       })
       .addCase(getRecord.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = [action.payload];
+      })
+      .addCase(updateRecord.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateRecord.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.records = [action.payload]; // GET
+      })
+      .addCase(updateRecord.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = [action.payload];

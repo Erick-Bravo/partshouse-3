@@ -8,8 +8,17 @@ import AddPartModal from "./Add/AddPartModal";
 import DeletePartModal from "./Delete/DeletePartModal";
 import EditPartshouseModal from "./Edit/EditPartshouseModal";
 import DeleteRecordModal from "./Delete/DeleteRecordModal";
+import EditRecordModal from "./Edit/EditRecordModal";
 
-const ModalButton = ({ type, text, recordId, partId, size, ph, bg }) => {
+const ModalButton = ({
+  type,
+  text,
+  recordId,
+  partId,
+  size,
+  ph,
+  bg,
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -44,6 +53,7 @@ const SwitchModal = ({
   onOpen,
   onClose,
   recordId,
+  record,
   partId,
   ph,
 }) => {
@@ -74,6 +84,8 @@ const SwitchModal = ({
       );
     case ModalType.EDIT_Partshouse:
       return <EditPartshouseModal isOpen={isOpen} onClose={onClose} ph={ph} />;
+    case ModalType.EDIT_Record:
+      return <EditRecordModal isOpen={isOpen} onClose={onClose} />;
     default:
   }
 };

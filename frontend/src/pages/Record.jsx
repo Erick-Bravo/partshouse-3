@@ -6,23 +6,18 @@ import {
   Box,
   Flex,
   Text,
-  IconButton,
-  useColorModeValue,
   useDisclosure,
   Button,
 } from "@chakra-ui/react";
-import Logo from "../components/Assets/Logo";
 import ModalButton from "../components/Modals/ModalButton";
 import Headline from "../components/Assets/Headline";
 import { HeadlineType, ModalType } from "../enums";
-import { FiMenu } from "react-icons/fi";
 import TopUserMenu from "../components/NavInterface/TopUserMenu";
 import {
   bgGrey,
   blueWhale,
   blueWhaleLight,
   deleteButton,
-  toupOrange,
   whitePaper,
 } from "../assetLibrary/colors";
 import { getRecord, reset } from "../features/records/recordSlice";
@@ -32,7 +27,6 @@ import ReBuyLogic from "../components/Buttons/ReBuyLogic";
 import { getRecordParts } from "../features/parts/partSlice";
 
 const Record = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -99,7 +93,11 @@ const MoreDetails = ({ record, parts }) => {
         <>
           <Flex w="100%" justifyContent="space-between">
             <ButtonNav text="Back" route="/" size={["sm", "md"]} />
-            <ModalButton bg={deleteButton} text="Delete Record" type={ModalType.DELETE_Record} />
+            <ModalButton
+              bg={deleteButton}
+              text="Delete Record"
+              type={ModalType.DELETE_Record}
+            />
           </Flex>
 
           <Flex
@@ -126,9 +124,14 @@ const MoreDetails = ({ record, parts }) => {
             </Flex>
 
             <Box>
-              <Button bg={blueWhaleLight} color="white" size={["sm", "md"]}>
+              {/* <Button bg={blueWhaleLight} color="white" size={["sm", "md"]}>
                 Edit Record
-              </Button>
+              </Button> */}
+              <ModalButton
+                text="Edit Record"
+                type={ModalType.EDIT_Record}
+                record={record}
+              />
             </Box>
           </Flex>
 
