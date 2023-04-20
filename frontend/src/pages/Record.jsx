@@ -19,6 +19,7 @@ import ButtonNav from "../components/Buttons/ButtonNav";
 import IconFormatter from "../components/Assets/IconFormatter";
 import ReBuyLogic from "../components/Buttons/ReBuyLogic";
 import { getRecordParts } from "../features/parts/partSlice";
+import { setSelectedPart } from "../app/selectedPart";
 
 const Record = () => {
   const navigate = useNavigate();
@@ -74,6 +75,12 @@ const Record = () => {
 export default Record;
 
 const MoreDetails = ({ record, parts }) => {
+  const dispatch = useDispatch();
+
+  const handlePartClick = (part) => {
+    dispatch(setSelectedPart(part));
+  };
+
   return (
     <Flex
       p={["25px", "35px"]}
@@ -189,7 +196,7 @@ const MoreDetails = ({ record, parts }) => {
               w="100%"
               m="10px"
             >
-              <Box mr="5px">
+              <Box mr="5px" onClick={handlePartClick(part)}>
                 <ModalButton
                   text="Edit Part"
                   type={ModalType.EDIT_Part}

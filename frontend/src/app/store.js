@@ -4,6 +4,7 @@ import phReducer from "../features/partshouse/phSlice";
 import recordReducer from "../features/records/recordSlice";
 import partsReducer from "../features/parts/partSlice";
 import selectedPHReducer from "../app/selectedPH";
+import selectedPart from "../app/selectedPart";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     records: recordReducer,
     parts: partsReducer,
     selectedPH: selectedPHReducer,
+    selectedPart: selectedPart,
   },
 });

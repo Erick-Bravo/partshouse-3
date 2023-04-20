@@ -24,8 +24,18 @@ const EditPartModal = ({ isOpen, onClose }) => {
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState(0);
     const [reBuyURL, setReBuyURL] = useState("");
+
+    const { part } = useSelector((state) => state.selectedPart);
   
     const dispatch = useDispatch();
+
+    useEffect(() => {
+      setName(part.name);
+      setBrand(part.brand);
+      setDescription(part.description);
+      setPrice(part.price);
+      setReBuyURL(part.reBuyURL);
+    }, []);
   
     const onSubmit = (e) => {
       e.preventDefault();
