@@ -40,6 +40,18 @@ const createPart = async (partData, token) => {
   return response.data;
 };
 
+const updatePart = async (partData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.post(API_URL + partData.id, partData, config);
+
+  return response.data;
+};
+
 //Get user Part
 const deletePart = async (partId, token) => {
   const config = {
@@ -58,6 +70,7 @@ const partService = {
   createPart,
   deletePart,
   getRecordParts,
+  updatePart,
 };
 
 export default partService;

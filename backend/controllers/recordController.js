@@ -99,8 +99,6 @@ const updateRecord = asyncHandler(async (req, res) => {
   res.status(200).json(updatedRecord);
 });
 
-
-
 //@desc     Delete Record
 //@route    Delete /api/record/:id
 //@access   Private

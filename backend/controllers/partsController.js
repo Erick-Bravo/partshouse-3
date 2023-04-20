@@ -33,8 +33,6 @@ const createPart = asyncHandler(async (req, res) => {
     name: req.body.name,
     brand: req.body.brand,
     price: req.body.price,
-    model: req.body.model,
-    serial: req.body.serial,
     reBuyURL: req.body.reBuyURL,
     description: req.body.description,
     recordId: req.body.recordId,
