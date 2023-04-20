@@ -97,6 +97,7 @@ const MoreDetails = ({ record, parts }) => {
               bg={deleteButton}
               text="Delete Record"
               type={ModalType.DELETE_Record}
+              size={["sm", "md"]}
             />
           </Flex>
 

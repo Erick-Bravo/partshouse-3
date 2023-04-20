@@ -26,6 +26,7 @@ import { updateRecord } from "../../../features/records/recordSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import { iconList } from "../../Assets/IconFormatter";
+import { getPH } from "../../../features/partshouse/phSlice";
 
 const EditRecordModal = ({ isOpen, onClose }) => {
   const [name, setName] = useState("");
@@ -38,13 +39,18 @@ const EditRecordModal = ({ isOpen, onClose }) => {
 
   const dispatch = useDispatch();
 
+  const { id } = useSelector((state) => state.auth.user);
+  const { ph } = useSelector((state) => state.partshouses);
   const { records } = useSelector(
     (state) => state.records
   );
-
+  
+  
   const record = records[0];
+//   console.log(record.phId);
 
   useEffect(() => {
+    dispatch(getPH());
     setName(record.name);
     setBrand(record.brand);
     setModel(record.model);
@@ -77,8 +83,6 @@ const EditRecordModal = ({ isOpen, onClose }) => {
     setPhId("");
     onClose();
   };
-
-  const { ph } = useSelector((state) => state.partshouses);
 
   const isError = name === "" || icon === "" || phId === "";
 
@@ -141,12 +145,14 @@ const EditRecordModal = ({ isOpen, onClose }) => {
                 placeholder="Select Partshouse"
                 onChange={(e) => setPhId(e.target.value)}
                 mb={mbField}
+                defaultValue={phId}
               >
                 {ph &&
                   ph.map((p) => (
-                    <option value={p._id} key={p._id}>
-                      {p.name}
+                    <option key={p._id} value={p._id}>
+                        {p.name}
                     </option>
+
                   ))}
               </Select>
               <FormControl />
