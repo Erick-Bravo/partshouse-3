@@ -53,7 +53,6 @@ const SwitchModal = ({
   onOpen,
   onClose,
   recordId,
-  record,
   partId,
   ph,
 }) => {

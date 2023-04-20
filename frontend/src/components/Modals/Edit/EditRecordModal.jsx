@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react";
 import {
-    Box,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-    Button,
-    Accordion,
-    AccordionItem,
-    AccordionButton,
-    AccordionPanel,
-    AccordionIcon,
-    FormControl,
-    FormLabel,
-    FormErrorMessage,
-    FormHelperText,
-    Input,
-    Select,
-    IconButton,
+  Box,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Button,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Input,
+  Select,
+  IconButton,
 } from "@chakra-ui/react";
 import { updateRecord } from "../../../features/records/recordSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -39,15 +39,10 @@ const EditRecordModal = ({ isOpen, onClose }) => {
 
   const dispatch = useDispatch();
 
-  const { id } = useSelector((state) => state.auth.user);
   const { ph } = useSelector((state) => state.partshouses);
-  const { records } = useSelector(
-    (state) => state.records
-  );
-  
-  
+  const { records } = useSelector((state) => state.records);
+
   const record = records[0];
-//   console.log(record.phId);
 
   useEffect(() => {
     dispatch(getPH());
@@ -64,6 +59,7 @@ const EditRecordModal = ({ isOpen, onClose }) => {
     e.preventDefault();
 
     const recordData = {
+      id: record._id,
       name,
       brand,
       model,
@@ -150,9 +146,8 @@ const EditRecordModal = ({ isOpen, onClose }) => {
                 {ph &&
                   ph.map((p) => (
                     <option key={p._id} value={p._id}>
-                        {p.name}
+                      {p.name}
                     </option>
-
                   ))}
               </Select>
               <FormControl />

@@ -35,7 +35,7 @@ const updateRecord = async (recordData, token) => {
     },
   };
 
-  const response = await axios.get(API_URL + recordData._id, config);
+  const response = await axios.put(API_URL + recordData.id, recordData ,config);
 
   return response.data;
 };

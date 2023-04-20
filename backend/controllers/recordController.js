@@ -83,7 +83,18 @@ const updateRecord = asyncHandler(async (req, res) => {
     throw new Error("User not authorized");
   }
 
-  const updatedRecord = await Record.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  const recordData = {
+    name: req.body.name,
+    type: req.body.type,
+    brand: req.body.brand,
+    model: req.body.model,
+    serial: req.body.serial,
+    icon: req.body.icon,
+    description: req.body.description,
+    phId: req.body.phId,
+  }
+
+  const updatedRecord = await Record.findByIdAndUpdate(req.params.id, recordData, {new: true})
 
   res.status(200).json(updatedRecord);
 });
