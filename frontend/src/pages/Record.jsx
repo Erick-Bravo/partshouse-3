@@ -13,6 +13,7 @@ import {
   blueWhaleLight,
   deleteButton,
   whitePaper,
+  toupOrange,
 } from "../assetLibrary/colors";
 import { getRecord, reset } from "../features/records/recordSlice";
 import ButtonNav from "../components/Buttons/ButtonNav";
@@ -50,16 +51,31 @@ const Record = () => {
     return <Spinner />;
   }
 
+
+  const goHome = () => {
+    navigate("/");
+  };
+
   return (
     <Flex flexDir="column" w="100%">
       <Flex
         px={{ base: 4, md: 4 }}
         w="100%"
+        h="125px"
         alignItems="center"
         bg={blueWhale}
-        justifyContent={{ base: "space-between", md: "flex-end" }}
+        justifyContent={"space-between"}
         boxShadow="0 2px 8px -5px black"
       >
+        <Text
+          fontSize={["2xl", "3xl"]}
+          fontFamily="monospace"
+          fontWeight="bold"
+          color={toupOrange}
+          onClick={goHome}
+        >
+          Partshouse
+        </Text>
         <TopUserMenu />
       </Flex>
 

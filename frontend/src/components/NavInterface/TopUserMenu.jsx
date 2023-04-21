@@ -42,7 +42,7 @@ const TopUserMenu = () => {
         color="white"
         icon={<FiBell />}
       />
-      <Flex alignItems={"center"}>
+      <Flex alignItems={"center"} justifyContent={["flex-end"]}>
         <Menu>
           <MenuButton
             py={2}
