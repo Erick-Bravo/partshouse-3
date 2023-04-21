@@ -105,7 +105,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         >
           Partshouse
         </Text>
-        <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
+        <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} color={toupOrange} />
       </Flex>
       <NavItem color={toupOrange} fontSize="2xl" onClick={() => goHome()}>
         Dashboard
@@ -176,6 +176,8 @@ const MobileNav = ({ onOpen, ...rest }) => {
         variant="outline"
         aria-label="open menu"
         icon={<FiMenu />}
+        color={toupOrange}
+        borderColor={toupOrange}
       />
 
       <Text
