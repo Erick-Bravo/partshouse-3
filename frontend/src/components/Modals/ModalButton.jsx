@@ -10,6 +10,7 @@ import EditPartshouseModal from "./Edit/EditPartshouseModal";
 import DeleteRecordModal from "./Delete/DeleteRecordModal";
 import EditRecordModal from "./Edit/EditRecordModal";
 import EditPartModal from "./Edit/EditPartModal";
+import AddBuyURLModal from "./Add/AddBuyURLModal";
 
 const ModalButton = ({
   type,
@@ -69,6 +70,10 @@ const SwitchModal = ({
         // Needs recordId for association
         <AddPartModal isOpen={isOpen} onClose={onClose} recordId={recordId} />
       );
+    case ModalType.ADD_BuyURL:
+      return (
+        <AddBuyURLModal isOpen={isOpen} onClose={onClose} partId={partId} />
+      );
     case ModalType.DELETE_Record:
       return (
         <DeleteRecordModal
@@ -87,7 +92,7 @@ const SwitchModal = ({
     case ModalType.EDIT_Record:
       return <EditRecordModal isOpen={isOpen} onClose={onClose} />;
     case ModalType.EDIT_Part:
-      return <EditPartModal isOpen={isOpen} onClose={onClose} partId={partId} />;
+      return <EditPartModal isOpen={isOpen} onClose={onClose} />;
     default:
   }
 };

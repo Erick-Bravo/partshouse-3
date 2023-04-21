@@ -1,6 +1,8 @@
 import { Box, Flex, Button, Link } from "@chakra-ui/react";
 import { blueWhaleLight, toupOrange } from "../../assetLibrary/colors";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
+import { ModalType } from "../../enums";
+import ModalButton from "../Modals/ModalButton";
 
 const ReBuyLogic = ({ part }) => {
   return (
@@ -17,9 +19,13 @@ const ReBuyLogic = ({ part }) => {
           </Button>
         </Link>
       ) : (
-        <Button bg={toupOrange} color="white" _hover={{ color: "white" }}>
-          Add Buy Url
-        </Button>
+        <ModalButton
+          text="Add Buy URL"
+          type={ModalType.ADD_BuyURL}
+          bg={toupOrange}
+          size="sm"
+          partId={part._id}
+        />
       )}
     </Box>
   );

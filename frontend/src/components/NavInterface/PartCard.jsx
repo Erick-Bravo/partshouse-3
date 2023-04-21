@@ -6,7 +6,7 @@ import {
   Heading,
   Stack,
 } from "@chakra-ui/react";
-import ReBuyLogic from "./Buttons/ReBuyLogic";
+import ReBuyLogic from "../Buttons/ReBuyLogic";
 
 const PartCard = ({ part }) => {
   return (
