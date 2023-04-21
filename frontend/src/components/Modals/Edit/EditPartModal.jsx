@@ -42,6 +42,7 @@ const EditPartModal = ({ isOpen, onClose }) => {
   
       dispatch(
         updatePart({
+          id: part._id,
           name,
           brand,
           description,
@@ -90,7 +91,7 @@ const EditPartModal = ({ isOpen, onClose }) => {
                   <FormLabel>Price</FormLabel>
                   <Input
                     type="number"
-                    value={price}
+                    value={price && price}
                     onChange={(e) => setPrice(e.target.value)}
                     placeholder="$"
                     mb={mbField}

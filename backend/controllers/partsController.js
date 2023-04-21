@@ -64,7 +64,15 @@ const updatePart = asyncHandler(async (req, res) => {
     throw new Error("User not authorized");
   }
 
-  const updatedPart = await Part.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  const partData = {
+    name: req.body.name,
+    brand: req.body.brand,
+    price: req.body.price,
+    reBuyURL: req.body.reBuyURL,
+    description: req.body.description
+  }
+
+  const updatedPart = await Part.findByIdAndUpdate(req.params.id, partData, {new: true})
 
   res.status(200).json(updatedPart);
 });

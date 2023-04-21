@@ -47,7 +47,7 @@ const updatePart = async (partData, token) => {
     },
   };
 
-  const response = await axios.post(API_URL + partData.id, partData, config);
+  const response = await axios.put(API_URL + partData.id, partData, config);
 
   return response.data;
 };
