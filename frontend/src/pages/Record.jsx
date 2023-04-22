@@ -81,7 +81,7 @@ const Record = () => {
       <Box bg={bgGrey} overflow="auto">
         {records && <MoreDetails record={records[0]} parts={parts} />}
         {/* Do not delete */}
-        <Box h="350px"></Box>
+        {/* <Box h="350px"></Box> */}
       </Box>
     </Flex>
   );
@@ -101,7 +101,6 @@ const MoreDetails = ({ record, parts }) => {
       p={["25px", "35px"]}
       flexDir="column"
       alignItems="center"
-      h="120%"
       mb="150px" //{/* Do not delete */}
     >
       {record && (
@@ -123,26 +122,25 @@ const MoreDetails = ({ record, parts }) => {
             maxW="800px"
             minH="400px"
             w="100%"
+            h="100%"
             bg={whitePaper}
             flexDir="column"
+            justifyContent="space-between"
           >
             <Box>
               <IconFormatter icon={record.icon} size="10" />
               <Headline text={record.name} type={HeadlineType.Two} />
-            </Box>
-
             <Text fontWeight="bold">Brand: {record.brand}</Text>
             <Text>Model: {record.model}</Text>
             <Text>Serial: {record.serial}</Text>
+            </Box>
+
 
             <Flex justifyContent="center" alignItems="center" h="100%">
               <Text>Logs go here</Text>
             </Flex>
 
             <Box>
-              {/* <Button bg={blueWhaleLight} color="white" size={["sm", "md"]}>
-                Edit Record
-              </Button> */}
               <ModalButton
                 text="Edit Record"
                 type={ModalType.EDIT_Record}
@@ -166,6 +164,7 @@ const MoreDetails = ({ record, parts }) => {
           <Flex
             key={part._id}
             w="100%"
+            mb="40px"
             maxW="500px"
             justifyContent="center"
             alignItems="center"
