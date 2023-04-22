@@ -21,7 +21,8 @@ import {
   blueWhaleLight,
 } from "../assetLibrary/colors";
 import ButtonNav from "../components/Buttons/ButtonNav";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { createFeedback } from "../features/feedback/feedbackSlice";
 
 const LeaveFeedback = () => {
   const navigate = useNavigate();
@@ -66,22 +67,21 @@ const FeedbackSection = () => {
   const [feedback, setFeedback] = useState("");
   const [iconSuggestion, setIconSuggestion] = useState("");
 
-  const {email} = useSelector(state => state.auth.user)
+  const { email } = useSelector((state) => state.auth.user);
+
+  const dispatch = useDispatch();
 
   const onSubmit = () => {
     const feedbackData = {
-        feedback,
-        iconSuggestion
-    }
+      email,
+      feedback,
+      iconSuggestion,
+    };
+    dispatch(createFeedback(feedbackData));
   };
 
   return (
-    <Flex
-      flexDir="column"
-      alignItems="center"
-      p={["25px", "35px"]}
-      w="100%"
-    >
+    <Flex flexDir="column" alignItems="center" p={["25px", "35px"]} w="100%">
       <Flex justifyContent="flex-start" w="100%">
         <ButtonNav text="Back" route="/" size={["sm", "md"]} />
       </Flex>
@@ -96,7 +96,7 @@ const FeedbackSection = () => {
       >
         <Headline type={HeadlineType.One} text="Leave Feedback" />
         <Text>
-          By leaving feedback, you become a contributor in the growth of this
+          By leaving feedback, you become a contributor to the growth of this
           app.
         </Text>
         <Text>Thank you</Text>
@@ -120,7 +120,7 @@ const FeedbackSection = () => {
           </FormControl>
 
           <Flex justifyContent="flex-end" mt="20px">
-            <Button colorScheme="blue" mr={3} onClick={onSubmit} >
+            <Button colorScheme="blue" mr={3} onClick={onSubmit}>
               Create
             </Button>
           </Flex>
