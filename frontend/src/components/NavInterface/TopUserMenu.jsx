@@ -33,6 +33,10 @@ const TopUserMenu = () => {
     navigate("/editpartshouses");
   };
 
+  const goToLeaveFeedback = () => {
+    navigate("/leavefeedback");
+  };
+
   return (
     <HStack spacing={{ base: "4", md: "6" }}>
       <IconButton
@@ -80,7 +84,7 @@ const TopUserMenu = () => {
             <MenuItem>Profile</MenuItem>
             <MenuItem onClick={goToEditPartshouse}>Edit Partshouses</MenuItem>
             <MenuDivider />
-            <MenuItem>Leave Feedback</MenuItem>
+            <MenuItem onClick={goToLeaveFeedback}>Leave Feedback</MenuItem>
             <MenuDivider />
             <MenuItem onClick={onLogout}>Log out</MenuItem>
           </MenuList>

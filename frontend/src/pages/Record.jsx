@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../components/Assets/Spinner";
-import { Box, Flex, Text, useDisclosure, Button } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import ModalButton from "../components/Modals/ModalButton";
 import Headline from "../components/Assets/Headline";
 import { HeadlineType, ModalType } from "../enums";
@@ -10,12 +10,11 @@ import TopUserMenu from "../components/NavInterface/TopUserMenu";
 import {
   bgGrey,
   blueWhale,
-  blueWhaleLight,
   deleteButton,
   whitePaper,
   toupOrange,
 } from "../assetLibrary/colors";
-import { getRecord, reset } from "../features/records/recordSlice";
+import { getRecord } from "../features/records/recordSlice";
 import ButtonNav from "../components/Buttons/ButtonNav";
 import IconFormatter from "../components/Assets/IconFormatter";
 import ReBuyLogic from "../components/Buttons/ReBuyLogic";
