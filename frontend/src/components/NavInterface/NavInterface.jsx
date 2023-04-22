@@ -187,6 +187,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
         fontWeight="bold"
         color={toupOrange}
         onClick={goHome}
+        pl={["6.5%"]}
       >
         Partshouse
       </Text>

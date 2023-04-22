@@ -34,7 +34,7 @@ const TopUserMenu = () => {
   };
 
   return (
-    <HStack spacing={{ base: "0", md: "6" }}>
+    <HStack spacing={{ base: "4", md: "6" }}>
       <IconButton
         size="lg"
         variant="ghost"
