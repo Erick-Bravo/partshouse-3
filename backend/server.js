@@ -17,6 +17,7 @@ app.use("/api/partshouse", require("./routes/phRoutes"));
 app.use("/api/records", require("./routes/recordRoutes"));
 app.use("/api/parts", require("./routes/partRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/feedback", require("./routes/feedbackRoutes"));
 
 
 //Serve frontend

@@ -21,6 +21,7 @@ import {
   blueWhaleLight,
 } from "../assetLibrary/colors";
 import ButtonNav from "../components/Buttons/ButtonNav";
+import { useSelector } from "react-redux";
 
 const LeaveFeedback = () => {
   const navigate = useNavigate();
@@ -65,9 +66,13 @@ const FeedbackSection = () => {
   const [feedback, setFeedback] = useState("");
   const [iconSuggestion, setIconSuggestion] = useState("");
 
+  const {email} = useSelector(state => state.auth.user)
+
   const onSubmit = () => {
-    setFeedback("");
-    setIconSuggestion("");
+    const feedbackData = {
+        feedback,
+        iconSuggestion
+    }
   };
 
   return (
