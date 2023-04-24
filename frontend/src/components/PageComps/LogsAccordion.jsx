@@ -9,6 +9,8 @@ import {
   Flex,
   Text,
 } from "@chakra-ui/react";
+import ModalButton from "../Buttons/ModalButton";
+import { ModalType } from "../../enums";
 
 const LogsAccordion = () => {
   const logs = [
@@ -47,6 +49,7 @@ const LogsAccordion = () => {
         </h2>
         <AccordionPanel pb={4} w={["100%", "100%", "600px"]} textAlign="left">
           <Flex justifyContent="flex-end" m="25px 0">
+            <ModalButton text="Add Log" size="sm" bg="gray.200" color="black" type={ModalType.ADD_Log} />
             <Button size="sm">Add Log</Button>
           </Flex>
           {logs.length === 0 && (

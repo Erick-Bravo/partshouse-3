@@ -11,15 +11,16 @@ import DeleteRecordModal from "../Modals/Delete/DeleteRecordModal";
 import EditRecordModal from "../Modals/Edit/EditRecordModal";
 import EditPartModal from "../Modals/Edit/EditPartModal";
 import AddBuyURLModal from "../Modals/Add/AddBuyURLModal";
+import AddLogModal from "../Modals/Add/AddLogModal";
 
-const ModalButton = ({ type, text, recordId, partId, size, ph, bg }) => {
+const ModalButton = ({ type, text, recordId, partId, size, ph, bg, color }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
       <Button
         bg={bg ? bg : blueWhaleLight}
-        color="white"
+        color={color ? color : "white"}
         _hover={{ color: "white" }}
         onClick={onOpen}
         size={size ? size : "md"}
@@ -65,6 +66,10 @@ const SwitchModal = ({
     case ModalType.ADD_BuyURL:
       return (
         <AddBuyURLModal isOpen={isOpen} onClose={onClose} partId={partId} />
+      );
+    case ModalType.ADD_Log:
+      return (
+        <AddLogModal isOpen={isOpen} onClose={onClose} recordId={recordId} />
       );
     case ModalType.DELETE_Record:
       return (

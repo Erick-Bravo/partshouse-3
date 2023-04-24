@@ -11,38 +11,33 @@ import {
   FormControl,
   FormLabel,
   Input,
+  Text
 } from "@chakra-ui/react";
-import { updatePart } from "../../../features/parts/partSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { createRecordLog } from "../../../features/recordLogs/recordLogsSlice";
+import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-const AddBuyURLModal = ({ isOpen, onClose, partId }) => {
-  const [name, setName] = useState("");
-  const [reBuyURL, setReBuyURL] = useState("");
+const AddLogModal = ({ isOpen, onClose }) => { 
+  const [log, setLog] = useState("");
 
-  const { parts } = useSelector((state) => state.parts);
-  const part = parts.find((part) => part._id === partId);
+  const {id} = useParams();
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    setName(part.name);
-  }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     dispatch(
-      updatePart({
-        id: part._id,
-        reBuyURL,
+      createRecordLog({
+        log,
+        recordId: id,
       })
     );
-    setName("");
-    setReBuyURL("");
+    setLog("");
     onClose();
   };
 
-  const isError = name === "";
+  const isError = log === "";
 
   const mbField = "15px";
   return (
@@ -50,17 +45,17 @@ const AddBuyURLModal = ({ isOpen, onClose, partId }) => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Update Part</ModalHeader>
-          <ModalHeader>{part.name}</ModalHeader>
+          <ModalHeader>Add Log</ModalHeader>
+          <Text textAlign="center">Date will be added automatically</Text>
           <ModalCloseButton />
           <ModalBody>
             <FormControl>
-              <FormLabel>Re-Purchase URL</FormLabel>
+              <FormLabel>Log</FormLabel>
               <Input
                 type="text"
-                value={reBuyURL}
-                onChange={(e) => setReBuyURL(e.target.value)}
-                placeholder="URL"
+                value={log}
+                onChange={(e) => setLog(e.target.value)}
+                placeholder="ex: changed filter, added oil, etc."
                 mb={mbField}
               />
             </FormControl>
@@ -73,7 +68,7 @@ const AddBuyURLModal = ({ isOpen, onClose, partId }) => {
               mr={3}
               onClick={onSubmit}
             >
-              Update
+              Add
             </Button>
           </ModalFooter>
         </ModalContent>
@@ -82,4 +77,4 @@ const AddBuyURLModal = ({ isOpen, onClose, partId }) => {
   );
 };
 
-export default AddBuyURLModal;
+export default AddLogModal;
