@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../components/Assets/Spinner";
 import { Box, Flex, Text } from "@chakra-ui/react";
-import ModalButton from "../components/Modals/ModalButton";
+import ModalButton from "../components/Buttons/ModalButton";
 import Headline from "../components/Assets/Headline";
 import { HeadlineType, ModalType } from "../enums";
 import TopUserMenu from "../components/NavInterface/TopUserMenu";
@@ -20,6 +20,7 @@ import IconFormatter from "../components/Assets/IconFormatter";
 import ReBuyLogic from "../components/Buttons/ReBuyLogic";
 import { getRecordParts } from "../features/parts/partSlice";
 import { setSelectedPart } from "../app/selectedPart";
+import LogsAccordion from "../components/PageComps/LogsAccordion";
 
 const Record = () => {
   const navigate = useNavigate();
@@ -49,7 +50,6 @@ const Record = () => {
   if (isLoading) {
     return <Spinner />;
   }
-
 
   const goHome = () => {
     navigate("/");
@@ -130,14 +130,13 @@ const MoreDetails = ({ record, parts }) => {
             <Box>
               <IconFormatter icon={record.icon} size="10" />
               <Headline text={record.name} type={HeadlineType.Two} />
-            <Text fontWeight="bold">Brand: {record.brand}</Text>
-            <Text>Model: {record.model}</Text>
-            <Text>Serial: {record.serial}</Text>
+              <Text fontWeight="bold">Brand: {record.brand}</Text>
+              <Text>Model: {record.model}</Text>
+              <Text>Serial: {record.serial}</Text>
             </Box>
 
-
             <Flex justifyContent="center" alignItems="center" h="100%">
-              <Text>Logs go here</Text>
+              <LogsAccordion />
             </Flex>
 
             <Box>

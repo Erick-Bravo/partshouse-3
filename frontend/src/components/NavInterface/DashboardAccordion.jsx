@@ -12,7 +12,7 @@ import { blueWhaleLight, whitePaper } from "../../assetLibrary/colors";
 import IconFormatter from "../Assets/IconFormatter";
 import ButtonNav from "../Buttons/ButtonNav";
 import PartCard from "./PartCard";
-import ModalButton from "../Modals/ModalButton";
+import ModalButton from "../Buttons/ModalButton";
 import { ModalType } from "../../enums";
 
 const DashboardAccordion = ({ records, parts, selected }) => {

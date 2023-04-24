@@ -8,7 +8,7 @@ import { Box, Text, Flex, Button } from "@chakra-ui/react";
 import { whitePaper } from "../assetLibrary/colors";
 import NavInterface from "../components/NavInterface/NavInterface";
 import { deletePH } from "../features/partshouse/phSlice";
-import ModalButton from "../components/Modals/ModalButton";
+import ModalButton from "../components/Buttons/ModalButton";
 import { ModalType } from "../enums";
 import { getRecords } from "../features/records/recordSlice";
 

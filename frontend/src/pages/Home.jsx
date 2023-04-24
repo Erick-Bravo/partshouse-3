@@ -6,7 +6,7 @@ import { getPH, reset } from "../features/partshouse/phSlice";
 import { Box, Flex, Text } from "@chakra-ui/react";
 import NavInterface from "../components/NavInterface/NavInterface";
 import Logo from "../components/Assets/Logo";
-import ModalButton from "../components/Modals/ModalButton";
+import ModalButton from "../components/Buttons/ModalButton";
 import DashboardAccordion from "../components/NavInterface/DashboardAccordion";
 import Headline from "../components/Assets/Headline";
 import { getRecords } from "../features/records/recordSlice";

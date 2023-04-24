@@ -2,7 +2,7 @@ import { Box, Flex, Button, Link } from "@chakra-ui/react";
 import { blueWhaleLight, toupOrange } from "../../assetLibrary/colors";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { ModalType } from "../../enums";
-import ModalButton from "../Modals/ModalButton";
+import ModalButton from "./ModalButton";
 
 const ReBuyLogic = ({ part }) => {
   return (

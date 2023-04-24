@@ -1,26 +1,18 @@
 import { Button, useDisclosure } from "@chakra-ui/react";
 import React from "react";
-import AddPartshouseModal from "./Add/AddPartshouseModal";
+import AddPartshouseModal from "../Modals/Add/AddPartshouseModal";
 import { blueWhaleLight } from "../../assetLibrary/colors";
-import AddRecordModal from "./Add/AddRecordModal";
+import AddRecordModal from "../Modals/Add/AddRecordModal";
 import { ModalType } from "../../enums";
-import AddPartModal from "./Add/AddPartModal";
-import DeletePartModal from "./Delete/DeletePartModal";
-import EditPartshouseModal from "./Edit/EditPartshouseModal";
-import DeleteRecordModal from "./Delete/DeleteRecordModal";
-import EditRecordModal from "./Edit/EditRecordModal";
-import EditPartModal from "./Edit/EditPartModal";
-import AddBuyURLModal from "./Add/AddBuyURLModal";
+import AddPartModal from "../Modals/Add/AddPartModal";
+import DeletePartModal from "../Modals/Delete/DeletePartModal";
+import EditPartshouseModal from "../Modals/Edit/EditPartshouseModal";
+import DeleteRecordModal from "../Modals/Delete/DeleteRecordModal";
+import EditRecordModal from "../Modals/Edit/EditRecordModal";
+import EditPartModal from "../Modals/Edit/EditPartModal";
+import AddBuyURLModal from "../Modals/Add/AddBuyURLModal";
 
-const ModalButton = ({
-  type,
-  text,
-  recordId,
-  partId,
-  size,
-  ph,
-  bg,
-}) => {
+const ModalButton = ({ type, text, recordId, partId, size, ph, bg }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
