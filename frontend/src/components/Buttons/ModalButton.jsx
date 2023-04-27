@@ -21,7 +21,7 @@ const ModalButton = ({ type, text, recordId, partId, size, ph, bg, color }) => {
       <Button
         bg={bg ? bg : blueWhaleLight}
         color={color ? color : "white"}
-        _hover={{ color: "white" }}
+        _hover={{ color: color ? color : "white" }}
         onClick={onOpen}
         size={size ? size : "md"}
       >

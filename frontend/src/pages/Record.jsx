@@ -21,6 +21,7 @@ import ReBuyLogic from "../components/Buttons/ReBuyLogic";
 import { getRecordParts } from "../features/parts/partSlice";
 import { setSelectedPart } from "../app/selectedPart";
 import LogsAccordion from "../components/PageComps/LogsAccordion";
+import { getRecordLogs } from "../features/recordLogs/recordLogsSlice";
 
 const Record = () => {
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ const Record = () => {
       navigate("/login");
     } else {
       dispatch(getRecord(id));
+      dispatch(getRecordLogs(id))
       dispatch(getRecordParts(id));
     }
 

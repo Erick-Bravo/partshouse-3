@@ -1,7 +1,7 @@
 import axios from "axios";
 const API_URL = "/api/recordlogs/";
 
-const getRecordLogs = async (token) => {
+const getRecordLogs = async (id, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
