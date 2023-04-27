@@ -3,7 +3,7 @@ const asyncHandler = require("express-async-handler");
 const Record_Logs = require("../model/recordLogsModel");
 
 const getRecord_Logs = asyncHandler(async (req, res) => {
-  const record_logs = await Record_Logs.find({ recordId: req.body.recordId });
+  const record_logs = await Record_Logs.find({ recordId: req.params.id });
 
   res.status(200).json(record_logs);
 });

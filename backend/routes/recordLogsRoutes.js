@@ -8,7 +8,7 @@ const {
 } = require("../controllers/recordLogController");
 
 
-router.route("/").get(getRecord_Logs).post(createRecord_log);
-router.route("/:id").delete(deleteRecord_Log);
+router.route("/").post(createRecord_log);
+router.route("/:id").delete(deleteRecord_Log).get(getRecord_Logs);
 
 module.exports = router;

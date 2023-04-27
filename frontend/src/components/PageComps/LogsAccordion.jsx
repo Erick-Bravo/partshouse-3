@@ -11,30 +11,17 @@ import {
 } from "@chakra-ui/react";
 import ModalButton from "../Buttons/ModalButton";
 import { ModalType } from "../../enums";
+import { useSelector } from "react-redux";
 
 const LogsAccordion = () => {
-  const logs = [
-    {
-      date: "Dec 28th, 2023",
-      log: "Bacon ipsum dolor amet filet mignon laboris ut non nisi eiusmod biltong elit ea irure id. Salami chislic pig quis minim sint eiusmod chuck cow sunt excepteur nisi pork loin. ",
-    },
-    {
-      date: "Dec 28th, 2023",
-      log: "Bacon ipsum dolor amet filet mignon laboris ut non nisi eiusmod biltong elit ea irure id. Salami chislic pig quis minim sint eiusmod chuck cow sunt excepteur nisi pork loin. ",
-    },
-    {
-      date: "Dec 28th, 2023",
-      log: "Bacon ipsum dolor amet filet mignon laboris ut non nisi eiusmod biltong elit ea irure id. Salami chislic pig quis minim sint eiusmod chuck cow sunt excepteur nisi pork loin. ",
-    },
-    {
-      date: "Dec 28th, 2023",
-      log: "Bacon ipsum dolor amet filet mignon laboris ut non nisi eiusmod biltong elit ea irure id. Salami chislic pig quis minim sint eiusmod chuck cow sunt excepteur nisi pork loin. ",
-    },
-    {
-      date: "Dec 28th, 2023",
-      log: "Bacon ipsum dolor amet filet mignon laboris ut non nisi eiusmod biltong elit ea irure id. Salami chislic pig quis minim sint eiusmod chuck cow sunt excepteur nisi pork loin. ",
-    },
-  ];
+
+  const { logs } = useSelector((state) => state.recordLogs);
+
+  const f = new Intl.DateTimeFormat("en", {
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
+  });
 
   return (
     <Accordion allowMultiple m="20px 0">
@@ -49,7 +36,13 @@ const LogsAccordion = () => {
         </h2>
         <AccordionPanel pb={4} w={["100%", "100%", "600px"]} textAlign="left">
           <Flex justifyContent="flex-end" m="25px 0">
-            <ModalButton text="Add Log" size="sm" bg="gray.200" color="black" type={ModalType.ADD_Log} />
+            <ModalButton
+              text="Add Log"
+              size="sm"
+              bg="gray.200"
+              color="black"
+              type={ModalType.ADD_Log}
+            />
           </Flex>
           {logs.length === 0 && (
             <Text fontSize="sm" textAlign="center">
@@ -62,7 +55,7 @@ const LogsAccordion = () => {
               return (
                 <Box key={i} mb="20px">
                   <Text fontSize="sm" fontWeight="bold">
-                    {log.date}
+                    {f.format(new Date(log.createdAt))}
                   </Text>
                   <Text fontSize="sm">{log.log}</Text>
                 </Box>

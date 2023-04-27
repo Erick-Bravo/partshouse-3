@@ -42,12 +42,12 @@ const Record = () => {
       navigate("/login");
     } else {
       dispatch(getRecord(id));
-      dispatch(getRecordLogs(id))
+      dispatch(getRecordLogs(id));
       dispatch(getRecordParts(id));
     }
 
     return () => {};
-  }, [user, navigate, dispatch]);
+  }, [user, navigate, id]);
 
   if (isLoading) {
     return <Spinner />;
@@ -55,6 +55,10 @@ const Record = () => {
 
   const goHome = () => {
     navigate("/");
+  };
+
+  const handlePartClick = (part) => {
+    dispatch(setSelectedPart(part));
   };
 
   return (
@@ -81,9 +85,12 @@ const Record = () => {
       </Flex>
 
       <Box bg={bgGrey} overflow="auto">
-        {records && <MoreDetails record={records[0]} parts={parts} />}
-        {/* Do not delete */}
-        {/* <Box h="350px"></Box> */}
+        {records.length > 0 && (
+          <MoreDetails
+            record={records[0]}
+            parts={parts}
+          />
+        )}
       </Box>
     </Flex>
   );
@@ -99,66 +106,57 @@ const MoreDetails = ({ record, parts }) => {
   };
 
   return (
-    <Flex
-      p={["25px", "35px"]}
-      flexDir="column"
-      alignItems="center"
-      mb="150px" //{/* Do not delete */}
-    >
-      {record && (
-        <>
-          <Flex w="100%" justifyContent="space-between">
-            <ButtonNav text="Back" route="/" size={["sm", "md"]} />
-            <ModalButton
-              bg={deleteButton}
-              text="Delete Record"
-              type={ModalType.DELETE_Record}
-              size={["sm", "md"]}
-            />
-          </Flex>
+    <Flex p={["25px", "35px"]} flexDir="column" alignItems="center" mb="150px">
+      <Flex w="100%" justifyContent="space-between">
+        <ButtonNav text="Back" route="/" size={["sm", "md"]} />
+        <ModalButton
+          bg={deleteButton}
+          text="Delete Record"
+          type={ModalType.DELETE_Record}
+          size={["sm", "md"]}
+        />
+      </Flex>
 
-          <Flex
-            borderRadius="15px"
-            p={["25px"]}
-            mt="35px"
-            maxW="800px"
-            minH="400px"
-            w="100%"
-            h="100%"
-            bg={whitePaper}
-            flexDir="column"
-            justifyContent="space-between"
-          >
-            <Box>
-              <IconFormatter icon={record.icon} size="10" />
-              <Headline text={record.name} type={HeadlineType.Two} />
-              <Text fontWeight="bold">Brand: {record.brand}</Text>
-              <Text>Model: {record.model}</Text>
-              <Text>Serial: {record.serial}</Text>
-            </Box>
+      <Flex
+        borderRadius="15px"
+        p={["25px"]}
+        mt="35px"
+        maxW="800px"
+        minH="400px"
+        w="100%"
+        h="100%"
+        bg={whitePaper}
+        flexDir="column"
+        justifyContent="space-between"
+      >
+        <Box>
+          <IconFormatter icon={record.icon} size="10" />
+          <Headline text={record.name} type={HeadlineType.Two} />
+          <Text fontWeight="bold">Brand: {record.brand}</Text>
+          <Text>Model: {record.model}</Text>
+          <Text>Serial: {record.serial}</Text>
+        </Box>
 
-            <Flex justifyContent="center" alignItems="center" h="100%">
-              <LogsAccordion />
-            </Flex>
+        <Flex justifyContent="center" alignItems="center" h="100%">
+          <LogsAccordion />
+        </Flex>
 
-            <Box>
-              <ModalButton
-                text="Edit Record"
-                type={ModalType.EDIT_Record}
-                record={record}
-              />
-            </Box>
-          </Flex>
+        <Box>
+          <ModalButton
+            text="Edit Record"
+            type={ModalType.EDIT_Record}
+            record={record}
+          />
+        </Box>
+      </Flex>
 
-          <Box m={["45px"]}>
-            <ModalButton
-              type={ModalType.ADD_Part}
-              text="Add Part"
-              recordId={record._id}
-            />
-          </Box>
-        </>
-      )}
+      <Box m={["45px"]}>
+        <ModalButton
+          type={ModalType.ADD_Part}
+          text="Add Part"
+          recordId={record._id}
+        />
+      </Box>
 
       {parts &&
         parts.map((part) => (
@@ -211,7 +209,7 @@ const MoreDetails = ({ record, parts }) => {
               w="100%"
               m="10px"
             >
-              <Box mr="5px" onClick={handlePartClick(part)}>
+              <Box mr="5px" onClick={() => handlePartClick(part)}>
                 <ModalButton
                   text="Edit Part"
                   type={ModalType.EDIT_Part}

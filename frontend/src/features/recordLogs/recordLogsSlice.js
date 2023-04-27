@@ -2,11 +2,11 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import recordLogService from "./recordLogsService";
 
 export const getRecordLogs = createAsyncThunk(
-  "record_logs/getAll",
-  async (_, thunkAPI) => {
+  "record_logs/getAllBy_recordId",
+  async (data, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await recordLogService.getRecordLogs(token);
+      return await recordLogService.getRecordLogs(data, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -72,31 +72,33 @@ export const recordLogSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(createRecordLog.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(createRecordLog.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
-        state.logs.push(action.payload);
-      })
-      .addCase(createRecordLog.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload; // Only when rejected??
-      })
       .addCase(getRecordLogs.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(getRecordLogs.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.logs = action.payload; // GET
+        action.payload.forEach((log) => {
+          state.logs.unshift(log);
+        });
       })
       .addCase(getRecordLogs.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
+      })
+      .addCase(createRecordLog.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(createRecordLog.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.logs.unshift(action.payload);
+      })
+      .addCase(createRecordLog.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload; // Only when rejected??
       })
       .addCase(deleteRecordLog.pending, (state) => {
         state.isLoading = true;
