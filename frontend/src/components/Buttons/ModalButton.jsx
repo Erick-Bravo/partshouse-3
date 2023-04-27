@@ -12,6 +12,7 @@ import EditRecordModal from "../Modals/Edit/EditRecordModal";
 import EditPartModal from "../Modals/Edit/EditPartModal";
 import AddBuyURLModal from "../Modals/Add/AddBuyURLModal";
 import AddLogModal from "../Modals/Add/AddLogModal";
+import ShowAllLogsModal from "../Modals/Show/ShowAllLogsModal";
 
 const ModalButton = ({ type, text, recordId, partId, size, ph, bg, color }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -90,6 +91,8 @@ const SwitchModal = ({
       return <EditRecordModal isOpen={isOpen} onClose={onClose} />;
     case ModalType.EDIT_Part:
       return <EditPartModal isOpen={isOpen} onClose={onClose} />;
+    case ModalType.SHOW_AllLogs:
+      return <ShowAllLogsModal isOpen={isOpen} onClose={onClose} />;
     default:
   }
 };

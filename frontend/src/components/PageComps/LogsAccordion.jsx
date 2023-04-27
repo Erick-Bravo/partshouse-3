@@ -14,7 +14,6 @@ import { ModalType } from "../../enums";
 import { useSelector } from "react-redux";
 
 const LogsAccordion = () => {
-
   const { logs } = useSelector((state) => state.recordLogs);
 
   const f = new Intl.DateTimeFormat("en", {
@@ -63,7 +62,13 @@ const LogsAccordion = () => {
           })}
           {logs.length > 4 && (
             <Flex justifyContent="flex-end" m="35px 0">
-              <Button size="sm">See All Logs</Button>
+              <ModalButton
+                size="sm"
+                text="Show All Logs"
+                type={ModalType.SHOW_AllLogs}
+                bg="gray.200"
+                color="black"
+              />
             </Flex>
           )}
         </AccordionPanel>
