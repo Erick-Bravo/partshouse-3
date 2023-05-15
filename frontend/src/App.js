@@ -10,6 +10,7 @@ import { blueWhale } from "./assetLibrary/colors";
 import EditPartshouses from "./pages/EditPartshouses";
 import Record from "./pages/Record";
 import LeaveFeedback from "./pages/LeaveFeedback";
+import Profile from "./pages/Profile";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
               <Route path="/editpartshouses" element={<EditPartshouses />} />
               <Route path="/records/:id" element={<Record />} />
               <Route path="/leavefeedback" element={<LeaveFeedback />} />
+              <Route path="/profile" element={<Profile />} />
             </Routes>
           </Flex>
         </Box>

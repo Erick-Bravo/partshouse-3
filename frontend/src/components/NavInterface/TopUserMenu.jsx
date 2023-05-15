@@ -37,6 +37,10 @@ const TopUserMenu = () => {
     navigate("/leavefeedback");
   };
 
+  const goToProfile = () => {
+    navigate("/profile");
+  };
+
   return (
     <HStack spacing={{ base: "4", md: "6" }}>
       <IconButton
@@ -81,7 +85,7 @@ const TopUserMenu = () => {
             bg={useColorModeValue("white", "gray.900")}
             borderColor={useColorModeValue("gray.200", "gray.700")}
           >
-            <MenuItem>Profile</MenuItem>
+            <MenuItem onClick={goToProfile}>Profile</MenuItem>
             <MenuItem onClick={goToEditPartshouse}>Edit Partshouses</MenuItem>
             <MenuDivider />
             <MenuItem onClick={goToLeaveFeedback}>Leave Feedback</MenuItem>
