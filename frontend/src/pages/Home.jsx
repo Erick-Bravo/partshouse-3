@@ -49,7 +49,6 @@ const Home = () => {
   }
 
   return (
-    <>
       <NavInterface>
         <Flex justifyContent="center" alignItems="center">
           {/* Partshouses available, but none selected */}
@@ -116,7 +115,6 @@ const Home = () => {
           )}
         </Flex>
       </NavInterface>
-    </>
   );
 };
 
