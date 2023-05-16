@@ -4,24 +4,33 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { register, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Assets/Spinner";
-import { Flex, Text } from "@chakra-ui/react";
 import {
+  Flex,
+  Text,
+  FormControl,
+  FormLabel,
+  Input,
+  Box,
+  Button,
+  UnorderedList,
+  ListItem,
+} from "@chakra-ui/react";
+import {
+  blueWhaleLight,
   primary,
   primary2,
   toupOrange,
+  whitePaper,
   whiteText,
 } from "../assetLibrary/colors";
 import Logo from "../components/Assets/Logo";
+import { HeadlineType } from "../enums";
 
 const Register = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    password2: "",
-  });
-
-  const { name, email, password, password2 } = formData;
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
+  const [ok, setOk] = useState(true);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -41,27 +50,44 @@ const Register = () => {
     }
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 
-  const onChange = (e) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
   const onSubmit = (e) => {
     e.preventDefault();
-
+    if (password.length < 6) {
+      toast.error("Password must be at least 6 characters");
+      return;
+    }
+    if (!containsValidCharacters(password)) {
+      toast.error(
+        "Password must contain only letters, numbers, and special characters"
+      );
+      return;
+    }
+    if (!containsUpperCaseAndSymbol(password)) {
+      toast.error(
+        "Password must contain at least one uppercase letter and one special character"
+      );
+      return;
+    }
     if (password !== password2) {
       toast.error("Passwords do not match");
     } else {
       const userData = {
-        name,
         email,
         password,
       };
 
       dispatch(register(userData));
     }
+  };
+
+  const containsValidCharacters = (str) => {
+    const regex = /^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/;
+    return regex.test(str);
+  };
+
+  const containsUpperCaseAndSymbol = (str) => {
+    const regex = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).*$/;
+    return regex.test(str);
   };
 
   if (isLoading) {
@@ -80,68 +106,70 @@ const Register = () => {
       >
         <section className="heading">
           <Text color={primary}>Register</Text>
-          <Text color={whiteText} fontSize="20px">
+          <Text color={whiteText} fontSize="20px" mb="20px">
             Please create an account
           </Text>
+          <Flex justifyContent="center">
+            <UnorderedList w="300px" textAlign="left" pl="5%">
+              <Text color={whiteText} fontSize="15px" as={null}>
+                Password must contain:
+              </Text>
+              <ListItem color={whiteText} fontSize="15px">
+                At least 6 characters
+              </ListItem>
+              <ListItem color={whiteText} fontSize="15px">
+                At least one uppercase letter
+              </ListItem>
+              <ListItem color={whiteText} fontSize="15px">
+                At least one special character
+              </ListItem>
+            </UnorderedList>
+          </Flex>
         </section>
-        <section className="form">
-          <form className="form-group" onSubmit={onSubmit}>
-            <div>
-              <input
-                type="text"
-                className="form-control"
-                id="name"
-                name="name"
-                value={name}
-                placeholder="Enter your name"
-                onChange={onChange}
-              />
-            </div>
-            <div>
-              <input
-                type="email"
-                className="form-control"
-                id="email"
-                name="email"
-                value={email}
-                placeholder="Enter your email"
-                onChange={onChange}
-              />
-            </div>
-            <div>
-              <input
-                type="password"
-                className="form-control"
-                id="password"
-                name="password"
-                value={password}
-                placeholder="Enter Nikki password"
-                onChange={onChange}
-              />
-            </div>
-            <div>
-              <input
-                type="password"
-                className="form-control"
-                id="password2"
-                name="password2"
-                value={password2}
-                placeholder="Confirm password"
-                onChange={onChange}
-              />
-            </div>
-            <div className="form-group">
-              <button type="submit" className="btn btn-block">
-                Submit
-              </button>
-            </div>
-          </form>
-          <Link to="/login">
-            <Text color={toupOrange} _hover={{ color: primary2 }}>
-              Already have an account?
-            </Text>
-          </Link>
-        </section>
+
+        <Flex w="100%" justifyContent="center" alignItems="center">
+          <FormControl w="100%" maxW="500px">
+            <Input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              bg="white"
+              placeholder="Enter Email"
+              mb="10px"
+            />
+            <Input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              bg="white"
+              placeholder="Enter Password"
+              mb="10px"
+            />
+            <Input
+              type="password"
+              value={password2}
+              onChange={(e) => setPassword2(e.target.value)}
+              bg="white"
+              placeholder="Confirm Password"
+              mb="10px"
+            />
+            <Button
+              w="100%"
+              bg="black"
+              color="white"
+              mb="20px"
+              _hover={{ bg: "black" }}
+              onClick={onSubmit}
+            >
+              Submit
+            </Button>
+          </FormControl>
+        </Flex>
+        <Link to="/login">
+          <Text color={toupOrange} _hover={{ color: primary2 }}>
+            Already have an account?
+          </Text>
+        </Link>
       </Flex>
     </Flex>
   );
