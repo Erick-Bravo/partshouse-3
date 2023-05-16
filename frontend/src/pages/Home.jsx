@@ -77,7 +77,7 @@ const Home = () => {
           {/* No Partshouses available */}
           {ph.length === 0 && (
             <>
-              <Box width={["600px"]}>
+              <Box width={["600px"]} mt={["0", "0", "0", "70px"]}>
                 <Logo />
                 <Box m={["30px 0"]}>
                   <ModalButton
@@ -87,7 +87,7 @@ const Home = () => {
                 </Box>
                 <Text>
                   Click the "Add a Partshouse" button to create your first
-                  Partshouse
+                  Partshouse!
                 </Text>
                 <Text>
                   Once created, to add more or edit, go to "Edit Parthouses" in
