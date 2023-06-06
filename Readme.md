@@ -2,60 +2,9 @@
 Partshouse is a REST API AND MERN stack web application using REACT.js and Redux Toolkit.
 It is designed to keep track of valuable assets in your home and allows you to schedule notifications to re-purchase items with a previously saved link. Partshouse is the place to keep information regarding home appliances, pc components, car parts etc...  so you're no longer shuffeling through that miscellanious drawer we all know you have.
 
-## Current Schema
-![](./assets/PartsHouseSchema.png)
-
 ## Start
+Run `npm i` on both main directory and /frontend directory
+
 To run backend and frontend concurrently:
 npm run dev
 
-
-## MVP Checklist (For Job Applications)
-<pre>
-- [ x ] Add Additional Advanced info for Records and Parts
-    - [ x ] Add advanced data in Model
-    - [ x ] Add some data
-    - [ x ] Add icons
-
-- [ x ] Create Button to Add a Record
-    - [ x ] Button Open Modal
-    - [ x ] Can selected which partshouse it is assicated with.
-    - [ x ] Location: Above Accordions
-
-- [ x ] Style the Accordion Button
-    - [ x ] icon, left of button
-    - [ x ] data, inside AccordionItem when opened
-
-- [ x ] Add Items to Dashboard Accordion
-    - [ x ] "More Info" Button, 
-    - [ x ] "Add Part" Button, 
-
-- [ x ] Style a Parts Card component for each Part 
-    - [ x ] Name, 
-    - [ x ] Repurchase Button, or
-    - [ x ] Add Repurchase Link (modal just to add link)
-
-- [ x ] Create Modal to Add a Part
-    - [ x ] Button Open Modal
-    - [ x ] Can selected which record it is assicated with.
-    - [ x ] Location: Above Accordions
-
-- [  ] Create Record Page
-    - [ ] Part Cards
-    - [ ] Logs Section
-    - [ ] Create Button to Edit a Record
-
-- [ ] Delete Modals
-    - [ ] Parts
-    - [ ] Records
-    - [ ] Partshouses
-
-</pre>
-
-## MVP Checklist (For Public Usage)
-<pre>
-- [ ] Add MORE Logos
-- [ ] Figure out the ph state on the Record Page
-
-
-</pre>
