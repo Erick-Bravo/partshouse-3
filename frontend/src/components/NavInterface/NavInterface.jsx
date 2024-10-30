@@ -107,9 +107,6 @@ const SidebarContent = ({ onClose, ...rest }) => {
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} color={toupOrange} />
       </Flex>
-      <NavItem color={toupOrange} fontSize="2xl" onClick={() => goHome()}>
-        Dashboard
-      </NavItem>
       {ph.map((ph) => (
         <NavItem
           key={ph.name}
