@@ -20,7 +20,7 @@ import IconFormatter from "../components/Assets/IconFormatter";
 import ReBuyLogic from "../components/Buttons/ReBuyLogic";
 import { getRecordParts } from "../features/parts/partSlice";
 import { setSelectedPart } from "../app/selectedPart";
-import LogsAccordion from "../components/PageComps/LogsAccordion";
+// import LogsAccordion from "../components/PageComps/LogsAccordion";
 import { getRecordLogs } from "../features/recordLogs/recordLogsSlice";
 
 const Record = () => {
@@ -47,7 +47,7 @@ const Record = () => {
     }
 
     return () => {};
-  }, [user, navigate, id]);
+  }, [user, navigate, id, isError, message, dispatch]);
 
   if (isLoading) {
     return <Spinner />;
@@ -57,9 +57,9 @@ const Record = () => {
     navigate("/");
   };
 
-  const handlePartClick = (part) => {
-    dispatch(setSelectedPart(part));
-  };
+  // const handlePartClick = (part) => {
+  //   dispatch(setSelectedPart(part));
+  // };
 
   return (
     <Flex flexDir="column" w="100%">
@@ -86,10 +86,7 @@ const Record = () => {
 
       <Box bg={bgGrey} overflow="auto">
         {records.length > 0 && (
-          <MoreDetails
-            record={records[0]}
-            parts={parts}
-          />
+          <MoreDetails record={records[0]} parts={parts} />
         )}
       </Box>
     </Flex>
@@ -138,7 +135,7 @@ const MoreDetails = ({ record, parts }) => {
         </Box>
 
         <Flex justifyContent="center" alignItems="center" h="100%">
-          <LogsAccordion />
+          {/* <LogsAccordion /> */}
         </Flex>
 
         <Box>

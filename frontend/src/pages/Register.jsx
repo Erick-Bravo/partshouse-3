@@ -8,29 +8,25 @@ import {
   Flex,
   Text,
   FormControl,
-  FormLabel,
   Input,
-  Box,
   Button,
   UnorderedList,
   ListItem,
 } from "@chakra-ui/react";
 import {
-  blueWhaleLight,
   primary,
   primary2,
   toupOrange,
-  whitePaper,
   whiteText,
 } from "../assetLibrary/colors";
 import Logo from "../components/Assets/Logo";
-import { HeadlineType } from "../enums";
+// import { HeadlineType } from "../enums";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
-  const [ok, setOk] = useState(true);
+  // const [ok, setOk] = useState(true);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -81,12 +77,12 @@ const Register = () => {
   };
 
   const containsValidCharacters = (str) => {
-    const regex = /^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/;
+    const regex = /^[a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/;
     return regex.test(str);
   };
 
   const containsUpperCaseAndSymbol = (str) => {
-    const regex = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).*$/;
+    const regex = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).*$/;
     return regex.test(str);
   };
 
