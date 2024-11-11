@@ -55,10 +55,7 @@ const Home = () => {
           {ph.length > 0 && Object.keys(selected).length === 0 && (
             <>
               <Box h="100%" w="100%">
-                <Headline text="Dashboard" type={HeadlineType.One} />
-                <Text p="35px" h="100%">
-                  All Records
-                </Text>
+                <Headline text="Dashboard" type={HeadlineType.One} /> 
                 <Box m={["35px 0 70px 0"]}>
                   <ModalButton
                     type={ModalType.ADD_Record}
@@ -100,9 +97,6 @@ const Home = () => {
           {selected.name && (
             <Box h="100%" w="100%">
               <Headline text={selected.name} type={HeadlineType.One} />
-              <Text p="35px" h="100%">
-                {selected.name} Records
-              </Text>
               <Box m={["30px 0"]}>
                 <ModalButton type={ModalType.ADD_Record} text="Add a Record" />
               </Box>
