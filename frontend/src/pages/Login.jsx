@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { login, reset } from "../features/auth/authSlice";
@@ -10,7 +10,7 @@ import {
   toupOrange,
   whiteText,
 } from "../assetLibrary/colors";
-import { Button, Flex, Text, Box, Divider } from "@chakra-ui/react";
+import { Button, Flex, Text, Box, Divider, Link, Input } from "@chakra-ui/react";
 import Logo from "../components/Assets/Logo";
 
 const Login = () => {
@@ -87,33 +87,31 @@ const Login = () => {
         </section>
         <section className="form">
           <form className="form-group" onSubmit={onSubmit}>
-            <div>
-              <input
+            <Flex flexDirection="column" gap="20px">
+              <Input
                 type="email"
-                className="form-control"
                 id="email"
                 name="email"
                 value={email}
-                placeholder="Enter your email"
+                placeholder="Email"
+                bg="white"
                 onChange={onChange}
+                variant="outline" // Example, customize as needed
               />
-            </div>
-            <div>
-              <input
+              <Input
                 type="password"
-                className="form-control"
                 id="password"
                 name="password"
                 value={password}
-                placeholder="Enter a password"
+                placeholder="Password"
+                bg="white"
                 onChange={onChange}
+                variant="outline" // Example, customize as needed
               />
-            </div>
-            <div className="form-group">
-              <button type="submit" className="btn btn-block">
+              <Button type="submit" colorScheme="blue" width="full">
                 Submit
-              </button>
-            </div>
+              </Button>
+            </Flex>
           </form>
           <Link to="/register">
             <Text color={toupOrange} _hover={{ color: primary2 }} mb="25px">
@@ -123,9 +121,9 @@ const Login = () => {
           <Divider />
           <Box mt="25px">
             <Text color={whiteText} fontSize="16px">
-              Recruiters, click "demo"
+              Recruiter? Click "Demo"!
             </Text>
-            <Button onClick={handleDemo} w="150px" mt="10px">
+            <Button onClick={handleDemo} w="150px" mt="10px" bg={toupOrange}>
               Demo
             </Button>
           </Box>
