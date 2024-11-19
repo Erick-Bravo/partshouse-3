@@ -32,7 +32,7 @@ const Home = () => {
       console.log(message);
     }
     if (!user) {
-      navigate("/login");
+      navigate("/welcome");
     } else {
       dispatch(getPH());
       dispatch(getRecords());

@@ -11,6 +11,7 @@ import EditPartshouses from "./pages/EditPartshouses";
 import Record from "./pages/Record";
 import LeaveFeedback from "./pages/LeaveFeedback";
 import Profile from "./pages/Profile";
+import Splash from "./pages/Splash";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/welcome" element={<Splash />} />
               <Route path="/register" element={<Register />} />
               <Route path="/editpartshouses" element={<EditPartshouses />} />
               <Route path="/records/:id" element={<Record />} />
