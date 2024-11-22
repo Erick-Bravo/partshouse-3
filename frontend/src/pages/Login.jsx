@@ -10,7 +10,15 @@ import {
   toupOrange,
   whiteText,
 } from "../assetLibrary/colors";
-import { Button, Flex, Text, Box, Divider, Link, Input } from "@chakra-ui/react";
+import {
+  Button,
+  Flex,
+  Text,
+  Box,
+  Divider,
+  Link,
+  Input,
+} from "@chakra-ui/react";
 import Logo from "../components/Assets/Logo";
 
 const Login = () => {
@@ -71,7 +79,9 @@ const Login = () => {
 
   return (
     <Flex h="100%" flexDirection={["column", "column", "column", "row"]}>
-      <Logo />
+      <Box pt={["30%", "30%", "20%", "0"]}>
+        <Logo objectFitValue={"contain"} />
+      </Box>
       <Flex
         flexDirection="column"
         justifyContent="center"
