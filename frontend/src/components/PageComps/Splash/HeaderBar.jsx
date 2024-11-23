@@ -11,7 +11,7 @@ const HeaderBar = () => {
             <Logo objectFitValue="contain" height="60px" />
           </Box>
           <Text fontFamily="cursive" fontSize="40px" color="white">
-            Partshouse
+            PartsHouse
           </Text>
         </Flex>
         <Text color="white" fontSize="20px">
