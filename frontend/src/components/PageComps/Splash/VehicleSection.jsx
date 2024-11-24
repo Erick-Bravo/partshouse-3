@@ -1,22 +1,11 @@
 import { Box, Flex, Text, Image } from "@chakra-ui/react";
 import { blueWhale } from "../../../assetLibrary/colors";
+import { BoldTitle } from "./BuyPartsSection";
 
-export const BoldTitle = ({ text }) => {
-  return (
-    <Text pb="40px" fontWeight="bold" fontSize="29px">
-      {text}
-    </Text>
-  );
-};
-
-const BuyPartsSection = () => {
+const VehicleSection = () => {
   return (
     <Box h="500px" p="40px 20px" bg={blueWhale}>
       <Flex justifyContent="space-around" alignItems="center" h="420px">
-        <Box>
-          <Image src="/repurchase.gif" h="400px" />
-        </Box>
-
         <Flex
           flexDir="column"
           w="600px"
@@ -26,16 +15,23 @@ const BuyPartsSection = () => {
           color="white"
           justifyContent="center"
         >
-          <BoldTitle text="Keep forgetting to buy replacement parts?" />
+          <BoldTitle text="Own a vehicle?" />
           <Text pb="40px" fontSize="25px">
-            Easily schedule notifications for when an item needs to be
-            re-purchased like filters for your refrigerator, air conditioning,
-            and furnace.
+            Keep track of last service history for your car or motorcycle and
+            get notified once it's time for a service.
+          </Text>
+          <Text pb="40px" fontSize="25px">
+            We can also save the VIN number in your account so you never have to
+            look for it again!
           </Text>
         </Flex>
+
+        <Box>
+          <Image src="/carAndMoto.svg" h="400px" />
+        </Box>
       </Flex>
     </Box>
   );
 };
 
-export default BuyPartsSection;
+export default VehicleSection;
