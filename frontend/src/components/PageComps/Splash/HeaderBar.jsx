@@ -1,10 +1,10 @@
 import { Box, Flex, Text, Button } from "@chakra-ui/react";
-import { blueButton } from "../../../assetLibrary/colors";
+import { blueButton, blueWhale } from "../../../assetLibrary/colors";
 import Logo from "../../Assets/Logo";
 
 const HeaderBar = () => {
   return (
-    <Flex justifyContent="space-between" alignItems="center" h="100px" w="100%">
+    <Flex justifyContent="space-between" alignItems="center" h="100px" w="100%" bg={blueWhale}>
       <Flex w="800px" justifyContent="space-between" alignItems="center">
         <Flex h="40px" alignItems="center">
           <Box m="0 25px">

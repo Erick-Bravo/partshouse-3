@@ -17,10 +17,9 @@ const App = () => {
   return (
     <ChakraProvider>
       <Router>
-        <Box h="100vh" bg={blueWhale}>
+        <Box>
           <Flex
             justifyContent="center"
-            h="100%"
             w="100%"
             m="0 auto"
             p="0"

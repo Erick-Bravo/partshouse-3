@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { login, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Assets/Spinner";
 import {
+  blueWhale,
   primary,
   primary2,
   toupOrange,
@@ -78,7 +79,7 @@ const Login = () => {
   }
 
   return (
-    <Flex h="100%" flexDirection={["column", "column", "column", "row"]}>
+    <Flex h="100vh" flexDirection={["column", "column", "column", "row"]} bg={blueWhale}>
       <Box pt={["30%", "30%", "20%", "0"]}>
         <Logo objectFitValue={"contain"} />
       </Box>
