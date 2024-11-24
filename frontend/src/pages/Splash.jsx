@@ -5,6 +5,7 @@ import BuyPartsSection from "../components/PageComps/Splash/BuyPartsSection";
 import LogHistorySection from "../components/PageComps/Splash/LogHistorySection";
 import VehicleSection from "../components/PageComps/Splash/VehicleSection";
 import PartsSearchSection from "../components/PageComps/Splash/PartsSearchSection";
+import PricingSection from "../components/PageComps/Splash/PricingSection";
 
 const Splash = () => {
   return (
@@ -16,6 +17,7 @@ const Splash = () => {
         <LogHistorySection />
         <PartsSearchSection />
         <VehicleSection />
+        <PricingSection />
       </Flex>
     </>
   );
