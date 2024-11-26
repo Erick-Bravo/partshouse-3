@@ -12,7 +12,7 @@ export const BoldTitle = ({ text }) => {
 
 const BuyPartsSection = () => {
   return (
-    <Box h="500px" p="40px 20px" bg={blueWhale}>
+    <Box h="600px" p="40px 20px" bg={blueWhale}>
       <Flex justifyContent="space-around" alignItems="center" h="420px">
         <Box>
           <Image src="/repurchase.gif" h="400px" />

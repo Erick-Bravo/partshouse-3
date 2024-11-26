@@ -4,7 +4,7 @@ import { blueWhale, blueButton } from "../../../assetLibrary/colors";
 
 const PartsSearchSection = () => {
   return (
-    <Box h="500px" p="40px 20px" bg={blueWhale}>
+    <Box h="600px" p="40px 20px" bg={blueWhale}>
       <Flex justifyContent="space-around" alignItems="center" h="420px">
         <Box>
           <Image src="/roboSearch.gif" h="450px"  />

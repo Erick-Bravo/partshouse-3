@@ -5,7 +5,7 @@ import SeeExampleButton from "../../Buttons/SeeExampleButton";
 
 const LogHistorySection = () => {
   return (
-    <Box h="500px" p="40px 20px" bg={blueWhale}>
+    <Box h="600px" p="40px 20px" bg={blueWhale}>
       <Flex justifyContent="space-around" alignItems="center" h="420px">
         <Flex
           flexDir="column"

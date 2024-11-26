@@ -2,7 +2,7 @@ import { Box, Flex, Image, Text } from "@chakra-ui/react";
 
 const PricingSection = () => {
   return (
-    <Box h="500px" pt="40px">
+    <Flex h="600px" flexDir="column" justifyContent="center" alignItems="center">
       <Text fontSize="60px" fontWeight="bold" fontFamily="Roboto">
         Partshouse is 100% FREE!
       </Text>
@@ -21,7 +21,7 @@ const PricingSection = () => {
           </Text>
         </Box>
       </Flex>
-    </Box>
+    </Flex>
   );
 };
 
