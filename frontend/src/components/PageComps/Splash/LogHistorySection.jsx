@@ -1,6 +1,7 @@
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Text, Button } from "@chakra-ui/react";
 import { BoldTitle } from "./BuyPartsSection";
-import { blueWhale } from "../../../assetLibrary/colors";
+import { blueWhale, blueButton } from "../../../assetLibrary/colors";
+import SeeExampleButton from "../../Buttons/SeeExampleButton";
 
 const LogHistorySection = () => {
   return (
@@ -11,16 +12,16 @@ const LogHistorySection = () => {
           w="600px"
           fontFamily="Sour Gummy"
           fontSize="20px"
-          h="300px"
           color="white"
           justifyContent="center"
         >
           <BoldTitle text="Have a different technician every time something breaks?" />
 
-          <Text pb="40px" fontSize="25px">
-            Keep a log history of maintenance repairs so you don't have to remember for
-            the next maintenance guy who shows up.
+          <Text pb="40px" fontSize="25px" align="left">
+            Keep a log history of maintenance repairs so you don't have to
+            remember for the next maintenance guy who shows up.
           </Text>
+          <SeeExampleButton />
         </Flex>
 
         <Box>
