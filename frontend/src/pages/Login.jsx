@@ -123,12 +123,14 @@ const Login = () => {
               </Button>
             </Flex>
           </form>
+          
           <Link to="/register">
             <Text color={toupOrange} _hover={{ color: primary2 }} mb="25px">
               Create an account
             </Text>
           </Link>
           <Divider />
+
           <Box mt="25px">
             <Text color={whiteText} fontSize="16px">
               Recruiter? Click "Demo"!

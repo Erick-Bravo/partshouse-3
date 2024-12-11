@@ -157,18 +157,13 @@ const Register = () => {
               placeholder="Confirm Password"
               mb="10px"
             />
-            <Button
-              w="100%"
-              bg="black"
-              color="white"
-              mb="20px"
-              _hover={{ bg: "black" }}
-              onClick={onSubmit}
-            >
+
+            <Button w="100%" colorScheme="blue" mb="20px" onClick={onSubmit}>
               Submit
             </Button>
           </FormControl>
         </Flex>
+
         <Link to="/login">
           <Text color={toupOrange} _hover={{ color: primary2 }}>
             Already have an account?
