@@ -7,6 +7,7 @@ import Spinner from "../components/Assets/Spinner";
 import {
   Flex,
   Text,
+  Box,
   FormControl,
   Input,
   Button,
@@ -17,6 +18,7 @@ import {
   primary,
   primary2,
   toupOrange,
+  blueWhale,
   whiteText,
 } from "../assetLibrary/colors";
 import Logo from "../components/Assets/Logo";
@@ -91,8 +93,14 @@ const Register = () => {
   }
 
   return (
-    <Flex h="100%" flexDirection={["column", "column", "column", "row"]}>
-      <Logo />
+    <Flex
+      h="100vh"
+      flexDirection={["column", "column", "column", "row"]}
+      bg={blueWhale}
+    >
+      <Box pt={["30%", "30%", "20%", "0"]}>
+        <Logo objectFitValue={"contain"} />
+      </Box>
       <Flex
         flexDirection="column"
         justifyContent="center"

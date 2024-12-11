@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { login, reset } from "../features/auth/authSlice";
@@ -17,7 +17,6 @@ import {
   Text,
   Box,
   Divider,
-  Link,
   Input,
 } from "@chakra-ui/react";
 import Logo from "../components/Assets/Logo";
