@@ -21,6 +21,7 @@ const DashboardAccordion = ({ records, parts, selected }) => {
       <Flex flexDir="column" alignItems="center">
         {records
           ? records.map((record) => {
+              // eslint-disable-next-line no-lone-blocks
               {
                 // Filter per Partshouse Selected
                 if (record.phId === selected._id) {
@@ -40,6 +41,7 @@ const DashboardAccordion = ({ records, parts, selected }) => {
                   );
                 }
               }
+              // eslint-disable-next-line no-lone-blocks
               {
                 // Dashboard: All Records
                 if (Object.keys(selected).length === 0) {
