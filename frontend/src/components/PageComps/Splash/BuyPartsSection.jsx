@@ -4,9 +4,16 @@ import SeeExampleButton from "../../Buttons/SeeExampleButton";
 
 export const BoldTitle = ({ text }) => {
   return (
-    <Text pb="40px" fontWeight="bold" fontSize="29px" align="left" fontFamily="Roboto">
-      {text}
-    </Text>
+      <Text
+        pb="40px"
+        fontWeight="bold"
+        fontSize="32px"
+        align="left"  
+        fontFamily="Roboto"
+      >
+        {text}
+      </Text>
+
   );
 };
 
@@ -34,7 +41,6 @@ const BuyPartsSection = () => {
           </Text>
 
           <SeeExampleButton />
-
         </Flex>
       </Flex>
     </Box>
