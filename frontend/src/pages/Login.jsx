@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { login, reset } from "../features/auth/authSlice";
@@ -17,7 +17,6 @@ import {
   Text,
   Box,
   Divider,
-  Link,
   Input,
 } from "@chakra-ui/react";
 import Logo from "../components/Assets/Logo";
@@ -124,12 +123,14 @@ const Login = () => {
               </Button>
             </Flex>
           </form>
+          
           <Link to="/register">
             <Text color={toupOrange} _hover={{ color: primary2 }} mb="25px">
               Create an account
             </Text>
           </Link>
           <Divider />
+
           <Box mt="25px">
             <Text color={whiteText} fontSize="16px">
               Recruiter? Click "Demo"!
